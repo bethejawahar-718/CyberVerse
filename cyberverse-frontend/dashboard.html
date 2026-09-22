@@ -17,67 +17,47 @@
 
 </head>
 
-<body class="dashboard-page">
+<body>
 
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- =========================================
-         TOP HEADER
-    ========================================== -->
 
-    <header class="dashboard-topbar">
+    <header class="navbar">
 
-        <!-- CREATIVE BRAND -->
-        <div class="cyber-brand">
-
-            <div class="brand-icon">
-                ◈
-            </div>
-
-            <div class="brand-text">
-                <span class="brand-main">CYBER</span>
-                <span class="brand-accent">VERSE</span>
-            </div>
-
+        <div class="logo">
+            <span>&lt;/&gt;</span>
+            CyberVerse
         </div>
 
 
-        <!-- RIGHT SIDE USER -->
-        <div class="top-user" id="userMenuTrigger">
+        <nav>
 
-            <div class="online-dot"></div>
+            <a href="index.html">
+                Home
+            </a>
 
-            <div class="user-avatar-icon">
-                👤
-            </div>
+            <a href="dashboard.html">
+                Dashboard
+            </a>
 
-        </div>
+        </nav>
 
-        <!-- CONTEXT MENU -->
-        <div class="context-menu" id="userContextMenu">
-            <a href="index.html" class="context-menu-item">🏠 Home</a>
-            <a href="index.html#roadmap" class="context-menu-item">🗺️ Road Map</a>
-            <a href="index.html#courses" class="context-menu-item">📚 Courses</a>
-            <a href="index.html#labs" class="context-menu-item">🧪 Labs</a>
-            <a href="index.html#ai-mentor" class="context-menu-item">🤖 AI Mentor</a>
-            <div class="context-menu-divider"></div>
-            <button id="logoutBtn" class="context-menu-item logout-item">🚪 Logout</button>
-        </div>
+
+        <button
+            id="logoutBtn"
+            class="btn btn-ghost"
+        >
+            Logout
+        </button>
 
     </header>
 
 
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================== -->
+    <main class="dashboard-container">
 
-    <main class="dashboard-main">
+        <section class="dashboard-header">
 
-        <!-- WELCOME -->
-
-        <section class="dashboard-welcome">
-
-            <div class="welcome-content">
+            <div>
 
                 <p class="dashboard-label">
                     // USER DASHBOARD
@@ -86,173 +66,22 @@
                 <h1>
                     Welcome,
                     <span id="userName">
-                        User
+                        Student
                     </span>
                 </h1>
 
-                <p
-                    id="userEmail"
-                    class="dashboard-email"
-                ></p>
-
-                <p class="welcome-description">
-                    Continue your cybersecurity journey,
-                    build your skills and become cyber ready.
-                </p>
-
-            </div>
-
-
-            <div class="welcome-decoration">
-
-                <div class="shield-symbol">
-                    ◈
-                </div>
-
-                <div class="scan-ring"></div>
+                <p id="userEmail"></p>
 
             </div>
 
         </section>
 
-
-        <!-- QUICK NAVIGATION -->
-
-        <section class="quick-navigation">
-
-            <h2>
-                Continue Learning
-            </h2>
-
-            <div class="quick-grid">
-
-
-                <a
-                    href="index.html#roadmap"
-                    class="quick-card"
-                >
-
-                    <div class="quick-icon">
-                        ◎
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Road Map
-                        </h3>
-
-                        <p>
-                            Follow your cybersecurity path
-                        </p>
-
-                    </div>
-
-                    <span class="quick-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="index.html#courses"
-                    class="quick-card"
-                >
-
-                    <div class="quick-icon">
-                        ▣
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Courses
-                        </h3>
-
-                        <p>
-                            Learn new security skills
-                        </p>
-
-                    </div>
-
-                    <span class="quick-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="index.html#labs"
-                    class="quick-card"
-                >
-
-                    <div class="quick-icon">
-                        ⚗
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Labs
-                        </h3>
-
-                        <p>
-                            Practice cybersecurity
-                        </p>
-
-                    </div>
-
-                    <span class="quick-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="index.html#ai-mentor"
-                    class="quick-card"
-                >
-
-                    <div class="quick-icon">
-                        ◉
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            AI Mentor
-                        </h3>
-
-                        <p>
-                            Get personalized guidance
-                        </p>
-
-                    </div>
-
-                    <span class="quick-arrow">
-                        →
-                    </span>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- STATS -->
 
         <section class="dashboard-stats">
 
-
             <div class="dashboard-card">
 
-                <div class="stat-icon">
-                    📚
-                </div>
+                <span>📚</span>
 
                 <h2 id="completedLessons">
                     0
@@ -267,9 +96,7 @@
 
             <div class="dashboard-card">
 
-                <div class="stat-icon">
-                    🧪
-                </div>
+                <span>🧪</span>
 
                 <h2 id="completedLabs">
                     0
@@ -284,9 +111,7 @@
 
             <div class="dashboard-card">
 
-                <div class="stat-icon">
-                    🎯
-                </div>
+                <span>🎯</span>
 
                 <h2 id="quizScore">
                     0%
@@ -298,33 +123,14 @@
 
             </div>
 
-
         </section>
 
 
-        <!-- PROGRESS -->
-
         <section class="progress-section">
 
-            <div class="section-heading">
-
-                <div>
-
-                    <p class="dashboard-label">
-                        // YOUR CYBER SECURITY JOURNEY
-                    </p>
-
-                    <h2>
-                        Small Steps.
-                        <span>
-                            Big Progress.
-                        </span>
-                    </h2>
-
-                </div>
-
-            </div>
-
+            <h2>
+                Your Learning Progress
+            </h2>
 
             <div class="progress-bar">
 
@@ -342,8 +148,6 @@
         </section>
 
 
-        <!-- MODULES -->
-
         <section class="modules">
 
             <h2>
@@ -353,15 +157,11 @@
 
             <div class="module-list">
 
-
                 <div class="module-row">
 
-                    <span class="module-number">
-                        01
-                    </span>
+                    <span>01</span>
 
                     <div>
-
                         <h3>
                             Cybersecurity Fundamentals
                         </h3>
@@ -369,7 +169,6 @@
                         <p>
                             Computers, networks and security basics.
                         </p>
-
                     </div>
 
                     <button class="module-btn">
@@ -381,12 +180,9 @@
 
                 <div class="module-row">
 
-                    <span class="module-number">
-                        02
-                    </span>
+                    <span>02</span>
 
                     <div>
-
                         <h3>
                             Security Hygiene
                         </h3>
@@ -394,7 +190,6 @@
                         <p>
                             Passwords, MFA and safe browsing.
                         </p>
-
                     </div>
 
                     <button class="module-btn">
@@ -406,12 +201,9 @@
 
                 <div class="module-row">
 
-                    <span class="module-number">
-                        03
-                    </span>
+                    <span>03</span>
 
                     <div>
-
                         <h3>
                             Common Cyber Threats
                         </h3>
@@ -419,7 +211,6 @@
                         <p>
                             Phishing, malware and social engineering.
                         </p>
-
                     </div>
 
                     <button class="module-btn">
@@ -431,12 +222,9 @@
 
                 <div class="module-row">
 
-                    <span class="module-number">
-                        04
-                    </span>
+                    <span>04</span>
 
                     <div>
-
                         <h3>
                             Defense Basics
                         </h3>
@@ -444,7 +232,6 @@
                         <p>
                             Firewalls, encryption and authentication.
                         </p>
-
                     </div>
 
                     <button class="module-btn">
@@ -456,12 +243,9 @@
 
                 <div class="module-row">
 
-                    <span class="module-number">
-                        05
-                    </span>
+                    <span>05</span>
 
                     <div>
-
                         <h3>
                             Practical Security Labs
                         </h3>
@@ -469,7 +253,6 @@
                         <p>
                             Practice cybersecurity concepts.
                         </p>
-
                     </div>
 
                     <button class="module-btn">
@@ -482,28 +265,10 @@
 
         </section>
 
-
-        <!-- FOOTER -->
-
-        <footer class="dashboard-footer">
-
-            <span>
-                CYBERVERSE
-            </span>
-
-            <b>
-                //
-            </b>
-
-            LEARN • PRACTICE • SECURE
-
-        </footer>
-
     </main>
 
 
     <script src="js/auth.js"></script>
 
 </body>
-
 </html>
