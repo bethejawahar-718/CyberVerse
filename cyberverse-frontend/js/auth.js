@@ -1,50 +1,80 @@
-/* =========================================
-   CYBERVERSE AUTH SYSTEM
-========================================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-const USER_KEY = "cyberverseUser";
-const LOGIN_KEY = "cyberverseLoggedIn";
+    initializeMatrixBackground();
+
+    setupRegister();
+
+    setupLogin();
+
+    setupDashboard();
+
+    setupLogout();
+
+    setupModuleButtons();
+
+});
 
 
-/* =========================================
+/* ================================
    REGISTER
-========================================= */
+================================ */
 
-const registerForm = document.getElementById("registerForm");
+function setupRegister() {
 
-if (registerForm) {
+    const form =
+        document.getElementById("registerForm");
 
-    registerForm.addEventListener("submit", function (event) {
+    if (!form) {
+        return;
+    }
+
+
+    form.addEventListener("submit", (event) => {
 
         event.preventDefault();
 
+
         const name =
-            document.getElementById("registerName").value.trim();
+            document
+                .getElementById("registerName")
+                .value
+                .trim();
+
 
         const email =
-            document.getElementById("registerEmail").value.trim();
+            document
+                .getElementById("registerEmail")
+                .value
+                .trim()
+                .toLowerCase();
 
-        const gender =
-            document.getElementById("registerGender").value;
 
         const password =
-            document.getElementById("registerPassword").value;
+            document
+                .getElementById("registerPassword")
+                .value;
+
 
         const confirmPassword =
-            document.getElementById("registerConfirm").value;
+            document
+                .getElementById("registerConfirm")
+                .value;
+
 
         const error =
             document.getElementById("registerError");
 
 
-        /* VALIDATION */
+        error.textContent = "";
 
-        if (!gender) {
+
+        if (password !== confirmPassword) {
 
             error.textContent =
-                "Please select an avatar.";
+                "Passwords do not match.";
 
             return;
+
         }
 
 
@@ -54,19 +84,31 @@ if (registerForm) {
                 "Password must contain at least 6 characters.";
 
             return;
+
         }
 
 
-        if (password !== confirmPassword) {
+        const existingUser =
+            localStorage.getItem("cyberverseUser");
 
-            error.textContent =
-                "Passwords do not match.";
 
-            return;
+        if (existingUser) {
+
+            const user =
+                JSON.parse(existingUser);
+
+
+            if (user.email === email) {
+
+                error.textContent =
+                    "An account with this email already exists.";
+
+                return;
+
+            }
+
         }
 
-
-        /* CREATE USER */
 
         const user = {
 
@@ -75,8 +117,6 @@ if (registerForm) {
             email: email,
 
             password: password,
-
-            gender: gender,
 
             completedLessons: 0,
 
@@ -88,51 +128,66 @@ if (registerForm) {
 
 
         localStorage.setItem(
-            USER_KEY,
+            "cyberverseUser",
             JSON.stringify(user)
         );
 
 
-        localStorage.removeItem(LOGIN_KEY);
+        alert(
+            "Account created successfully!"
+        );
 
 
-        /* REDIRECT */
-
-        window.location.href = "login.html";
+        window.location.href =
+            "login.html";
 
     });
 
 }
 
 
-/* =========================================
+/* ================================
    LOGIN
-========================================= */
+================================ */
 
-const loginForm = document.getElementById("loginForm");
+function setupLogin() {
 
-if (loginForm) {
+    const form =
+        document.getElementById("loginForm");
 
-    loginForm.addEventListener("submit", function (event) {
+    if (!form) {
+        return;
+    }
+
+
+    form.addEventListener("submit", (event) => {
 
         event.preventDefault();
 
 
         const email =
-            document.getElementById("loginEmail").value.trim();
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim()
+                .toLowerCase();
+
 
         const password =
-            document.getElementById("loginPassword").value;
+            document
+                .getElementById("loginPassword")
+                .value;
 
 
         const error =
             document.getElementById("loginError");
 
 
+        error.textContent = "";
+
+
         const savedUser =
-            JSON.parse(
-                localStorage.getItem(USER_KEY)
-            );
+            localStorage.getItem("cyberverseUser");
 
 
         if (!savedUser) {
@@ -141,25 +196,29 @@ if (loginForm) {
                 "No account found. Please register first.";
 
             return;
+
         }
 
 
+        const user =
+            JSON.parse(savedUser);
+
+
         if (
-            savedUser.email !== email ||
-            savedUser.password !== password
+            user.email !== email ||
+            user.password !== password
         ) {
 
             error.textContent =
                 "Incorrect email or password.";
 
             return;
+
         }
 
 
-        /* LOGIN SUCCESS */
-
         localStorage.setItem(
-            LOGIN_KEY,
+            "cyberverseLoggedIn",
             "true"
         );
 
@@ -172,231 +231,164 @@ if (loginForm) {
 }
 
 
-/* =========================================
+/* ================================
    DASHBOARD
-========================================= */
+================================ */
 
-const dashboardPage =
-    document.querySelector(".dashboard-page");
+function setupDashboard() {
+
+    const userName =
+        document.getElementById("userName");
 
 
-if (dashboardPage) {
+    if (!userName) {
+        return;
+    }
+
 
     const loggedIn =
-        localStorage.getItem(LOGIN_KEY);
-
-    const user =
-        JSON.parse(
-            localStorage.getItem(USER_KEY)
+        localStorage.getItem(
+            "cyberverseLoggedIn"
         );
 
 
-    /* PROTECT DASHBOARD */
-
-    if (loggedIn !== "true" || !user) {
+    if (loggedIn !== "true") {
 
         window.location.href =
             "login.html";
 
-    } else {
+        return;
 
-        /* USER NAME */
+    }
 
-        const userName =
-            document.getElementById("userName");
 
-        if (userName) {
+    const savedUser =
+        localStorage.getItem(
+            "cyberverseUser"
+        );
 
-            userName.textContent =
-                user.name;
 
-        }
+    if (!savedUser) {
 
+        window.location.href =
+            "register.html";
 
-        /* USER EMAIL */
+        return;
 
-        const userEmail =
-            document.getElementById("userEmail");
+    }
 
-        if (userEmail) {
 
-            userEmail.textContent =
-                user.email;
+    const user =
+        JSON.parse(savedUser);
 
-        }
 
+    document.getElementById(
+        "userName"
+    ).textContent = user.name;
 
-        /* SIDEBAR NAME */
 
-        const sidebarName =
-            document.getElementById(
-                "sidebarUserName"
-            );
+    document.getElementById(
+        "userEmail"
+    ).textContent = user.email;
 
-        if (sidebarName) {
 
-            sidebarName.textContent =
-                user.name;
+    document.getElementById(
+        "completedLessons"
+    ).textContent =
+        user.completedLessons;
 
-        }
 
+    document.getElementById(
+        "completedLabs"
+    ).textContent =
+        user.completedLabs;
 
-        /* TOP NAME */
 
-        const topName =
-            document.getElementById(
-                "topUserName"
-            );
+    document.getElementById(
+        "quizScore"
+    ).textContent =
+        `${user.quizScore}%`;
 
-        if (topName) {
 
-            topName.textContent =
-                user.name;
+    updateProgress(user);
 
-        }
+}
 
 
-        /* =====================================
-           AVATAR
-        ====================================== */
+/* ================================
+   PROGRESS
+================================ */
 
-        const avatar =
-            document.getElementById(
-                "sidebarAvatar"
-            );
+function updateProgress(user) {
 
+    const totalLessons = 42;
 
-        if (avatar) {
+    const progress =
+        Math.min(
+            100,
+            Math.round(
+                (user.completedLessons /
+                    totalLessons) *
+                100
+            )
+        );
 
-            if (user.gender === "female") {
 
-                /*
-                   GIRL DEFAULT AVATAR
-                */
+    const progressFill =
+        document.getElementById(
+            "progressFill"
+        );
 
-                avatar.src =
-                    "https://api.dicebear.com/9.x/adventurer/svg?seed=Girl";
 
+    const progressText =
+        document.getElementById(
+            "progressText"
+        );
 
-            } else {
 
-                /*
-                   BOY DEFAULT AVATAR
-                */
+    if (progressFill) {
 
-                avatar.src =
-                    "https://api.dicebear.com/9.x/adventurer/svg?seed=Boy";
+        progressFill.style.width =
+            `${progress}%`;
 
-            }
+    }
 
-        }
 
+    if (progressText) {
 
-        /* =====================================
-           STATISTICS
-        ====================================== */
-
-        const completedLessons =
-            document.getElementById(
-                "completedLessons"
-            );
-
-        const completedLabs =
-            document.getElementById(
-                "completedLabs"
-            );
-
-        const quizScore =
-            document.getElementById(
-                "quizScore"
-            );
-
-
-        if (completedLessons) {
-
-            completedLessons.textContent =
-                user.completedLessons || 0;
-
-        }
-
-
-        if (completedLabs) {
-
-            completedLabs.textContent =
-                user.completedLabs || 0;
-
-        }
-
-
-        if (quizScore) {
-
-            quizScore.textContent =
-                (user.quizScore || 0) + "%";
-
-        }
-
-
-        /* =====================================
-           PROGRESS
-        ====================================== */
-
-        const progress =
-            Math.min(
-                100,
-                Math.round(
-                    ((user.completedLessons || 0) / 5) * 100
-                )
-            );
-
-
-        const progressFill =
-            document.getElementById(
-                "progressFill"
-            );
-
-        const progressText =
-            document.getElementById(
-                "progressText"
-            );
-
-
-        if (progressFill) {
-
-            progressFill.style.width =
-                progress + "%";
-
-        }
-
-
-        if (progressText) {
-
-            progressText.textContent =
-                progress + "% completed";
-
-        }
+        progressText.textContent =
+            `${progress}% completed`;
 
     }
 
 }
 
 
-/* =========================================
+/* ================================
    LOGOUT
-========================================= */
+================================ */
 
-const logoutBtn =
-    document.getElementById("logoutBtn");
+function setupLogout() {
+
+    const logoutBtn =
+        document.getElementById(
+            "logoutBtn"
+        );
 
 
-if (logoutBtn) {
+    if (!logoutBtn) {
+        return;
+    }
+
 
     logoutBtn.addEventListener(
         "click",
-        function () {
+        () => {
 
             localStorage.removeItem(
-                LOGIN_KEY
+                "cyberverseLoggedIn"
             );
+
 
             window.location.href =
                 "login.html";
@@ -407,142 +399,88 @@ if (logoutBtn) {
 }
 
 
-/* =========================================
+/* ================================
    MODULE BUTTONS
-========================================= */
+================================ */
 
-const moduleButtons =
-    document.querySelectorAll(
-        ".module-btn"
-    );
+function setupModuleButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".module-btn"
+        );
 
 
-moduleButtons.forEach(
-    function (button) {
+    buttons.forEach(button => {
 
         button.addEventListener(
             "click",
-            function () {
+            () => {
 
-                const user =
-                    JSON.parse(
-                        localStorage.getItem(
-                            USER_KEY
-                        )
-                    );
-
-
-                if (!user) return;
-
-
-                if (
-                    user.completedLessons <
-                    5
-                ) {
-
-                    user.completedLessons++;
-
-                }
-
-
-                localStorage.setItem(
-                    USER_KEY,
-                    JSON.stringify(user)
+                alert(
+                    "This learning module will be added soon."
                 );
-
-
-                button.textContent =
-                    "Completed ✓";
-
-                button.disabled = true;
-
-
-                const completedLessons =
-                    document.getElementById(
-                        "completedLessons"
-                    );
-
-                const progressFill =
-                    document.getElementById(
-                        "progressFill"
-                    );
-
-                const progressText =
-                    document.getElementById(
-                        "progressText"
-                    );
-
-
-                if (completedLessons) {
-
-                    completedLessons.textContent =
-                        user.completedLessons;
-
-                }
-
-
-                const progress =
-                    Math.round(
-                        (user.completedLessons / 5) *
-                        100
-                    );
-
-
-                if (progressFill) {
-
-                    progressFill.style.width =
-                        progress + "%";
-
-                }
-
-
-                if (progressText) {
-
-                    progressText.textContent =
-                        progress + "% completed";
-
-                }
 
             }
         );
 
+    });
+
+}
+
+
+/* ================================
+   MATRIX BACKGROUND
+================================ */
+
+function initializeMatrixBackground() {
+
+    const canvas =
+        document.getElementById(
+            "matrixCanvas"
+        );
+
+
+    if (!canvas) {
+        return;
     }
-);
 
 
-/* =========================================
-   MATRIX EFFECT
-========================================= */
+    const ctx =
+        canvas.getContext("2d");
 
-const matrixCanvas =
-    document.getElementById(
-        "matrixCanvas"
+
+    function resize() {
+
+        canvas.width =
+            window.innerWidth;
+
+        canvas.height =
+            window.innerHeight;
+
+    }
+
+
+    resize();
+
+
+    window.addEventListener(
+        "resize",
+        resize
     );
 
 
-if (matrixCanvas) {
-
-    const ctx =
-        matrixCanvas.getContext("2d");
-
-    let width =
-        matrixCanvas.width =
-        window.innerWidth;
-
-    let height =
-        matrixCanvas.height =
-        window.innerHeight;
-
-
-    const letters =
-        "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%";
+    const characters =
+        "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
     const fontSize = 14;
 
+
     let columns =
         Math.floor(
-            width / fontSize
+            canvas.width /
+            fontSize
         );
 
 
@@ -550,24 +488,26 @@ if (matrixCanvas) {
         Array(columns).fill(1);
 
 
-    function drawMatrix() {
+    function draw() {
 
         ctx.fillStyle =
-            "rgba(0, 8, 5, 0.08)";
+            "rgba(5,8,7,0.08)";
+
 
         ctx.fillRect(
             0,
             0,
-            width,
-            height
+            canvas.width,
+            canvas.height
         );
 
 
         ctx.fillStyle =
             "#39ff8e";
 
+
         ctx.font =
-            fontSize + "px monospace";
+            `${fontSize}px monospace`;
 
 
         for (
@@ -577,10 +517,10 @@ if (matrixCanvas) {
         ) {
 
             const text =
-                letters[
+                characters[
                     Math.floor(
                         Math.random() *
-                        letters.length
+                        characters.length
                     )
                 ];
 
@@ -593,8 +533,9 @@ if (matrixCanvas) {
 
 
             if (
-                drops[i] * fontSize >
-                    height &&
+                drops[i] *
+                    fontSize >
+                    canvas.height &&
                 Math.random() > 0.975
             ) {
 
@@ -611,32 +552,8 @@ if (matrixCanvas) {
 
 
     setInterval(
-        drawMatrix,
+        draw,
         45
-    );
-
-
-    window.addEventListener(
-        "resize",
-        function () {
-
-            width =
-                matrixCanvas.width =
-                window.innerWidth;
-
-            height =
-                matrixCanvas.height =
-                window.innerHeight;
-
-            columns =
-                Math.floor(
-                    width / fontSize
-                );
-
-            drops =
-                Array(columns).fill(1);
-
-        }
     );
 
 }
