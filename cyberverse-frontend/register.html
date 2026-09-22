@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CyberVerse — Create Account</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CyberVerse — Register</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/auth.css">
+
 </head>
 
 <body class="auth-page">
 
     <canvas id="matrixCanvas"></canvas>
 
+
     <div class="auth-container">
 
         <div class="auth-card">
 
-            <!-- CREATIVE LOGO -->
             <div class="auth-logo">
-                <span class="logo-symbol">◈</span>
-                CYBER<span>VERSE</span>
+                <span>&lt;/&gt;</span>
+                CyberVerse
             </div>
+
 
             <h1>Create Account</h1>
 
@@ -30,10 +38,12 @@
                 Start your cybersecurity learning journey.
             </p>
 
+
             <form id="registerForm">
 
-                <!-- NAME -->
-                <label for="registerName">Full Name</label>
+                <label for="registerName">
+                    Full Name
+                </label>
 
                 <input
                     type="text"
@@ -42,8 +52,10 @@
                     required
                 >
 
-                <!-- EMAIL -->
-                <label for="registerEmail">Email Address</label>
+
+                <label for="registerEmail">
+                    Email Address
+                </label>
 
                 <input
                     type="email"
@@ -53,8 +65,9 @@
                 >
 
 
-                <!-- PASSWORD -->
-                <label for="registerPassword">Password</label>
+                <label for="registerPassword">
+                    Password
+                </label>
 
                 <input
                     type="password"
@@ -63,8 +76,10 @@
                     required
                 >
 
-                <!-- CONFIRM PASSWORD -->
-                <label for="registerConfirm">Confirm Password</label>
+
+                <label for="registerConfirm">
+                    Confirm Password
+                </label>
 
                 <input
                     type="password"
@@ -73,7 +88,12 @@
                     required
                 >
 
-                <p id="registerError" class="form-error"></p>
+
+                <p
+                    id="registerError"
+                    class="form-error"
+                ></p>
+
 
                 <button
                     type="submit"
@@ -84,18 +104,29 @@
 
             </form>
 
+
             <p class="auth-bottom">
+
                 Already have an account?
-                <a href="login.html">Login</a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
             </p>
 
-            <a href="index.html" class="back-home">
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
                 ← Back to CyberVerse
             </a>
 
         </div>
 
     </div>
+
 
     <script src="js/auth.js"></script>
 
