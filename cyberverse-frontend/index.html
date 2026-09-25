@@ -11,20 +11,30 @@
 
 <body>
 
+    <!-- Matrix Hacker Background Canvas -->
     <canvas id="matrixCanvas"></canvas>
 
+    <!-- Top Navigation Header -->
     <header class="navbar">
         <div class="logo">
             <span>&lt;/&gt;</span> CyberVerse
         </div>
 
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item active">Home</a>
+            <a href="courses.html" class="nav-item">Courses</a>
+            <a href="labs.html" class="nav-item">Labs</a>
+        </nav>
+
+        <!-- Login / Register Buttons -->
         <div id="navAuthArea" class="nav-buttons">
             <a href="login.html" class="btn btn-ghost">Login</a>
-            <a href="register.html" class="btn btn-primary">Get Started</a>
+            <a href="register.html" class="btn btn-primary">Register</a>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div>
                 <p class="terminal-label">// SYSTEM_INITIALIZED</p>
@@ -37,6 +47,7 @@
                 </div>
             </div>
 
+            <!-- Terminal Preview Component -->
             <div class="terminal">
                 <div class="terminal-header">
                     <span class="terminal-dot"></span>
@@ -54,6 +65,7 @@
             </div>
         </section>
 
+        <!-- Stats Section -->
         <section class="stats">
             <div class="stat-card">
                 <h2>10k+</h2>
@@ -78,6 +90,7 @@
         <p class="copyright">&copy; 2026 CyberVerse. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="js/script.js"></script>
     <script src="js/auth.js"></script>
 </body>
