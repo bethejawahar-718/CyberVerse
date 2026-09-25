@@ -1,559 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const currentUser = JSON.parse(localStorage.getItem("cyberverse_user"));
 
-    initializeMatrixBackground();
-
-    setupRegister();
-
-    setupLogin();
-
-    setupDashboard();
-
-    setupLogout();
-
-    setupModuleButtons();
-
-});
-
-
-/* ================================
-   REGISTER
-================================ */
-
-function setupRegister() {
-
-    const form =
-        document.getElementById("registerForm");
-
-    if (!form) {
-        return;
+    const navAuthArea = document.getElementById("navAuthArea");
+    if (navAuthArea) {
+        if (currentUser) {
+            navAuthArea.innerHTML = `
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+            `;
+        }
     }
 
-
-    form.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-
-        const name =
-            document
-                .getElementById("registerName")
-                .value
-                .trim();
-
-
-        const email =
-            document
-                .getElementById("registerEmail")
-                .value
-                .trim()
-                .toLowerCase();
-
-
-        const password =
-            document
-                .getElementById("registerPassword")
-                .value;
-
-
-        const confirmPassword =
-            document
-                .getElementById("registerConfirm")
-                .value;
-
-
-        const error =
-            document.getElementById("registerError");
-
-
-        error.textContent = "";
-
-
-        if (password !== confirmPassword) {
-
-            error.textContent =
-                "Passwords do not match.";
-
+    if (window.location.pathname.includes("dashboard.html")) {
+        if (!currentUser) {
+            window.location.href = "login.html";
             return;
-
         }
 
+        const userNameEl = document.getElementById("userName");
+        const userEmailEl = document.getElementById("userEmail");
 
-        if (password.length < 6) {
+        if (userNameEl) userNameEl.textContent = currentUser.name || "Student";
+        if (userEmailEl) userEmailEl.textContent = currentUser.email || "";
 
-            error.textContent =
-                "Password must contain at least 6 characters.";
-
-            return;
-
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                localStorage.removeItem("cyberverse_user");
+                window.location.href = "index.html";
+            });
         }
+    }
 
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const formError = document.getElementById("formError");
 
-        const existingUser =
-            localStorage.getItem("cyberverseUser");
-
-
-        if (existingUser) {
-
-            const user =
-                JSON.parse(existingUser);
-
-
-            if (user.email === email) {
-
-                error.textContent =
-                    "An account with this email already exists.";
-
+            if (!email || !password) {
+                if (formError) formError.textContent = "Please fill in all fields.";
                 return;
-
             }
 
-        }
+            const user = {
+                name: email.split("@")[0],
+                email: email
+            };
 
-
-        const user = {
-
-            name: name,
-
-            email: email,
-
-            password: password,
-
-            completedLessons: 0,
-
-            completedLabs: 0,
-
-            quizScore: 0
-
-        };
-
-
-        localStorage.setItem(
-            "cyberverseUser",
-            JSON.stringify(user)
-        );
-
-
-        alert(
-            "Account created successfully!"
-        );
-
-
-        window.location.href =
-            "login.html";
-
-    });
-
-}
-
-
-/* ================================
-   LOGIN
-================================ */
-
-function setupLogin() {
-
-    const form =
-        document.getElementById("loginForm");
-
-    if (!form) {
-        return;
+            localStorage.setItem("cyberverse_user", JSON.stringify(user));
+            window.location.href = "dashboard.html";
+        });
     }
 
-
-    form.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-
-        const email =
-            document
-                .getElementById("loginEmail")
-                .value
-                .trim()
-                .toLowerCase();
-
-
-        const password =
-            document
-                .getElementById("loginPassword")
-                .value;
-
-
-        const error =
-            document.getElementById("loginError");
-
-
-        error.textContent = "";
-
-
-        const savedUser =
-            localStorage.getItem("cyberverseUser");
-
-
-        if (!savedUser) {
-
-            error.textContent =
-                "No account found. Please register first.";
-
-            return;
-
-        }
-
-
-        const user =
-            JSON.parse(savedUser);
-
-
-        if (
-            user.email !== email ||
-            user.password !== password
-        ) {
-
-            error.textContent =
-                "Incorrect email or password.";
-
-            return;
-
-        }
-
-
-        localStorage.setItem(
-            "cyberverseLoggedIn",
-            "true"
-        );
-
-
-        window.location.href =
-            "dashboard.html";
-
-    });
-
-}
-
-
-/* ================================
-   DASHBOARD
-================================ */
-
-function setupDashboard() {
-
-    const userName =
-        document.getElementById("userName");
-
-
-    if (!userName) {
-        return;
-    }
-
-
-    const loggedIn =
-        localStorage.getItem(
-            "cyberverseLoggedIn"
-        );
-
-
-    if (loggedIn !== "true") {
-
-        window.location.href =
-            "login.html";
-
-        return;
-
-    }
-
-
-    const savedUser =
-        localStorage.getItem(
-            "cyberverseUser"
-        );
-
-
-    if (!savedUser) {
-
-        window.location.href =
-            "register.html";
-
-        return;
-
-    }
-
-
-    const user =
-        JSON.parse(savedUser);
-
-
-    document.getElementById(
-        "userName"
-    ).textContent = user.name;
-
-
-    document.getElementById(
-        "userEmail"
-    ).textContent = user.email;
-
-
-    document.getElementById(
-        "completedLessons"
-    ).textContent =
-        user.completedLessons;
-
-
-    document.getElementById(
-        "completedLabs"
-    ).textContent =
-        user.completedLabs;
-
-
-    document.getElementById(
-        "quizScore"
-    ).textContent =
-        `${user.quizScore}%`;
-
-
-    updateProgress(user);
-
-}
-
-
-/* ================================
-   PROGRESS
-================================ */
-
-function updateProgress(user) {
-
-    const totalLessons = 42;
-
-    const progress =
-        Math.min(
-            100,
-            Math.round(
-                (user.completedLessons /
-                    totalLessons) *
-                100
-            )
-        );
-
-
-    const progressFill =
-        document.getElementById(
-            "progressFill"
-        );
-
-
-    const progressText =
-        document.getElementById(
-            "progressText"
-        );
-
-
-    if (progressFill) {
-
-        progressFill.style.width =
-            `${progress}%`;
-
-    }
-
-
-    if (progressText) {
-
-        progressText.textContent =
-            `${progress}% completed`;
-
-    }
-
-}
-
-
-/* ================================
-   LOGOUT
-================================ */
-
-function setupLogout() {
-
-    const logoutBtn =
-        document.getElementById(
-            "logoutBtn"
-        );
-
-
-    if (!logoutBtn) {
-        return;
-    }
-
-
-    logoutBtn.addEventListener(
-        "click",
-        () => {
-
-            localStorage.removeItem(
-                "cyberverseLoggedIn"
-            );
-
-
-            window.location.href =
-                "login.html";
-
-        }
-    );
-
-}
-
-
-/* ================================
-   MODULE BUTTONS
-================================ */
-
-function setupModuleButtons() {
-
-    const buttons =
-        document.querySelectorAll(
-            ".module-btn"
-        );
-
-
-    buttons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                alert(
-                    "This learning module will be added soon."
-                );
-
-            }
-        );
-
-    });
-
-}
-
-
-/* ================================
-   MATRIX BACKGROUND
-================================ */
-
-function initializeMatrixBackground() {
-
-    const canvas =
-        document.getElementById(
-            "matrixCanvas"
-        );
-
-
-    if (!canvas) {
-        return;
-    }
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    function resize() {
-
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
-
-    }
-
-
-    resize();
-
-
-    window.addEventListener(
-        "resize",
-        resize
-    );
-
-
-    const characters =
-        "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-
-    const fontSize = 14;
-
-
-    let columns =
-        Math.floor(
-            canvas.width /
-            fontSize
-        );
-
-
-    let drops =
-        Array(columns).fill(1);
-
-
-    function draw() {
-
-        ctx.fillStyle =
-            "rgba(5,8,7,0.08)";
-
-
-        ctx.fillRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-
-        ctx.fillStyle =
-            "#39ff8e";
-
-
-        ctx.font =
-            `${fontSize}px monospace`;
-
-
-        for (
-            let i = 0;
-            i < drops.length;
-            i++
-        ) {
-
-            const text =
-                characters[
-                    Math.floor(
-                        Math.random() *
-                        characters.length
-                    )
-                ];
-
-
-            ctx.fillText(
-                text,
-                i * fontSize,
-                drops[i] * fontSize
-            );
-
-
-            if (
-                drops[i] *
-                    fontSize >
-                    canvas.height &&
-                Math.random() > 0.975
-            ) {
-
-                drops[i] = 0;
-
+    const registerForm = document.getElementById("registerForm");
+    if (registerForm) {
+        registerForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const formError = document.getElementById("formError");
+
+            if (!fullName || !email || !password) {
+                if (formError) formError.textContent = "Please fill in all fields.";
+                return;
             }
 
+            const user = {
+                name: fullName,
+                email: email
+            };
 
-            drops[i]++;
-
-        }
-
+            localStorage.setItem("cyberverse_user", JSON.stringify(user));
+            window.location.href = "dashboard.html";
+        });
     }
-
-
-    setInterval(
-        draw,
-        45
-    );
-
-}
+});
