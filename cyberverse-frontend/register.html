@@ -2,133 +2,50 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberVerse — Register</title>
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/auth.css">
-
 </head>
 
-<body class="auth-page">
+<body>
 
     <canvas id="matrixCanvas"></canvas>
 
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-logo">
+                    <span>&lt;/&gt;</span> CyberVerse
+                </div>
+                <h1>Create Account</h1>
+                <p class="auth-subtitle">Join CyberVerse to start learning cybersecurity</p>
 
-    <div class="auth-container">
+                <form id="registerForm">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="John Doe" required>
 
-        <div class="auth-card">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="student@cyberverse.io" required>
 
-            <div class="auth-logo">
-                <span>&lt;/&gt;</span>
-                CyberVerse
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+
+                    <div id="formError" class="form-error"></div>
+
+                    <button type="submit" class="btn btn-primary auth-button">Create Account</button>
+                </form>
+
+                <p class="auth-bottom">
+                    Already have an account? <a href="login.html">Log In</a>
+                </p>
+                <a href="index.html" class="back-home">&larr; Back to Home</a>
             </div>
-
-
-            <h1>Create Account</h1>
-
-            <p class="auth-subtitle">
-                Start your cybersecurity learning journey.
-            </p>
-
-
-            <form id="registerForm">
-
-                <label for="registerName">
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="registerName"
-                    placeholder="Enter your name"
-                    required
-                >
-
-
-                <label for="registerEmail">
-                    Email Address
-                </label>
-
-                <input
-                    type="email"
-                    id="registerEmail"
-                    placeholder="you@example.com"
-                    required
-                >
-
-
-                <label for="registerPassword">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="registerPassword"
-                    placeholder="Create a password"
-                    required
-                >
-
-
-                <label for="registerConfirm">
-                    Confirm Password
-                </label>
-
-                <input
-                    type="password"
-                    id="registerConfirm"
-                    placeholder="Confirm your password"
-                    required
-                >
-
-
-                <p
-                    id="registerError"
-                    class="form-error"
-                ></p>
-
-
-                <button
-                    type="submit"
-                    class="btn btn-primary auth-button"
-                >
-                    Create Account
-                </button>
-
-            </form>
-
-
-            <p class="auth-bottom">
-
-                Already have an account?
-
-                <a href="login.html">
-                    Login
-                </a>
-
-            </p>
-
-
-            <a
-                href="index.html"
-                class="back-home"
-            >
-                ← Back to CyberVerse
-            </a>
-
         </div>
-
     </div>
 
-
     <script src="js/auth.js"></script>
-
 </body>
+
 </html>
