@@ -11,12 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const chars = "011001010101010101010101010101010101010101";
+    // Expanded character string: Numbers, Alphabets (Upper & Lower), Katakana, and Special Characters
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?/アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン";
     const fontSize = 14;
     let columns = Math.floor(canvas.width / fontSize);
     let drops = Array(columns).fill(1);
 
     function drawMatrix() {
+        // Translucent background to leave character trails
         ctx.fillStyle = "rgba(5, 8, 7, 0.08)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
