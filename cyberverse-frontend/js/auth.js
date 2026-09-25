@@ -13,6 +13,7 @@ function updateNavigation() {
     if (currentUser) {
         navAuthArea.innerHTML = `
             <span class="user-welcome" style="margin-right: 12px; color: var(--green);">Hi, ${currentUser.name || 'Hacker'}</span>
+            <a href="dashboard.html" class="btn btn-primary" style="margin-right: 8px;">Dashboard</a>
             <button onclick="logout()" class="btn btn-ghost">Logout</button>
         `;
     } else {
@@ -46,8 +47,8 @@ function initLoginForm() {
             const userSession = foundUser || { name: email.split('@')[0], email: email };
             localStorage.setItem("currentUser", JSON.stringify(userSession));
 
-            // Redirect back to home or dashboard page
-            window.location.href = "index.html";
+            // REDIRECT TO DASHBOARD PAGE
+            window.location.href = "dashboard.html";
         } else {
             if (errorDiv) {
                 errorDiv.style.color = "var(--red)";
@@ -60,5 +61,5 @@ function initLoginForm() {
 
 function logout() {
     localStorage.removeItem("currentUser");
-    window.location.reload();
+    window.location.href = "index.html";
 }
