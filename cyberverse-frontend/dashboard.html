@@ -19,7 +19,6 @@
             <span>&lt;/&gt;</span> CyberVerse
         </div>
 
-        <!-- Profile Menu Dropdown -->
         <div class="profile-dropdown">
             <button id="avatarBtn" class="avatar-btn" aria-label="User Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -33,6 +32,7 @@
                 <a href="courses.html">Courses</a>
                 <a href="labs.html">Labs</a>
                 <a href="ai-mentors.html">AI Mentors</a>
+                <a href="#" id="logoutBtn" class="dropdown-logout">Logout</a>
             </div>
         </div>
 
@@ -42,15 +42,8 @@
 
         <section class="dashboard-header">
             <div>
-                <p class="dashboard-label">
-                    // USER DASHBOARD
-                </p>
-                <h1>
-                    Welcome,
-                    <span id="userName">
-                        Student
-                    </span>
-                </h1>
+                <p class="dashboard-label">// USER DASHBOARD</p>
+                <h1>Welcome, <span id="userName">Student</span></h1>
                 <p id="userEmail"></p>
             </div>
         </section>
@@ -138,7 +131,6 @@
 
     <script src="js/auth.js"></script>
 
-    <!-- Script to toggle profile dropdown menu -->
     <script>
         const avatarBtn = document.getElementById('avatarBtn');
         const dropdownMenu = document.getElementById('dropdownMenu');
