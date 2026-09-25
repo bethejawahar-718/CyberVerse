@@ -2,33 +2,22 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberVerse — Dashboard</title>
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/auth.css">
-
 </head>
 
 <body>
 
     <canvas id="matrixCanvas"></canvas>
 
-
     <header class="navbar">
 
         <div class="logo">
-            <span>&lt;/&gt;</span>
-            CyberVerse
+            <span>&lt;/&gt;</span> CyberVerse
         </div>
-
 
         <!-- Profile Menu Dropdown -->
         <div class="profile-dropdown">
@@ -49,221 +38,103 @@
 
     </header>
 
-
     <main class="dashboard-container">
 
         <section class="dashboard-header">
-
             <div>
-
                 <p class="dashboard-label">
                     // USER DASHBOARD
                 </p>
-
                 <h1>
                     Welcome,
                     <span id="userName">
                         Student
                     </span>
                 </h1>
-
                 <p id="userEmail"></p>
-
             </div>
-
         </section>
-
 
         <section class="dashboard-stats">
-
             <div class="dashboard-card">
-
                 <span>📚</span>
-
-                <h2 id="completedLessons">
-                    0
-                </h2>
-
-                <p>
-                    Lessons Completed
-                </p>
-
+                <h2 id="completedLessons">0</h2>
+                <p>Lessons Completed</p>
             </div>
 
-
             <div class="dashboard-card">
-
                 <span>🧪</span>
-
-                <h2 id="completedLabs">
-                    0
-                </h2>
-
-                <p>
-                    Labs Completed
-                </p>
-
+                <h2 id="completedLabs">0</h2>
+                <p>Labs Completed</p>
             </div>
-
 
             <div class="dashboard-card">
-
                 <span>🎯</span>
-
-                <h2 id="quizScore">
-                    0%
-                </h2>
-
-                <p>
-                    Quiz Average
-                </p>
-
+                <h2 id="quizScore">0%</h2>
+                <p>Quiz Average</p>
             </div>
-
         </section>
-
 
         <section class="progress-section">
-
-            <h2>
-                Your Learning Progress
-            </h2>
-
+            <h2>Your Learning Progress</h2>
             <div class="progress-bar">
-
-                <div
-                    id="progressFill"
-                    class="progress-fill"
-                ></div>
-
+                <div id="progressFill" class="progress-fill"></div>
             </div>
-
-            <p id="progressText">
-                0% completed
-            </p>
-
+            <p id="progressText">0% completed</p>
         </section>
 
-
         <section class="modules">
-
-            <h2>
-                Learning Modules
-            </h2>
-
+            <h2>Learning Modules</h2>
 
             <div class="module-list">
-
                 <div class="module-row">
-
                     <span>01</span>
-
                     <div>
-                        <h3>
-                            Cybersecurity Fundamentals
-                        </h3>
-
-                        <p>
-                            Computers, networks and security basics.
-                        </p>
+                        <h3>Cybersecurity Fundamentals</h3>
+                        <p>Computers, networks and security basics.</p>
                     </div>
-
-                    <button class="module-btn">
-                        Start
-                    </button>
-
+                    <button class="module-btn">Start</button>
                 </div>
 
-
                 <div class="module-row">
-
                     <span>02</span>
-
                     <div>
-                        <h3>
-                            Security Hygiene
-                        </h3>
-
-                        <p>
-                            Passwords, MFA and safe browsing.
-                        </p>
+                        <h3>Security Hygiene</h3>
+                        <p>Passwords, MFA and safe browsing.</p>
                     </div>
-
-                    <button class="module-btn">
-                        Start
-                    </button>
-
+                    <button class="module-btn">Start</button>
                 </div>
 
-
                 <div class="module-row">
-
                     <span>03</span>
-
                     <div>
-                        <h3>
-                            Common Cyber Threats
-                        </h3>
-
-                        <p>
-                            Phishing, malware and social engineering.
-                        </p>
+                        <h3>Common Cyber Threats</h3>
+                        <p>Phishing, malware and social engineering.</p>
                     </div>
-
-                    <button class="module-btn">
-                        Start
-                    </button>
-
+                    <button class="module-btn">Start</button>
                 </div>
 
-
                 <div class="module-row">
-
                     <span>04</span>
-
                     <div>
-                        <h3>
-                            Defense Basics
-                        </h3>
-
-                        <p>
-                            Firewalls, encryption and authentication.
-                        </p>
+                        <h3>Defense Basics</h3>
+                        <p>Firewalls, encryption and authentication.</p>
                     </div>
-
-                    <button class="module-btn">
-                        Start
-                    </button>
-
+                    <button class="module-btn">Start</button>
                 </div>
-
 
                 <div class="module-row">
-
                     <span>05</span>
-
                     <div>
-                        <h3>
-                            Practical Security Labs
-                        </h3>
-
-                        <p>
-                            Practice cybersecurity concepts.
-                        </p>
+                        <h3>Practical Security Labs</h3>
+                        <p>Practice cybersecurity concepts.</p>
                     </div>
-
-                    <button class="module-btn">
-                        Start
-                    </button>
-
+                    <button class="module-btn">Start</button>
                 </div>
-
             </div>
-
         </section>
 
     </main>
-
 
     <script src="js/auth.js"></script>
 
