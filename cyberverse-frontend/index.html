@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +18,12 @@
     <!-- NAVBAR -->
     <header class="navbar">
 
+        <!-- CYBERVERSE LOGO -->
         <div class="logo">
-            <span>&lt;/&gt;</span> CyberVerse
+            <span class="logo-main">Cyber<span>Verse</span></span>
         </div>
 
         <nav id="navMenu">
-            <a href="index.html">Home</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#courses">Courses</a>
-            <a href="#labs">Labs</a>
-            <a href="#mentor">AI Mentor</a>
         </nav>
 
         <div class="nav-buttons">
@@ -155,7 +152,6 @@
             </span>
         </div>
 
-
         <div class="roadmap">
 
             <div class="roadmap-item">
@@ -170,7 +166,6 @@
                 </div>
             </div>
 
-
             <div class="roadmap-item">
                 <span class="roadmap-number">02</span>
 
@@ -182,7 +177,6 @@
                     </p>
                 </div>
             </div>
-
 
             <div class="roadmap-item">
                 <span class="roadmap-number">03</span>
@@ -196,7 +190,6 @@
                 </div>
             </div>
 
-
             <div class="roadmap-item">
                 <span class="roadmap-number">04</span>
 
@@ -208,7 +201,6 @@
                     </p>
                 </div>
             </div>
-
 
             <div class="roadmap-item">
                 <span class="roadmap-number">05</span>
@@ -239,7 +231,6 @@
             </h2>
 
         </div>
-
 
         <div class="card-grid">
 
@@ -331,7 +322,6 @@
             </h2>
 
         </div>
-
 
         <div class="card-grid">
 
@@ -435,8 +425,7 @@
 
             <button
                 class="btn btn-primary"
-                id="mentorBtn"
-            >
+                id="mentorBtn">
                 Ask AI Mentor
             </button>
 
@@ -449,7 +438,7 @@
     <footer>
 
         <div class="logo">
-            <span>&lt;/&gt;</span> CyberVerse
+            <span class="logo-main">Cyber<span>Verse</span></span>
         </div>
 
         <p>
@@ -467,3 +456,36 @@
 
 </body>
 </html>
+```
+
+### What I changed
+
+I removed this **incorrect CSS from inside your HTML header**:
+
+```css
+.logo {
+    ...
+}
+
+.logo-symbol {
+    ...
+}
+```
+
+And replaced the navbar logo with:
+
+```html
+<div class="logo">
+    <span class="logo-main">Cyber<span>Verse</span></span>
+</div>
+```
+
+So the navbar will show:
+
+**CyberVerse**
+
+instead of:
+
+**`</> CyberVerse`**
+
+and the same clean **CyberVerse** branding is used in the footer.
