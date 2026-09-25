@@ -332,3 +332,26 @@ footer {
     font-family: var(--font-mono);
     font-size: 13px;
 }
+
+/* RESPONSIVE LAYOUT BREAKPOINTS */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+        min-height: auto;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        padding: 14px 4%;
+    }
+}
