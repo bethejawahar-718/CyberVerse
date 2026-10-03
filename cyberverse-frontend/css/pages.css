@@ -1,0 +1,116 @@
+/* CyberVerse additions: loaded AFTER style.css and auth.css.
+   Footer links, demo notice, and the About / Privacy / "coming soon" pages. */
+
+/* ---------- Logged-in navbar alignment ---------- */
+.nav-buttons {
+    align-items: center;
+}
+
+button.btn {
+    font-size: inherit;
+}
+
+/* ---------- Footer links ---------- */
+.footer-links {
+    display: flex;
+    gap: 18px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--green);
+}
+
+@media (max-width: 600px) {
+    footer {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+    }
+}
+
+/* ---------- Demo notice on login / register ---------- */
+.demo-notice {
+    margin-bottom: 22px;
+    padding: 10px 14px;
+    background: var(--panel-light);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.auth-legal {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.auth-legal a:hover {
+    color: var(--green);
+}
+
+/* ---------- Info pages (About, Privacy, Coming soon) ---------- */
+.info-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 6% 80px;
+    min-height: calc(100vh - 220px);
+}
+
+.info-page h1 {
+    font-size: clamp(30px, 5vw, 44px);
+    margin-bottom: 12px;
+}
+
+.info-page h2 {
+    color: var(--green);
+    font-size: 18px;
+    margin: 34px 0 10px;
+}
+
+.info-page p,
+.info-page li {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.info-page ul {
+    padding-left: 22px;
+}
+
+.info-page strong {
+    color: var(--text);
+}
+
+.info-page p a,
+.info-page li a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.info-lead {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.info-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+}
+
+.info-page .btn {
+    margin-top: 28px;
+}
