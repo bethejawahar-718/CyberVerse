@@ -5,7 +5,7 @@
 //
 // Production: after you deploy the backend (e.g. to Vercel), replace
 // PRODUCTION_API_BASE_URL below with that deployment's URL + "/api".
-const PRODUCTION_API_BASE_URL = "https://cyberverse-backend.vercel.app/api";
+const PRODUCTION_API_BASE_URL = "https://cyber-verse01.vercel.app/api";
 
 window.CYBERVERSE_API_BASE_URL = (function () {
     const { hostname } = window.location;
