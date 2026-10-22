@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVerse — AI Mentors</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <header class="navbar">
+
+        <div class="logo">
+            CyberVerse
+        </div>
+
+        <div class="profile-dropdown">
+            <button id="avatarBtn" class="avatar-btn" aria-label="User Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="roadmaps.html">Roadmaps</a>
+                <a href="courses.html">Courses</a>
+                <a href="labs.html">Labs</a>
+                <a href="ai-mentors.html">AI Mentors</a>
+                <a href="#" id="logoutBtn" class="dropdown-logout">Logout</a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="page-container">
+        <section class="page-header">
+            <p class="page-label">// AI MENTORS</p>
+            <h1>Choose Your Mentor</h1>
+            <p class="page-sub">Each mentor specializes in a different area of the curriculum. Pick one and ask a question to get started.</p>
+        </section>
+
+        <div id="mentorGrid" class="mentor-grid"></div>
+
+        <div id="chatPanel" class="chat-panel">
+            <div class="chat-header">
+                <div class="mentor-avatar" id="chatAvatar"></div>
+                <div class="chat-header-text">
+                    <h4 id="chatName">Mentor</h4>
+                    <p id="chatSpecialty">Specialty</p>
+                </div>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div id="chatSuggestions" class="chat-suggestions"></div>
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Ask a question...">
+                <button id="chatSendBtn" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+
+</html>

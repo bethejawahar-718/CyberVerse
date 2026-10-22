@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVerse — Courses</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <header class="navbar">
+
+        <div class="logo">
+            CyberVerse
+        </div>
+
+        <div class="profile-dropdown">
+            <button id="avatarBtn" class="avatar-btn" aria-label="User Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="roadmaps.html">Roadmaps</a>
+                <a href="courses.html">Courses</a>
+                <a href="labs.html">Labs</a>
+                <a href="ai-mentors.html">AI Mentors</a>
+                <a href="#" id="logoutBtn" class="dropdown-logout">Logout</a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="page-container">
+        <section class="page-header">
+            <p class="page-label">// COURSE CATALOG</p>
+            <h1>All Courses</h1>
+            <p class="page-sub">The full CyberVerse curriculum — 9 courses, each with 3 levels and hands-on lesson content. Pick one to start learning.</p>
+        </section>
+
+        <div class="course-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="beginner">Beginner</button>
+            <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+            <button class="filter-btn" data-filter="advanced">Advanced</button>
+        </div>
+
+        <div class="course-grid">
+
+            <div class="course-card" data-level="beginner">
+                <span class="course-card-num">01</span>
+                <h3>Cybersecurity Fundamentals</h3>
+                <p>Computers, networks and security basics — the CIA triad, how networks communicate, and the threat landscape.</p>
+                <div class="module-meta"><span class="tag tag-beginner">Beginner</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="1">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="beginner">
+                <span class="course-card-num">02</span>
+                <h3>Security Hygiene</h3>
+                <p>Passwords, MFA, safe browsing, device hardening and backup strategy for everyday safety.</p>
+                <div class="module-meta"><span class="tag tag-beginner">Beginner</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="2">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="beginner">
+                <span class="course-card-num">03</span>
+                <h3>Common Cyber Threats</h3>
+                <p>Phishing, malware, ransomware, DoS, man-in-the-middle, APTs and zero-days.</p>
+                <div class="module-meta"><span class="tag tag-beginner">Beginner</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="3">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="intermediate">
+                <span class="course-card-num">04</span>
+                <h3>Network Security</h3>
+                <p>Firewalls, VPNs, IDS/IPS, wireless security, Zero Trust and SIEM monitoring.</p>
+                <div class="module-meta"><span class="tag tag-intermediate">Intermediate</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="4">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="intermediate">
+                <span class="course-card-num">05</span>
+                <h3>Defense Basics</h3>
+                <p>Encryption, authentication vs. authorization, access control, PKI and endpoint protection.</p>
+                <div class="module-meta"><span class="tag tag-intermediate">Intermediate</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="5">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="intermediate">
+                <span class="course-card-num">06</span>
+                <h3>Ethical Hacking &amp; Pen Testing</h3>
+                <p>The full pen test methodology — recon, scanning, exploitation, escalation and reporting.</p>
+                <div class="module-meta"><span class="tag tag-intermediate">Intermediate</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="6">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="advanced">
+                <span class="course-card-num">07</span>
+                <h3>Web Application Security</h3>
+                <p>OWASP Top 10, SQL injection, XSS, CSRF, session hijacking and API security.</p>
+                <div class="module-meta"><span class="tag tag-advanced">Advanced</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="7">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="advanced">
+                <span class="course-card-num">08</span>
+                <h3>Digital Forensics &amp; Incident Response</h3>
+                <p>The IR lifecycle, evidence handling, log and memory forensics, and incident reporting.</p>
+                <div class="module-meta"><span class="tag tag-advanced">Advanced</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="8">View Course</button>
+            </div>
+
+            <div class="course-card" data-level="advanced">
+                <span class="course-card-num">09</span>
+                <h3>Practical Security Labs</h3>
+                <p>Capstone labs, CTFs, bug bounty basics, certification paths and staying current.</p>
+                <div class="module-meta"><span class="tag tag-advanced">Advanced</span><span class="module-lessons">6 lessons · 3 levels</span></div>
+                <button class="btn btn-primary module-btn" data-module="9">View Course</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Module Content Modal (shared with Dashboard) -->
+    <div id="moduleModal" class="modal-overlay">
+        <div class="modal-card">
+            <button id="modalCloseBtn" class="modal-close" aria-label="Close">&times;</button>
+
+            <div id="levelPickerView" class="level-picker-view">
+                <p class="modal-module-label">// MODULE</p>
+                <h2 id="modalModuleTitle">Module</h2>
+                <p class="level-picker-sub">Choose a level to begin</p>
+                <div id="levelCards" class="level-cards"></div>
+            </div>
+
+            <div id="lessonView" class="lesson-view">
+                <div class="modal-sidebar">
+                    <button id="backToLevelsBtn" class="back-to-levels">&larr; Levels</button>
+                    <p class="modal-module-label" id="activeLevelLabel"></p>
+                    <ul id="modalLessonList" class="lesson-list"></ul>
+                </div>
+                <div class="modal-main">
+                    <p class="modal-lesson-index" id="modalLessonIndex"></p>
+                    <h3 id="modalLessonTitle">Lesson</h3>
+                    <div id="modalLessonBody" class="modal-lesson-body"></div>
+                    <div class="modal-footer">
+                        <button id="modalPrevBtn" class="btn btn-ghost">&larr; Previous</button>
+                        <button id="modalCompleteBtn" class="btn btn-outline">Mark as Complete</button>
+                        <button id="modalNextBtn" class="btn btn-primary">Next &rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/modules.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+
+</html>
