@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVerse — Labs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <header class="navbar">
+
+        <div class="logo">
+            CyberVerse
+        </div>
+
+        <div class="profile-dropdown">
+            <button id="avatarBtn" class="avatar-btn" aria-label="User Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="roadmaps.html">Roadmaps</a>
+                <a href="courses.html">Courses</a>
+                <a href="labs.html">Labs</a>
+                <a href="ai-mentors.html">AI Mentors</a>
+                <a href="#" id="logoutBtn" class="dropdown-logout">Logout</a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="page-container">
+        <section class="page-header">
+            <p class="page-label">// PRACTICAL LABS</p>
+            <h1>Hands-On Labs</h1>
+            <p class="page-sub">Step-by-step practical exercises to run in your own lab environment. Launch a lab for the instructions, then mark it complete when you're done.</p>
+        </section>
+
+        <div id="labGrid" class="lab-grid"></div>
+    </main>
+
+    <!-- Lab Instructions Modal -->
+    <div id="labModal" class="modal-overlay">
+        <div class="lab-modal-card">
+            <button id="labModalCloseBtn" class="modal-close" aria-label="Close">&times;</button>
+            <p class="modal-module-label">// LAB</p>
+            <h3 id="labModalTitle">Lab Title</h3>
+            <div id="labModalMeta"></div>
+            <p id="labModalDesc"></p>
+            <ul id="labModalSteps" class="lab-step-list"></ul>
+            <div class="lab-modal-footer">
+                <button id="labModalCompleteBtn" class="btn btn-outline">Mark Lab as Complete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+
+</html>

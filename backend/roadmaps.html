@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVerse — Roadmaps</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <header class="navbar">
+
+        <div class="logo">
+            CyberVerse
+        </div>
+
+        <div class="profile-dropdown">
+            <button id="avatarBtn" class="avatar-btn" aria-label="User Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="roadmaps.html">Roadmaps</a>
+                <a href="courses.html">Courses</a>
+                <a href="labs.html">Labs</a>
+                <a href="ai-mentors.html">AI Mentors</a>
+                <a href="#" id="logoutBtn" class="dropdown-logout">Logout</a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="page-container">
+        <section class="page-header">
+            <p class="page-label">// LEARNING ROADMAPS</p>
+            <h1>Choose Your Path</h1>
+            <p class="page-sub">Each roadmap orders the course catalog into a sequence built for a specific cybersecurity role. Expand a path to see the recommended order.</p>
+        </section>
+
+        <div class="roadmap-list">
+
+            <details class="roadmap-card" open>
+                <summary>
+                    <span class="roadmap-icon">🛡️</span>
+                    <span class="roadmap-summary-text">
+                        <h3>SOC Analyst Path</h3>
+                        <p>Monitor, detect and triage threats as a frontline defender.</p>
+                    </span>
+                    <span class="roadmap-chevron">&#9654;</span>
+                </summary>
+                <div class="roadmap-steps">
+                    <div class="roadmap-step" data-step="1">
+                        <h4>Cybersecurity Fundamentals</h4>
+                        <p>Build the CIA triad and core vocabulary before anything else.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="2">
+                        <h4>Common Cyber Threats</h4>
+                        <p>Learn to recognize the phishing, malware and DoS activity you'll be triaging.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="3">
+                        <h4>Network Security</h4>
+                        <p>Understand what normal traffic looks like so abnormal traffic stands out.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="4">
+                        <h4>Defense Basics</h4>
+                        <p>Learn the controls you'll be verifying are actually working.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="5">
+                        <h4>Digital Forensics &amp; Incident Response</h4>
+                        <p>The core SOC skill — investigate alerts and respond to real incidents.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="6">
+                        <h4>Practical Security Labs</h4>
+                        <p>Practice triage and investigation hands-on in a safe lab environment.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="roadmap-card">
+                <summary>
+                    <span class="roadmap-icon">🕵️</span>
+                    <span class="roadmap-summary-text">
+                        <h3>Penetration Tester Path</h3>
+                        <p>Learn to think offensively and responsibly break things.</p>
+                    </span>
+                    <span class="roadmap-chevron">&#9654;</span>
+                </summary>
+                <div class="roadmap-steps">
+                    <div class="roadmap-step" data-step="1">
+                        <h4>Cybersecurity Fundamentals</h4>
+                        <p>Get the networking and threat-landscape basics down first.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="2">
+                        <h4>Network Security</h4>
+                        <p>Know how firewalls, VPNs and IDS/IPS work before trying to get past them.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="3">
+                        <h4>Web Application Security</h4>
+                        <p>Learn the OWASP Top 10 — the vulnerability classes you'll exploit most often.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="4">
+                        <h4>Ethical Hacking &amp; Pen Testing</h4>
+                        <p>The core methodology: recon, scanning, exploitation, reporting.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="5">
+                        <h4>Practical Security Labs</h4>
+                        <p>Build muscle memory with CTFs and a bug bounty mindset.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="6">
+                        <h4>Digital Forensics &amp; Incident Response</h4>
+                        <p>Know what defenders see, so you understand exactly what you leave behind.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="roadmap-card">
+                <summary>
+                    <span class="roadmap-icon">🏗️</span>
+                    <span class="roadmap-summary-text">
+                        <h3>Security Engineer Path</h3>
+                        <p>Design and build the systems that keep everything else safe.</p>
+                    </span>
+                    <span class="roadmap-chevron">&#9654;</span>
+                </summary>
+                <div class="roadmap-steps">
+                    <div class="roadmap-step" data-step="1">
+                        <h4>Cybersecurity Fundamentals</h4>
+                        <p>Frameworks and risk management — the language you'll design controls around.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="2">
+                        <h4>Defense Basics</h4>
+                        <p>Encryption, PKI and access control — the building blocks of every control you'll ship.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="3">
+                        <h4>Network Security</h4>
+                        <p>Firewalls, Zero Trust architecture and SIEM design at scale.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="4">
+                        <h4>Security Hygiene</h4>
+                        <p>Hardening checklists and automation you'll apply across a whole fleet of systems.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="5">
+                        <h4>Web Application Security</h4>
+                        <p>Secure coding awareness so the systems you build aren't the next finding.</p>
+                    </div>
+                    <div class="roadmap-step" data-step="6">
+                        <h4>Practical Security Labs</h4>
+                        <p>Build and harden your own lab environment end-to-end.</p>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/pages.js"></script>
+</body>
+
+</html>
