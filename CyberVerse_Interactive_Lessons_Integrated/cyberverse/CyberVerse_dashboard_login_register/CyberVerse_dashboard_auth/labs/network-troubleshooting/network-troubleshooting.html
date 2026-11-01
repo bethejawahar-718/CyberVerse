@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | Network Troubleshooting Lab</title>
+  <link rel="stylesheet" href="css/network-troubleshooting.css">
+  <script src="js/labs/network-troubleshooting.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">CV</span> CyberVerse</a>
+    <span class="lab-label">PRACTICAL LAB / NETWORKING</span>
+  </header>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">COMPUTER NETWORKING · EXTRA LESSON</p>
+      <h1>Network Troubleshooting Lab</h1>
+      <p class="intro">Work through fictional connectivity problems, choose diagnostic checks, and identify the most likely cause before selecting a fix.</p>
+      <div class="notice"><strong>Safe simulation:</strong> these scenarios use sample data only. No real device or network is scanned or changed.</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / CASE FILE</p><h2 id="caseTitle">Case 01 — Can't reach the internet</h2></div>
+        <span id="caseCounter" class="counter">CASE 1 OF 4</span>
+      </div>
+      <p id="caseDescription" class="case-description"></p>
+      <div id="symptoms" class="symptoms"></div>
+      <div class="case-controls">
+        <label>Choose a case
+          <select id="caseSelect">
+            <option value="0">01 · Internet unavailable</option>
+            <option value="1">02 · Website won't load by name</option>
+            <option value="2">03 · One service is unreachable</option>
+            <option value="3">04 · Slow and unstable connection</option>
+          </select>
+        </label>
+        <button id="resetCase" class="button button-quiet" type="button">Reset case</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">02 / DIAGNOSTICS</p><h2>Run a simulated check</h2></div></div>
+      <p class="muted">Select checks to collect clues. Use the clues to narrow down the cause.</p>
+      <div id="checks" class="checks"></div>
+      <div class="clue-area">
+        <div class="clue-heading"><strong>Diagnostic clues</strong><button id="clearClues" class="text-button" type="button">Clear clues</button></div>
+        <div id="clues" class="clues"><p class="empty">No checks run yet.</p></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">03 / DIAGNOSIS</p><h2>What is the most likely cause?</h2></div></div>
+      <form id="diagnosisForm">
+        <div id="options" class="options"></div>
+        <label class="fix-label">Suggested next step
+          <select id="fixSelect">
+            <option value="">Choose a safe next step…</option>
+          </select>
+        </label>
+        <button class="button" type="submit">Check diagnosis</button>
+      </form>
+      <div id="feedback" class="feedback" aria-live="polite"><strong>Ready when you are.</strong><p>Run at least one diagnostic check, then choose a cause and next step.</p></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">04 / PROGRESS</p><h2>Case results</h2></div><button id="nextCase" class="button" type="button">Next case →</button></div>
+      <div class="scoreline"><span>Cases solved</span><strong id="score">0 / 4</strong></div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      <p class="hint">Tip: start with simple checks and change one thing at a time. In real environments, follow your organization's policies and get permission before changing network settings.</p>
+    </section>
+    <footer>CyberVerse · Understand. Experiment. Defend. <span>Educational simulation — sample data only.</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | OSI Packet Journey Lab</title>
+  <link rel="stylesheet" href="css/osi-packet-journey.css">
+  <script src="js/labs/osi-packet-journey.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">CV</span><span>CYBER<span class="accent">VERSE</span><small>NETWORKING LABS</small></span></a>
+  <span class="status"><i></i> OFFLINE SIMULATION</span>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">NETWORKING FUNDAMENTALS / LAB 09</p>
+    <h1>OSI Model <span class="accent">Packet Journey</span></h1>
+    <p class="subtitle">Follow data through all seven OSI layers as it travels from an application on one device toward a network destination.</p>
+  </section>
+
+  <section class="panel controls-panel">
+    <div class="section-heading"><span class="step">01</span><div><h2>Build a packet journey</h2><p>Choose the type of data, then step through encapsulation and decapsulation.</p></div></div>
+    <div class="control-grid">
+      <label>Data / application<select id="app-select"><option value="web">Web request (HTTPS)</option><option value="email">Email message</option><option value="file">File transfer</option><option value="dns">DNS query</option></select></label>
+      <label>Journey direction<select id="direction-select"><option value="down">Sender: Layer 7 → Layer 1</option><option value="up">Receiver: Layer 1 → Layer 7</option></select></label>
+      <button id="start-btn" class="primary-btn">Start journey <span>→</span></button>
+    </div>
+    <div class="control-actions"><button id="prev-btn" class="secondary-btn" disabled>← Previous layer</button><button id="next-btn" class="secondary-btn">Next layer →</button><button id="reset-btn" class="text-btn">Reset</button></div>
+    <div class="progress-track"><div id="progress-fill"></div></div>
+    <div class="progress-label"><span id="progress-text">Ready to begin</span><span id="progress-count">0 / 7</span></div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading"><span class="step">02</span><div><h2>The seven OSI layers</h2><p>Select any layer to inspect its role, common protocols, and data unit.</p></div></div>
+    <div class="journey-layout">
+      <div id="layer-list" class="layer-list" aria-label="OSI layers"></div>
+      <article id="layer-detail" class="layer-detail">
+        <div class="detail-top"><span class="layer-number">L7</span><span class="detail-tag">APPLICATION</span></div>
+        <h2>Application</h2>
+        <p class="detail-summary">Provides network services directly to user-facing applications.</p>
+        <div class="detail-metrics"><div><span>DATA UNIT</span><strong>Data</strong></div><div><span>EXAMPLES</span><strong>HTTP, DNS, SMTP</strong></div></div>
+        <div class="detail-note"><strong>What happens here?</strong><p>The application creates the information that needs to be sent across the network.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel encapsulation-panel">
+    <div class="section-heading"><span class="step">03</span><div><h2>Encapsulation view</h2><p>As data moves down the sender's stack, layers add protocol information. The receiver removes it in reverse order.</p></div></div>
+    <div id="packet-stack" class="packet-stack"><div class="packet-part payload"><span>PAYLOAD</span><strong>Application data</strong></div></div>
+    <div class="packet-caption" id="packet-caption">Start the journey to see headers and trailers added at different layers.</div>
+  </section>
+
+  <section class="panel quiz-panel">
+    <div class="section-heading"><span class="step">04</span><div><h2>Knowledge check</h2><p>One quick question to reinforce the OSI model.</p></div></div>
+    <p class="quiz-question">Which OSI layer is primarily responsible for routing packets between networks?</p>
+    <div id="quiz-options" class="quiz-options"><button type="button" data-answer="1">Layer 1 — Physical</button><button type="button" data-answer="3">Layer 3 — Network</button><button type="button" data-answer="4">Layer 4 — Transport</button><button type="button" data-answer="7">Layer 7 — Application</button></div>
+    <p id="quiz-feedback" class="feedback" aria-live="polite"></p>
+  </section>
+
+  <footer><span>CYBERVERSE NETWORKING LABS</span><span>Educational simulation · No packets are sent</span></footer>
+</main>
+</body>
+</html>

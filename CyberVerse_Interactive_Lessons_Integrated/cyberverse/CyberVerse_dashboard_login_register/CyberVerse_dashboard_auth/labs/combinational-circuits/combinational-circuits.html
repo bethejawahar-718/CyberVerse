@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CyberVerse interactive combinational circuits lab.">
+  <title>DE-06 | Combinational Circuits — CyberVerse</title>
+  <link rel="stylesheet" href="combinational-circuits.css">
+  <script src="combinational-circuits.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html" aria-label="CyberVerse home"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../digital-electronics.html">Digital Electronics</a><span>/</span><span aria-current="page">DE-06: Combinational Circuits</span></nav>
+  <span class="status"><span class="status-dot"></span> INTERACTIVE SIMULATION</span>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">DIGITAL ELECTRONICS / LAB 06</p>
+    <h1>Combinational <span class="accent">Circuits</span></h1>
+    <p class="intro">Explore how digital circuits combine input bits to produce outputs. Change the inputs, inspect the result, and use truth tables to understand the logic.</p>
+    <div class="hero-tags"><span>01 · Half adder</span><span>02 · Full adder</span><span>03 · Multiplexer</span><span>04 · Decoder</span></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">01 / HALF ADDER</p><h2>Add two bits</h2></div><span class="chip">2 inputs · 2 outputs</span>
+    </div>
+    <p class="muted">A half adder adds input bits A and B. The SUM is their low bit, and CARRY is 1 when both inputs are 1.</p>
+    <div class="circuit-layout">
+      <div class="input-bank">
+        <label class="toggle-row">Input A <input id="haA" type="checkbox"><span class="switch"></span><b id="haALabel">0</b></label>
+        <label class="toggle-row">Input B <input id="haB" type="checkbox"><span class="switch"></span><b id="haBLabel">0</b></label>
+      </div>
+      <div class="gate-visual" aria-label="Half adder logic"><div class="gate-symbol">HA</div><span>HALF ADDER</span><div class="gate-lines">A, B → SUM + CARRY</div></div>
+      <div class="output-bank"><div class="output"><span>SUM</span><strong id="haSum">0</strong></div><div class="output"><span>CARRY</span><strong id="haCarry">0</strong></div></div>
+    </div>
+    <div class="truth-wrap"><table><thead><tr><th>A</th><th>B</th><th>SUM</th><th>CARRY</th></tr></thead><tbody id="haTable"></tbody></table></div>
+    <p class="formula"><strong>Formulas:</strong> SUM = A XOR B · CARRY = A AND B</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">02 / FULL ADDER</p><h2>Add three bits</h2></div><span class="chip">3 inputs · 2 outputs</span>
+    </div>
+    <p class="muted">A full adder adds A, B, and carry-in (Cin). It is useful when adding multi-bit binary numbers because it accepts a carry from the previous position.</p>
+    <div class="circuit-layout">
+      <div class="input-bank">
+        <label class="toggle-row">Input A <input id="faA" type="checkbox"><span class="switch"></span><b id="faALabel">0</b></label>
+        <label class="toggle-row">Input B <input id="faB" type="checkbox"><span class="switch"></span><b id="faBLabel">0</b></label>
+        <label class="toggle-row">Carry-in <input id="faCin" type="checkbox"><span class="switch"></span><b id="faCinLabel">0</b></label>
+      </div>
+      <div class="gate-visual"><div class="gate-symbol">FA</div><span>FULL ADDER</span><div class="gate-lines">A, B, Cin → SUM + Cout</div></div>
+      <div class="output-bank"><div class="output"><span>SUM</span><strong id="faSum">0</strong></div><div class="output"><span>CARRY OUT</span><strong id="faCout">0</strong></div></div>
+    </div>
+    <div class="truth-wrap"><table><thead><tr><th>A</th><th>B</th><th>Cin</th><th>SUM</th><th>Cout</th></tr></thead><tbody id="faTable"></tbody></table></div>
+    <p class="formula"><strong>Formulas:</strong> SUM = A XOR B XOR Cin · Cout = (A AND B) OR (Cin AND (A XOR B))</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">03 / MULTIPLEXER</p><h2>Choose one input</h2></div><span class="chip">4-to-1 MUX</span>
+    </div>
+    <p class="muted">A multiplexer (MUX) routes one of four data inputs to the output. The two select bits S1 and S0 decide which input is selected.</p>
+    <div class="mux-layout">
+      <div class="mux-inputs">
+        <label class="toggle-row">D0 <input id="d0" type="checkbox" checked><span class="switch"></span><b id="d0Label">1</b></label>
+        <label class="toggle-row">D1 <input id="d1" type="checkbox"><span class="switch"></span><b id="d1Label">0</b></label>
+        <label class="toggle-row">D2 <input id="d2" type="checkbox" checked><span class="switch"></span><b id="d2Label">1</b></label>
+        <label class="toggle-row">D3 <input id="d3" type="checkbox"><span class="switch"></span><b id="d3Label">0</b></label>
+      </div>
+      <div class="mux-shape"><span class="mux-top">4 : 1</span><span>MUX</span><span class="mux-bottom">SELECT → OUTPUT</span></div>
+      <div class="mux-output"><div class="output"><span>OUTPUT Y</span><strong id="muxOutput">1</strong></div><p class="muted small">Selected data: <code id="muxSelected">D0</code></p></div>
+    </div>
+    <div class="select-controls">
+      <label class="toggle-row">Select S1 <input id="s1" type="checkbox"><span class="switch"></span><b id="s1Label">0</b></label>
+      <label class="toggle-row">Select S0 <input id="s0" type="checkbox"><span class="switch"></span><b id="s0Label">0</b></label>
+      <span class="selection-code">S1S0 = <strong id="selectCode">00</strong></span>
+    </div>
+    <p class="formula"><strong>Rule:</strong> S1S0 = 00 selects D0 · 01 selects D1 · 10 selects D2 · 11 selects D3</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <div><p class="eyebrow">04 / 2-TO-4 DECODER</p><h2>Decode a binary input</h2></div><span class="chip">2 inputs · 4 outputs</span>
+    </div>
+    <p class="muted">A 2-to-4 decoder activates exactly one output line based on the two-bit input. This is a simplified active-high decoder simulation.</p>
+    <div class="decoder-layout">
+      <div class="input-bank">
+        <label class="toggle-row">Input A (MSB) <input id="decA" type="checkbox"><span class="switch"></span><b id="decALabel">0</b></label>
+        <label class="toggle-row">Input B (LSB) <input id="decB" type="checkbox" checked><span class="switch"></span><b id="decBLabel">1</b></label>
+        <div class="decode-code">INPUT: <strong id="decodeCode">01</strong></div>
+      </div>
+      <div class="decoder-box"><span>2 → 4</span><small>DECODER</small></div>
+      <div class="decoder-outputs" id="decoderOutputs">
+        <div class="decode-output"><span>Y0</span><strong>0</strong></div><div class="decode-output active"><span>Y1</span><strong>1</strong></div><div class="decode-output"><span>Y2</span><strong>0</strong></div><div class="decode-output"><span>Y3</span><strong>0</strong></div>
+      </div>
+    </div>
+    <p class="formula"><strong>Rule:</strong> input 00 activates Y0, 01 activates Y1, 10 activates Y2, and 11 activates Y3.</p>
+  </section>
+
+  <section class="panel challenge-panel">
+    <div class="section-heading"><div><p class="eyebrow">05 / TEST YOURSELF</p><h2>Output prediction challenge</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div></div>
+    <p class="muted">Predict the output for the circuit shown. Select the correct answer before revealing the explanation.</p>
+    <div class="challenge-card">
+      <div><span class="value-label" id="challengeType">HALF ADDER</span><strong id="challengePrompt">A = 1, B = 1</strong><p class="muted small" id="challengeSubprompt">What are SUM and CARRY?</p></div>
+      <div class="answer-options" id="challengeOptions"></div>
+    </div>
+    <p id="challengeFeedback" class="feedback" role="status">Choose an answer to check your understanding.</p>
+    <button class="btn btn-primary" id="newChallengeBtn" type="button">New challenge</button>
+  </section>
+
+  <section class="panel quiz-panel">
+    <p class="eyebrow">06 / QUICK QUIZ</p><h2>Check your understanding</h2>
+    <div id="quizQuestions"></div>
+    <div class="toolbar"><button class="btn btn-primary" id="quizSubmitBtn" type="button">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer all five questions, then check.</span></div>
+  </section>
+
+  <footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>DE-06 · Combinational Circuits</span></footer>
+</main>
+</body>
+</html>

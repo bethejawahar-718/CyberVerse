@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberVerse | DHCP Simulator</title>
+  <link rel="stylesheet" href="css/dhcp-simulator.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <div class="lab-tag"><span class="live-dot"></span> NETWORKING LAB / 06</div>
+</header>
+<main class="shell">
+  <section class="intro">
+    <div class="eyebrow">INTERACTIVE LEARNING MODULE</div>
+    <h1>DHCP <span class="accent">Simulator</span></h1>
+    <p>See how a device obtains its network configuration automatically. Step through the DHCP DORA process and inspect the sample lease assigned by a DHCP server.</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span class="stat-label">CORE STEPS</span><strong>4</strong><small>Discover · Offer · Request · Acknowledge</small></div>
+    <div class="stat"><span class="stat-label">LEASE POOL</span><strong>192.168.1.100–150</strong><small>Example IPv4 range</small></div>
+    <div class="stat"><span class="stat-label">MODE</span><strong class="accent">SIMULATED</strong><small>No real network changes</small></div>
+  </section>
+
+  <section class="layout">
+    <article class="panel process-panel">
+      <div class="panel-heading">
+        <div><span class="section-kicker">01 / DORA PROCESS</span><h2>Address assignment flow</h2></div>
+        <span class="pill">PACKET FLOW</span>
+      </div>
+      <div class="dora-flow" id="doraFlow">
+        <div class="stage" data-stage="0"><span class="stage-no">01</span><div><strong>Discover</strong><small>Client broadcasts to find DHCP servers.</small></div><span class="stage-code">DHCPDISCOVER</span></div>
+        <div class="flow-arrow">↓</div>
+        <div class="stage" data-stage="1"><span class="stage-no">02</span><div><strong>Offer</strong><small>Server offers an available IP lease.</small></div><span class="stage-code">DHCPOFFER</span></div>
+        <div class="flow-arrow">↓</div>
+        <div class="stage" data-stage="2"><span class="stage-no">03</span><div><strong>Request</strong><small>Client requests the offered address.</small></div><span class="stage-code">DHCPREQUEST</span></div>
+        <div class="flow-arrow">↓</div>
+        <div class="stage" data-stage="3"><span class="stage-no">04</span><div><strong>Acknowledge</strong><small>Server confirms the lease and settings.</small></div><span class="stage-code">DHCPACK</span></div>
+      </div>
+      <div class="process-footer"><span class="legend-dot"></span><span id="processCaption">Ready to start address assignment.</span></div>
+    </article>
+
+    <aside class="panel control-panel">
+      <div class="panel-heading"><div><span class="section-kicker">02 / CLIENT SETUP</span><h2>Configure client</h2></div></div>
+      <label for="deviceName">Device name</label>
+      <input id="deviceName" type="text" value="Workstation-01" maxlength="32">
+      <label for="macAddress">MAC address</label>
+      <input id="macAddress" type="text" value="02:1A:2B:3C:4D:5E" maxlength="17" spellcheck="false">
+      <label for="pool">Address pool</label>
+      <select id="pool">
+        <option value="100">Office LAN · 192.168.1.100–150</option>
+        <option value="200">Lab LAN · 10.0.0.100–150</option>
+      </select>
+      <button class="primary" id="startBtn">▶ Start DHCP DORA</button>
+      <button class="secondary" id="resetBtn">Reset simulation</button>
+      <div class="status" id="status" role="status">Waiting for a client to request configuration.</div>
+      <div class="lease-box">
+        <span class="section-kicker">ASSIGNED LEASE</span>
+        <div class="lease-ip" id="leaseIp">— — — —</div>
+        <div class="lease-grid">
+          <div><small>Subnet mask</small><strong id="subnet">—</strong></div>
+          <div><small>Default gateway</small><strong id="gateway">—</strong></div>
+          <div><small>DNS server</small><strong id="dns">—</strong></div>
+          <div><small>Lease duration</small><strong id="duration">—</strong></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="bottom-grid">
+    <article class="panel">
+      <div class="panel-heading"><div><span class="section-kicker">03 / LEASE DETAILS</span><h2>Server lease table</h2></div><span class="pill">EXAMPLE DATA</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Client</th><th>Assigned IP</th><th>Lease status</th><th>Duration</th></tr></thead>
+        <tbody id="leaseRows"><tr class="empty-row"><td colspan="4">No lease assigned yet. Run the simulation to create one.</td></tr></tbody>
+      </table></div>
+    </article>
+    <article class="panel">
+      <div class="panel-heading"><div><span class="section-kicker">04 / KEY CONCEPTS</span><h2>Remember this</h2></div></div>
+      <div class="concept"><span>01</span><div><strong>Automatic configuration</strong><p>DHCP can provide IP address, subnet mask, gateway, DNS server and lease duration.</p></div></div>
+      <div class="concept"><span>02</span><div><strong>Lease</strong><p>An address is leased for a period, rather than being assigned permanently by default.</p></div></div>
+      <div class="concept"><span>03</span><div><strong>DHCP relay</strong><p>A relay agent can forward DHCP messages between clients and a server on another subnet.</p></div></div>
+    </article>
+  </section>
+
+  <section class="panel quiz">
+    <div><span class="section-kicker">05 / QUICK CHECK</span><h2>Test your understanding</h2><p class="muted">What does the “A” in DHCP DORA represent?</p></div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-answer="wrong">Address</button>
+      <button class="quiz-option" data-answer="right">Acknowledge</button>
+      <button class="quiz-option" data-answer="wrong">Authenticate</button>
+    </div>
+    <p class="feedback" id="quizFeedback" aria-live="polite">Choose an answer to check your understanding.</p>
+  </section>
+  <footer><span>CYBERVERSE LEARNING ENVIRONMENT</span><span>DHCP Simulator · Educational simulation</span></footer>
+</main>
+<script src="js/labs/dhcp-simulator.js"></script>
+</body>
+</html>

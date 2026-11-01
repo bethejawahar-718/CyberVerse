@@ -1,19 +1,19 @@
-
+﻿
 // ==========================================
 // CYBERVERSE - DASHBOARD APPLICATION
 // ==========================================
 
 // LESSON MODULES
 const modules = [
-    {id:"digital",title:"Digital Electronics",desc:"Number systems, binary arithmetic, logic gates and digital circuits.",icon:"⌘",href:"modules/digital-electronics.html",level:"Module 01",category:"foundation",tag:"Build your base"},
-    {id:"networking",title:"Computer Networking",desc:"OSI, TCP/IP, IP addressing, DNS, DHCP, ports, protocols and firewalls.",icon:"⌁",href:"modules/networking.html",level:"Module 02",category:"foundation",tag:"Connect the pieces"},
-    {id:"cybersecurity",title:"Cybersecurity Fundamentals",desc:"Security principles, risks, authentication, malware and phishing awareness.",icon:"⬡",href:"modules/cybersecurity.html",level:"Module 03",category:"security",tag:"Think like a defender"},
-    {id:"crypto",title:"Cryptography Basics",desc:"Encryption, hashing, keys, signatures and digital certificates.",icon:"⚿",href:"modules/cryptography.html",level:"Module 04",category:"security",tag:"Protect information"},
-    {id:"linux",title:"Linux Fundamentals",desc:"Files, permissions, processes and command-line foundations.",icon:"›_",href:"modules/linux.html",level:"Module 05",category:"foundation",tag:"Master the terminal"},
+    {id:"digital",title:"Digital Electronics",desc:"Number systems, binary arithmetic, logic gates and digital circuits.",icon:"âŒ˜",href:"modules/digital-electronics.html",level:"Module 01",category:"foundation",tag:"Build your base"},
+    {id:"networking",title:"Computer Networking",desc:"OSI, TCP/IP, IP addressing, DNS, DHCP, ports, protocols and firewalls.",icon:"âŒ",href:"modules/networking.html",level:"Module 02",category:"foundation",tag:"Connect the pieces"},
+    {id:"cybersecurity",title:"Cybersecurity Fundamentals",desc:"Security principles, risks, authentication, malware and phishing awareness.",icon:"â¬¡",href:"modules/cybersecurity.html",level:"Module 03",category:"security",tag:"Think like a defender"},
+    {id:"crypto",title:"Cryptography Basics",desc:"Encryption, hashing, keys, signatures and digital certificates.",icon:"âš¿",href:"modules/cryptography.html",level:"Module 04",category:"security",tag:"Protect information"},
+    {id:"linux",title:"Linux Fundamentals",desc:"Files, permissions, processes and command-line foundations.",icon:"â€º_",href:"modules/linux.html",level:"Module 05",category:"foundation",tag:"Master the terminal"},
     {id:"python",title:"Python for Cybersecurity",desc:"Programming foundations and safe sample security-log exercises.",icon:"{}",href:"modules/python-security.html",level:"Module 06",category:"practice",tag:"Automate thoughtfully"},
-    {id:"web",title:"Web Security",desc:"Input validation, access control and web security awareness.",icon:"◎",href:"modules/web-security.html",level:"Module 07",category:"security",tag:"Secure the web"},
-    {id:"defensive",title:"Defensive Security",desc:"Logs, threat detection, incident response and recovery.",icon:"◈",href:"modules/defensive-security.html",level:"Module 08",category:"practice",tag:"Detect and respond"},
-    {id:"advanced",title:"Advanced Learning Labs",desc:"Permission-based practical learning in safe environments.",icon:"⌬",href:"modules/advanced-labs.html",level:"Module 09",category:"practice",tag:"Put skills together"}
+    {id:"web",title:"Web Security",desc:"Input validation, access control and web security awareness.",icon:"â—Ž",href:"modules/web-security.html",level:"Module 07",category:"security",tag:"Secure the web"},
+    {id:"defensive",title:"Defensive Security",desc:"Logs, threat detection, incident response and recovery.",icon:"â—ˆ",href:"modules/defensive-security.html",level:"Module 08",category:"practice",tag:"Detect and respond"},
+    {id:"advanced",title:"Advanced Learning Labs",desc:"Permission-based practical learning in safe environments.",icon:"âŒ¬",href:"modules/advanced-labs.html",level:"Module 09",category:"practice",tag:"Put skills together"}
 ];
 
 
@@ -22,44 +22,44 @@ const modules = [
 // ==========================================
 
 const labs = [
-    {title:"Logic Gates Lab",desc:"Explore AND, OR, NOT and other logic gates.",category:"Digital Electronics",icon:"⌁",href:"../../cyberverse-logic-gates-lab/cyberverse-logic-gates-lab/logic-gates.html"},
+    {title:"Logic Gates Lab",desc:"Explore AND, OR, NOT and other logic gates.",category:"Digital Electronics",icon:"âŒ",href:"labs/logic-gates/logic-gates.html"},
 
     // UPDATED: Binary Arithmetic Lab now uses the deployed frontend path.
     {title:"Binary Arithmetic Lab",desc:"Practice binary addition and subtraction.",category:"Digital Electronics",icon:"01",href:"labs/binary-arithmetic/binary-arithmetic.html"},
 
-    {title:"Bit Playground",desc:"Explore bit values and binary operations.",category:"Digital Electronics",icon:"01",href:"../../cyberverse-bit-playground/bit-playground.html"},
-    {title:"Boolean Algebra Lab",desc:"Practice Boolean expressions and simplification.",category:"Digital Electronics",icon:"∧",href:"../../cyberverse-boolean-algebra-lab/boolean-algebra.html"},
-    {title:"Combinational Circuits Lab",desc:"Explore combinational digital circuits.",category:"Digital Electronics",icon:"▦",href:"../../cyberverse-combinational-circuits-lab/combinational-circuits.html"},
-    {title:"Sequential Circuits Lab",desc:"Explore sequential circuit behaviour.",category:"Digital Electronics",icon:"◫",href:"../../cyberverse-sequential-circuits-lab/sequential-circuits.html"},
-    {title:"Number System Converter",desc:"Convert values between common number systems.",category:"Digital Electronics",icon:"⇄",href:"../../cyberverse-converter-lab/index.html"},
-    {title:"OSI Model Explorer",desc:"Explore the seven layers of the OSI model.",category:"Networking",icon:"▤",href:"../../cyberverse-osi-model-lab/osi-model.html"},
-    {title:"TCP/IP Model Lab",desc:"Understand the TCP/IP model layers.",category:"Networking",icon:"⇄",href:"../../cyberverse-tcpip-model-lab/tcpip-model.html"},
-    {title:"Networking Fundamentals",desc:"Learn basic networking concepts and components.",category:"Networking",icon:"⌘",href:"../../cyberverse-networking-fundamentals-lab/networking-fundamentals.html"},
-    {title:"IP Subnetting Lab",desc:"Practice IP address and subnet calculations.",category:"Networking",icon:"⌗",href:"../../cyberverse-ip-subnetting-lab/ip-subnetting.html"},
-    {title:"ARP Simulation",desc:"Follow a sample ARP address-resolution process.",category:"Networking",icon:"↔",href:"../../cyberverse-arp-simulation-lab/arp-lab.html"},
-    {title:"DHCP Simulator",desc:"Explore how a device receives network settings.",category:"Networking",icon:"▣",href:"../../CyberVerse_DHCP_Simulator_Lab/dhcp-simulator.html"},
-    {title:"DHCP Simulation Lab",desc:"Learn the DHCP address assignment sequence.",category:"Networking",icon:"▣",href:"../../CyberVerse_DHCP_Simulation_Lab/CyberVerse_DHCP_Simulation_Lab/index.html"},
-    {title:"DNS Resolution Lab",desc:"Follow a sample domain-name lookup.",category:"Networking",icon:"⌕",href:"../../CyberVerse_DNS_Resolution_Lab/dns-resolution.html"},
-    {title:"DNS Simulation Lab",desc:"Explore a simulated DNS lookup workflow.",category:"Networking",icon:"⌕",href:"../../CyberVerse_DNS_Simulation_Lab/CyberVerse_DNS_Simulation_Lab/index.html"},
-    {title:"Ports & Protocols Lab",desc:"Match common services with their port numbers.",category:"Networking",icon:"⇄",href:"../../CyberVerse_Ports_Protocols_Simulation_Lab/index.html"},
-    {title:"TCP vs UDP Simulator",desc:"Compare transport protocol behaviour.",category:"Networking",icon:"⇆",href:"../../CyberVerse_TCP_UDP_Protocol_Simulator_Lab/tcp-udp-simulator.html"},
-    {title:"TCP/UDP Simulation Lab",desc:"Explore sample TCP and UDP communication.",category:"Networking",icon:"⇆",href:"../../CyberVerse_TCP_UDP_Simulation_Lab/CyberVerse_TCP_UDP_Simulation_Lab/index.html"},
-    {title:"Routing Fundamentals",desc:"Understand how packets move between networks.",category:"Networking",icon:"↗",href:"../../CyberVerse_Routing_Fundamentals_Lab/routing-fundamentals.html"},
-    {title:"VLAN Configuration Lab",desc:"Explore logical network segmentation.",category:"Networking",icon:"▥",href:"../../CyberVerse_VLAN_Configuration_Lab/CyberVerse_VLAN_Configuration_Lab/vlan-configuration.html"},
-    {title:"Network Troubleshooting",desc:"Practice a guided troubleshooting workflow.",category:"Networking",icon:"⚒",href:"../../CyberVerse_Network_Troubleshooting_Lab/CyberVerse_Network_Troubleshooting_Lab/network-troubleshooting.html"},
-    {title:"Latency & Packet Loss Lab",desc:"Explore delay and packet-loss concepts.",category:"Networking",icon:"◷",href:"../../CyberVerse_Latency_Packet_Loss_Lab/CyberVerse_Latency_Packet_Loss_Lab/latency-packet-loss.html"},
-    {title:"OSI Packet Journey",desc:"Trace a sample packet through network layers.",category:"Networking",icon:"⇢",href:"../../CyberVerse_OSI_Packet_Journey_Lab/CyberVerse_OSI_Packet_Journey_Lab/osi-packet-journey.html"},
-    {title:"Networking Devices Lab",desc:"Explore routers, switches and other devices.",category:"Networking",icon:"⌘",href:"../../CyberVerse_NET10_Networking_Devices_Lab/index.html"},
-    {title:"HTTP vs HTTPS Simulator",desc:"Compare sample HTTP and HTTPS requests.",category:"Networking",icon:"🔒",href:"../../CyberVerse_HTTP_HTTPS_Simulator/CyberVerse_HTTP_HTTPS_Simulator/modules/http-https-simulator.html"},
-    {title:"HTTP/HTTPS Simulation",desc:"Explore web request and response concepts.",category:"Networking",icon:"🌐",href:"../../CyberVerse_NET11_HTTP_HTTPS_Simulation_Lab/index.html"},
-    {title:"Phishing URL Detection",desc:"Inspect fictional URLs for suspicious indicators.",category:"Cybersecurity",icon:"⌕",href:"../../CyberVerse_Phishing_URL_Detection_Simulator/CyberVerse_Phishing_URL_Detection_Simulator/index.html"},
-    {title:"Phishing Email Detector",desc:"Identify warning signs in fictional email samples.",category:"Cybersecurity",icon:"✉",href:"../../CyberVerse_SEC06_Phishing_Email_Detector/CyberVerse_SEC06_Phishing_Email_Detector/index.html"},
-    {title:"Malware Awareness Simulator",desc:"Classify fictional file cases using safety clues.",category:"Cybersecurity",icon:"⌑",href:"../../CyberVerse_SEC05_Malware_Simulator/cyberverse-sec05-malware-simulator/index.html"},
-    {title:"Password Security Simulator",desc:"Review password strength and safer password habits.",category:"Cybersecurity",icon:"⚿",href:"../../Password_Security_Simulator_CyberVerse/password-security-simulator/index.html"},
-    {title:"Social Engineering Awareness",desc:"Make safer decisions in fictional social scenarios.",category:"Cybersecurity",icon:"♧",href:"../../CyberVerse_SEC07_Social_Engineering_Awareness/CyberVerse_SEC07_Social_Engineering_Awareness/index.html"},
-    {title:"Security Hygiene Simulator",desc:"Practice everyday account and device safety.",category:"Defensive Security",icon:"✓",href:"../../CyberVerse_SEC08_Security_Hygiene_Simulator/CyberVerse_SEC08_Security_Hygiene_Simulator/index.html"},
-    {title:"Firewall Rules Simulator",desc:"Create allow/block rules and test sample traffic.",category:"Defensive Security",icon:"▣",href:"../../CyberVerse_SEC09_Firewalls_Simulator/CyberVerse_SEC09_Firewalls_Simulator/index.html"},
-    {title:"Firewall Simulation Lab",desc:"Explore basic firewall filtering concepts.",category:"Defensive Security",icon:"▣",href:"../../CyberVerse_Firewall_Simulation_Lab/CyberVerse_Firewall_Simulation_Lab/firewall-simulator.html"}
+    {title:"Bit Playground",desc:"Explore bit values and binary operations.",category:"Digital Electronics",icon:"01",href:"labs/bit-playground/bit-playground.html"},
+    {title:"Boolean Algebra Lab",desc:"Practice Boolean expressions and simplification.",category:"Digital Electronics",icon:"âˆ§",href:"labs/boolean-algebra/boolean-algebra.html"},
+    {title:"Combinational Circuits Lab",desc:"Explore combinational digital circuits.",category:"Digital Electronics",icon:"â–¦",href:"labs/combinational-circuits/combinational-circuits.html"},
+    {title:"Sequential Circuits Lab",desc:"Explore sequential circuit behaviour.",category:"Digital Electronics",icon:"â—«",href:"labs/sequential-circuits/sequential-circuits.html"},
+    {title:"Number System Converter",desc:"Convert values between common number systems.",category:"Digital Electronics",icon:"â‡„",href:"labs/number-converter/index.html"},
+    {title:"OSI Model Explorer",desc:"Explore the seven layers of the OSI model.",category:"Networking",icon:"â–¤",href:"labs/osi-model/osi-model.html"},
+    {title:"TCP/IP Model Lab",desc:"Understand the TCP/IP model layers.",category:"Networking",icon:"â‡„",href:"labs/tcpip-model/tcpip-model.html"},
+    {title:"Networking Fundamentals",desc:"Learn basic networking concepts and components.",category:"Networking",icon:"âŒ˜",href:"labs/networking-fundamentals/networking-fundamentals.html"},
+    {title:"IP Subnetting Lab",desc:"Practice IP address and subnet calculations.",category:"Networking",icon:"âŒ—",href:"labs/ip-subnetting/ip-subnetting.html"},
+    {title:"ARP Simulation",desc:"Follow a sample ARP address-resolution process.",category:"Networking",icon:"â†”",href:"labs/arp-simulation/arp-lab.html"},
+    {title:"DHCP Simulator",desc:"Explore how a device receives network settings.",category:"Networking",icon:"â–£",href:"labs/dhcp-simulator/dhcp-simulator.html"},
+    {title:"DHCP Simulation Lab",desc:"Learn the DHCP address assignment sequence.",category:"Networking",icon:"â–£",href:"labs/dhcp-simulation/index.html"},
+    {title:"DNS Resolution Lab",desc:"Follow a sample domain-name lookup.",category:"Networking",icon:"âŒ•",href:"labs/dns-resolution/dns-resolution.html"},
+    {title:"DNS Simulation Lab",desc:"Explore a simulated DNS lookup workflow.",category:"Networking",icon:"âŒ•",href:"labs/dns-simulation/index.html"},
+    {title:"Ports & Protocols Lab",desc:"Match common services with their port numbers.",category:"Networking",icon:"â‡„",href:"labs/ports-protocols/index.html"},
+    {title:"TCP vs UDP Simulator",desc:"Compare transport protocol behaviour.",category:"Networking",icon:"â‡†",href:"labs/tcp-udp-simulator/tcp-udp-simulator.html"},
+    {title:"TCP/UDP Simulation Lab",desc:"Explore sample TCP and UDP communication.",category:"Networking",icon:"â‡†",href:"labs/tcp-udp-simulation/index.html"},
+    {title:"Routing Fundamentals",desc:"Understand how packets move between networks.",category:"Networking",icon:"â†—",href:"labs/routing-fundamentals/routing-fundamentals.html"},
+    {title:"VLAN Configuration Lab",desc:"Explore logical network segmentation.",category:"Networking",icon:"â–¥",href:"labs/vlan-configuration/vlan-configuration.html"},
+    {title:"Network Troubleshooting",desc:"Practice a guided troubleshooting workflow.",category:"Networking",icon:"âš’",href:"labs/network-troubleshooting/network-troubleshooting.html"},
+    {title:"Latency & Packet Loss Lab",desc:"Explore delay and packet-loss concepts.",category:"Networking",icon:"â—·",href:"labs/latency-packet-loss/latency-packet-loss.html"},
+    {title:"OSI Packet Journey",desc:"Trace a sample packet through network layers.",category:"Networking",icon:"â‡¢",href:"labs/osi-packet-journey/osi-packet-journey.html"},
+    {title:"Networking Devices Lab",desc:"Explore routers, switches and other devices.",category:"Networking",icon:"âŒ˜",href:"labs/networking-devices/index.html"},
+    {title:"HTTP vs HTTPS Simulator",desc:"Compare sample HTTP and HTTPS requests.",category:"Networking",icon:"ðŸ”’",href:"labs/http-https-simulation/index.html"},
+    {title:"HTTP/HTTPS Simulation",desc:"Explore web request and response concepts.",category:"Networking",icon:"ðŸŒ",href:"labs/http-https-simulation/index.html"},
+    {title:"Phishing URL Detection",desc:"Inspect fictional URLs for suspicious indicators.",category:"Cybersecurity",icon:"âŒ•",href:"labs/phishing-url-detection/index.html"},
+    {title:"Phishing Email Detector",desc:"Identify warning signs in fictional email samples.",category:"Cybersecurity",icon:"âœ‰",href:"labs/phishing-email-detector/index.html"},
+    {title:"Malware Awareness Simulator",desc:"Classify fictional file cases using safety clues.",category:"Cybersecurity",icon:"âŒ‘",href:"labs/malware-awareness/index.html"},
+    {title:"Password Security Simulator",desc:"Review password strength and safer password habits.",category:"Cybersecurity",icon:"âš¿",href:"labs/password-security/index.html"},
+    {title:"Social Engineering Awareness",desc:"Make safer decisions in fictional social scenarios.",category:"Cybersecurity",icon:"â™§",href:"labs/social-engineering/index.html"},
+    {title:"Security Hygiene Simulator",desc:"Practice everyday account and device safety.",category:"Defensive Security",icon:"âœ“",href:"labs/security-hygiene/index.html"},
+    {title:"Firewall Rules Simulator",desc:"Create allow/block rules and test sample traffic.",category:"Defensive Security",icon:"â–£",href:"labs/firewall-rules/index.html"},
+    {title:"Firewall Simulation Lab",desc:"Explore basic firewall filtering concepts.",category:"Defensive Security",icon:"â–£",href:"labs/firewall-simulation/firewall-simulator.html"}
 ];
 
 
@@ -153,7 +153,7 @@ function renderModuleCards() {
                         data-save="${module.id}"
                         aria-label="${isSaved ? "Unsave" : "Save"} ${escapeHTML(module.title)}"
                         aria-pressed="${isSaved}">
-                        ${isSaved ? "★" : "☆"}
+                        ${isSaved ? "â˜…" : "â˜†"}
                     </button>
                 </div>
 
@@ -168,7 +168,7 @@ function renderModuleCards() {
                 <a class="card-link module-open"
                    data-module="${module.id}"
                    href="${module.href}">
-                    Open lesson module <span>↗</span>
+                    Open lesson module <span>â†—</span>
                 </a>
             </article>
         `;
@@ -234,7 +234,7 @@ function renderLabs() {
                 <p>${lab.desc}</p>
 
                 <a data-lab="${labs.indexOf(lab)}" href="${lab.href}">
-                    Open lab →
+                    Open lab â†’
                 </a>
             </div>
         </article>
@@ -275,10 +275,10 @@ function renderSaved() {
                 <span>${module.icon}</span>
                 <b>${module.title}</b>
                 <small>${module.level}</small>
-                <i>↗</i>
+                <i>â†—</i>
             </a>
         `).join("")
-        : '<p class="muted">No saved modules yet. Select ☆ on a lesson module card.</p>';
+        : '<p class="muted">No saved modules yet. Select â˜† on a lesson module card.</p>';
 
     el("savedModules").querySelectorAll(".saved-open").forEach(link => {
         link.addEventListener("click", () => {
@@ -310,7 +310,7 @@ function renderContinue() {
             `Recently opened ${last.type}. Continue exploring from where you left off.`;
 
         el("continueButton").href = last.href;
-        el("continueButton").textContent = "Continue exploring →";
+        el("continueButton").textContent = "Continue exploring â†’";
     }
 }
 
@@ -400,7 +400,7 @@ if (home) {
             <h3>${module.title}</h3>
             <p>${module.desc}</p>
             <a class="card-link" href="${module.href}">
-                Open module →
+                Open module â†’
             </a>
         </article>
     `).join("");
@@ -451,7 +451,7 @@ async function loadRoadmapLessons() {
 
                 <a class="card-link"
                    href="lesson.html?id=${encodeURIComponent(lesson.id)}">
-                    Explore →
+                    Explore â†’
                 </a>
             </article>
         `).join("");
@@ -464,3 +464,7 @@ async function loadRoadmapLessons() {
 }
 
 loadRoadmapLessons();
+
+
+
+

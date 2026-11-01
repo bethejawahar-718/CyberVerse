@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse SEC-06 interactive phishing email detection simulator.">
+  <title>SEC-06 | Phishing Email Detector — CyberVerse</title>
+  <link rel="stylesheet" href="css/phishing-detector.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home">
+      <span class="brand-mark">C<span>V</span></span>
+      <span><strong>CYBERVERSE</strong><small>SECURITY TRAINING SIMULATOR</small></span>
+    </a>
+    <div class="top-meta"><span class="status-dot"></span> TRAINING MODE <span class="module-tag">SEC-06</span></div>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> CYBERSECURITY FUNDAMENTALS / MODULE 06</div>
+      <h1>Phishing Email <span>Detector</span></h1>
+      <p class="lead">Learn to spot suspicious messages before they trick you. Inspect the clues, make a decision, and strengthen your security awareness.</p>
+      <div class="learning-pills"><span>◈ Sender verification</span><span>◈ Suspicious links</span><span>◈ Social engineering</span><span>◈ Safe reporting</span></div>
+    </section>
+
+    <section class="stats" aria-label="Your progress">
+      <div class="stat-card"><span class="stat-label">SCENARIOS REVIEWED</span><strong id="reviewed">0 <small>/ 6</small></strong></div>
+      <div class="stat-card"><span class="stat-label">CORRECT DECISIONS</span><strong id="correct">0</strong></div>
+      <div class="stat-card progress-stat"><span class="stat-label">MODULE PROGRESS</span><strong id="progressText">0%</strong><div class="progress-track"><div id="progressBar"></div></div></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="scenario-panel panel">
+        <div class="panel-heading"><div><span class="section-kicker">INBOX SIMULATION</span><h2>Message queue</h2></div><span class="count" id="queueCount">06 ITEMS</span></div>
+        <p class="muted small">Choose a message to inspect. All messages are fictional training examples.</p>
+        <div class="scenario-list" id="scenarioList"></div>
+        <div class="queue-note"><span class="info-icon">i</span><span>Training inbox only. No real email account is connected.</span></div>
+      </aside>
+
+      <section class="email-panel panel">
+        <div class="panel-heading email-heading"><div><span class="section-kicker">MESSAGE INSPECTOR</span><h2 id="emailSubjectHeading">Select a message</h2></div><span class="mail-badge" id="mailBadge">NOT OPENED</span></div>
+        <div id="emptyState" class="empty-state"><div class="empty-icon">✉</div><h3>Your inbox is ready</h3><p>Select a scenario from the message queue to begin your investigation.</p></div>
+        <div id="emailContent" class="email-content hidden">
+          <div class="email-toolbar"><span>✉ &nbsp; INCOMING MESSAGE</span><span class="toolbar-right">SIMULATED EMAIL VIEW</span></div>
+          <div class="email-fields">
+            <div class="field-row"><span>FROM</span><div><strong id="senderName"></strong><small id="senderAddress"></small></div></div>
+            <div class="field-row"><span>TO</span><strong id="recipient"></strong></div>
+            <div class="field-row"><span>SUBJECT</span><strong id="subject"></strong></div>
+            <div class="field-row"><span>RECEIVED</span><strong id="received"></strong></div>
+          </div>
+          <div class="email-body">
+            <div id="emailGreeting" class="greeting"></div>
+            <div id="emailMessage" class="message-copy"></div>
+            <div id="linkArea" class="link-area hidden"><span class="field-label">LINK SHOWN IN MESSAGE — DO NOT OPEN</span><div id="linkText" class="inert-link"></div></div>
+            <div id="attachmentArea" class="attachment-area hidden"><span class="field-label">ATTACHMENT</span><div id="attachmentText" class="attachment"></div></div>
+            <div id="emailSignoff" class="signoff"></div>
+          </div>
+          <div class="clue-box"><div class="clue-title">⌕ &nbsp; INVESTIGATION CHECKLIST</div><div class="clue-grid" id="clueGrid"></div></div>
+        </div>
+        <div class="decision-area" id="decisionArea">
+          <div class="decision-heading"><div><span class="section-kicker">YOUR ANALYSIS</span><h3>How would you classify this email?</h3></div><span class="decision-hint">Choose one answer</span></div>
+          <div class="choices">
+            <button class="choice" data-choice="phishing" disabled><span class="choice-icon danger">!</span><span><strong>Phishing</strong><small>Designed to deceive or steal information</small></span><span class="radio"></span></button>
+            <button class="choice" data-choice="suspicious" disabled><span class="choice-icon warning">?</span><span><strong>Suspicious</strong><small>Needs independent verification</small></span><span class="radio"></span></button>
+            <button class="choice" data-choice="legitimate" disabled><span class="choice-icon safe">✓</span><span><strong>Legitimate</strong><small>Expected and appears trustworthy</small></span><span class="radio"></span></button>
+          </div>
+          <button id="submitBtn" class="primary-btn" disabled>SUBMIT CLASSIFICATION <span>→</span></button>
+          <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="bottom-row">
+      <div class="tip-card panel"><div class="tip-icon">⌁</div><div><span class="section-kicker">SECURITY RULE</span><h3>Pause. Inspect. Verify.</h3><p>Never use a link or phone number in an unexpected message to verify a request. Visit the official website or contact the organization through a trusted channel.</p></div></div>
+      <div class="score-card panel"><span class="section-kicker">YOUR SCORE</span><strong id="scoreDisplay">0 <small>/ 6</small></strong><p id="scoreMessage">Complete the scenarios to see your result.</p><button id="resetBtn" class="secondary-btn">↻ &nbsp; RESTART MODULE</button></div>
+    </section>
+    <footer><span>CYBERVERSE <b>•</b> LEARN SAFELY. THINK CRITICALLY.</span><span>SEC-06 / PHISHING AWARENESS</span></footer>
+  </main>
+  <script src="js/phishing-detector.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberVerse | DNS Resolution Lab</title>
+  <link rel="stylesheet" href="css/dns-resolution.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <div class="lab-tag"><span class="live-dot"></span> NETWORKING LAB / 05</div>
+</header>
+<main class="shell">
+  <section class="intro">
+    <div class="eyebrow">INTERACTIVE LEARNING MODULE</div>
+    <h1>DNS <span class="accent">Resolution</span></h1>
+    <p>Follow a domain name through a simplified DNS lookup. Watch the resolver query DNS servers, receive an IP address, and return the result to the client.</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span class="stat-label">LOOKUP STAGES</span><strong>5</strong><small>From request to response</small></div>
+    <div class="stat"><span class="stat-label">RECORD TYPE</span><strong>A</strong><small>IPv4 address record</small></div>
+    <div class="stat"><span class="stat-label">MODE</span><strong class="accent">SIMULATED</strong><small>No live DNS queries</small></div>
+  </section>
+
+  <section class="layout">
+    <article class="panel flow-panel">
+      <div class="panel-heading">
+        <div><span class="section-kicker">01 / RESOLUTION FLOW</span><h2>Follow the lookup</h2></div>
+        <span class="pill">VISUAL TRACE</span>
+      </div>
+      <div class="flow-map" id="flowMap">
+        <div class="flow-node client" data-step="0"><span class="node-icon">PC</span><strong>Client</strong><small>Requests a domain</small></div>
+        <div class="flow-node resolver" data-step="1"><span class="node-icon">R</span><strong>Recursive resolver</strong><small>Checks its cache</small></div>
+        <div class="flow-node root" data-step="2"><span class="node-icon">.</span><strong>Root DNS</strong><small>Points to TLD DNS</small></div>
+        <div class="flow-node tld" data-step="3"><span class="node-icon">TLD</span><strong>TLD DNS</strong><small>Points to authoritative DNS</small></div>
+        <div class="flow-node auth" data-step="4"><span class="node-icon">NS</span><strong>Authoritative DNS</strong><small>Returns the record</small></div>
+        <div class="flow-node answer" data-step="5"><span class="node-icon">IP</span><strong>Client gets IP</strong><small>Can connect to server</small></div>
+        <div class="flow-line line-1"></div><div class="flow-line line-2"></div><div class="flow-line line-3"></div><div class="flow-line line-4"></div><div class="flow-line line-5"></div>
+      </div>
+      <div class="flow-footer"><span class="legend-dot"></span><span id="flowCaption">Ready to resolve a domain name.</span></div>
+    </article>
+
+    <aside class="panel control-panel">
+      <div class="panel-heading"><div><span class="section-kicker">02 / DNS QUERY</span><h2>Start a lookup</h2></div></div>
+      <label for="domain">Domain name</label>
+      <input id="domain" type="text" value="example.com" maxlength="100" spellcheck="false" autocomplete="off">
+      <label for="recordType">Record type</label>
+      <select id="recordType">
+        <option value="A">A — IPv4 address</option>
+        <option value="AAAA">AAAA — IPv6 address</option>
+        <option value="MX">MX — Mail server</option>
+        <option value="CNAME">CNAME — Alias</option>
+      </select>
+      <button class="primary" id="resolveBtn">▶ Resolve domain</button>
+      <button class="secondary" id="resetBtn">Reset simulation</button>
+      <div id="status" class="status" role="status">Ready. Enter a domain and begin.</div>
+      <div class="result">
+        <span class="section-kicker">LOOKUP RESULT</span>
+        <strong id="resultValue">Waiting for query…</strong>
+        <small id="resultMeta">The simulated response will appear here.</small>
+      </div>
+    </aside>
+  </section>
+
+  <section class="bottom-grid">
+    <article class="panel">
+      <div class="panel-heading"><div><span class="section-kicker">03 / DNS RECORDS</span><h2>Example answer records</h2></div><span class="pill">ILLUSTRATIVE</span></div>
+      <div class="record-list">
+        <div class="record"><span class="record-type">A</span><div><strong>example.com</strong><small>IPv4 address record</small></div><code>93.184.216.34</code></div>
+        <div class="record"><span class="record-type ipv6">AAAA</span><div><strong>example.com</strong><small>IPv6 address record</small></div><code>2001:db8::34</code></div>
+        <div class="record"><span class="record-type mx">MX</span><div><strong>example.com</strong><small>Mail exchanger record</small></div><code>mail.example.com</code></div>
+        <div class="record"><span class="record-type cname">CNAME</span><div><strong>www.example.com</strong><small>Canonical name / alias</small></div><code>example.com</code></div>
+      </div>
+    </article>
+    <article class="panel">
+      <div class="panel-heading"><div><span class="section-kicker">04 / KEY CONCEPTS</span><h2>Remember this</h2></div></div>
+      <div class="concept"><span>01</span><div><strong>Resolver cache</strong><p>A cached answer may let a resolver respond without querying every DNS level again.</p></div></div>
+      <div class="concept"><span>02</span><div><strong>Authoritative server</strong><p>Provides DNS records for the domain it is responsible for.</p></div></div>
+      <div class="concept"><span>03</span><div><strong>TTL</strong><p>Time to Live tells resolvers how long an answer may be cached.</p></div></div>
+    </article>
+  </section>
+
+  <section class="panel quiz">
+    <div><span class="section-kicker">05 / QUICK CHECK</span><h2>Test your understanding</h2><p class="muted">What is the main purpose of DNS?</p></div>
+    <div class="quiz-options">
+      <button class="quiz-option" data-answer="wrong">Encrypt every file on a computer</button>
+      <button class="quiz-option" data-answer="right">Translate domain names into records such as IP addresses</button>
+      <button class="quiz-option" data-answer="wrong">Choose the fastest keyboard</button>
+    </div>
+    <p class="feedback" id="quizFeedback" aria-live="polite">Choose an answer to check your understanding.</p>
+  </section>
+  <footer><span>CYBERVERSE LEARNING ENVIRONMENT</span><span>DNS Resolution · Educational simulation</span></footer>
+</main>
+<script src="js/labs/dns-resolution.js"></script>
+</body>
+</html>

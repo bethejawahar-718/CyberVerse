@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | TCP & UDP Simulation Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span><span>Cyber<span class="green">Verse</span><small>NETWORKING LAB / NET-08</small></span></a>
+    <div class="status"><i></i> SIMULATION MODE</div>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">MODULE 02 · COMPUTER NETWORKING</p>
+      <h1>TCP <span>vs</span> UDP</h1>
+      <p class="lead">Compare two transport-layer protocols and experiment with packet delivery, ordering, loss, and retransmission in a safe simulation.</p>
+      <div class="notice"><b>Educational simulation:</b> These are fictional packets. Nothing is sent over your real network.</div>
+    </section>
+
+    <section class="control-grid">
+      <article class="panel controls">
+        <div class="heading"><div><span class="step">01</span><h2>Configure transmission</h2></div><span class="tag">SETUP</span></div>
+        <label for="protocol">Transport protocol</label>
+        <select id="protocol"><option value="tcp">TCP · reliable, ordered</option><option value="udp">UDP · connectionless</option></select>
+        <label for="packetCount">Number of packets</label>
+        <div class="range-line"><input id="packetCount" type="range" min="4" max="10" value="6"><output id="packetCountValue">6 packets</output></div>
+        <label for="lossRate">Simulated packet loss</label>
+        <div class="range-line"><input id="lossRate" type="range" min="0" max="50" step="10" value="20"><output id="lossRateValue">20%</output></div>
+        <div class="check-row"><input id="reorder" type="checkbox"><label for="reorder">Simulate out-of-order arrival</label></div>
+        <div class="actions"><button id="runBtn" class="primary">▶ Run transmission</button><button id="resetBtn" class="secondary">Reset</button></div>
+      </article>
+
+      <article class="panel summary">
+        <div class="heading"><div><span class="step">02</span><h2>Transmission summary</h2></div><span id="status" class="tag">READY</span></div>
+        <div class="stats">
+          <div><small>Sent</small><strong id="sent">—</strong></div>
+          <div><small>Received</small><strong id="received">—</strong></div>
+          <div><small>Lost</small><strong id="lost">—</strong></div>
+          <div><small>Retransmissions</small><strong id="retries">—</strong></div>
+        </div>
+        <div class="summary-note" id="summaryNote">Run the simulation to compare protocol behavior.</div>
+      </article>
+    </section>
+
+    <section class="panel packet-panel">
+      <div class="heading"><div><span class="step">03</span><h2>Packet journey</h2></div><span class="tag">VISUALIZER</span></div>
+      <div class="endpoint-row"><span><i class="endpoint-dot"></i> Sender</span><span class="wire"></span><span><i class="endpoint-dot receiver"></i> Receiver</span></div>
+      <div id="packetGrid" class="packet-grid"><p class="muted">Your packet results will appear here after running the simulation.</p></div>
+      <div class="legend"><span><i class="key delivered"></i>Delivered</span><span><i class="key dropped"></i>Lost</span><span><i class="key retried"></i>Retransmitted</span><span><i class="key reordered"></i>Out of order</span></div>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="panel log-panel">
+        <div class="heading"><div><span class="step">04</span><h2>Event log</h2></div><span class="tag">TRACE</span></div>
+        <div id="eventLog" class="event-log"><p class="muted">No transmission yet.</p></div>
+      </article>
+      <article class="panel concept-panel">
+        <div class="heading"><div><span class="step">05</span><h2>Protocol comparison</h2></div><span class="tag">LEARN</span></div>
+        <div class="compare-row"><b>TCP</b><p>Establishes a connection and provides reliable, ordered byte-stream delivery using acknowledgments and retransmissions.</p></div>
+        <div class="compare-row"><b>UDP</b><p>Sends independent datagrams without guaranteeing delivery, order, or retransmission.</p></div>
+        <p class="footnote">This simplified model illustrates concepts, not every detail of the real TCP or UDP protocol implementations.</p>
+      </article>
+    </section>
+    <footer>CyberVerse · NET-08 TCP & UDP · Simulated packet traffic only</footer>
+  </main>
+  <script src="js/tcp-udp-simulator.js"></script>
+</body>
+</html>

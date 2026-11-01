@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CyberVerse NET-04 interactive IPv4 addressing and subnetting learning lab.">
+<title>NET-04 | IP Addressing &amp; Subnetting — CyberVerse</title>
+<link rel="stylesheet" href="ip-subnetting.css">
+<script src="ip-subnetting.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../networking.html">Networking</a><span>/</span><span>NET-04: IP Addressing</span></nav>
+  <span class="status"><span class="status-dot"></span> SIMULATION MODE</span>
+</header>
+<main class="container">
+<section class="hero"><p class="eyebrow">COMPUTER NETWORKING / LAB 04</p><h1>IP Addressing <span class="accent">&amp; Subnetting</span></h1><p class="intro">Explore IPv4 addresses, CIDR prefixes, subnet masks, network boundaries, and host ranges with an interactive calculator and practice challenges.</p><div class="hero-tags"><span>IPv4 / CIDR</span><span>Binary breakdown</span><span>Subnet challenges</span><span>5-question quiz</span></div></section>
+<section class="notice"><span class="notice-icon">i</span><p><strong>Educational simulation:</strong> This page calculates IPv4 subnet details locally in your browser. It does not scan networks, contact hosts, or change device network settings. The /31 and /32 cases are handled separately from traditional subnet host rules.</p></section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">01 / CALCULATOR</p><h2>IPv4 subnet calculator</h2></div><span class="chip">Local calculation</span></div>
+<p class="muted">Enter an IPv4 address and prefix length. You can use any prefix from /0 through /32.</p>
+<form id="calculatorForm" novalidate>
+<div class="calc-inputs"><div class="field"><label for="ipAddress">IPv4 address</label><input id="ipAddress" type="text" inputmode="decimal" value="192.168.1.75" autocomplete="off" spellcheck="false" aria-describedby="ipHelp"><small id="ipHelp">Example: 192.168.1.75</small></div><div class="field prefix-field"><label for="prefix">CIDR prefix</label><div class="prefix-control"><span>/</span><input id="prefix" type="number" min="0" max="32" step="1" value="26" inputmode="numeric"></div><small>Valid range: 0–32</small></div><button class="btn btn-primary calculate-btn" type="submit">Calculate subnet</button></div>
+<p id="inputError" class="feedback error" role="alert" hidden></p>
+</form>
+<div id="results" class="results" aria-live="polite">
+<div class="result-card"><span>NETWORK ADDRESS</span><strong id="networkAddress">192.168.1.64</strong><small>Subnet identifier</small></div>
+<div class="result-card"><span>BROADCAST ADDRESS</span><strong id="broadcastAddress">192.168.1.127</strong><small id="broadcastNote">Traditional IPv4 broadcast</small></div>
+<div class="result-card"><span>USABLE HOST RANGE</span><strong id="hostRange">192.168.1.65 – 192.168.1.126</strong><small id="hostNote">62 usable host addresses</small></div>
+<div class="result-card"><span>SUBNET MASK</span><strong id="subnetMask">255.255.255.192</strong><small id="wildcardMask">Wildcard: 0.0.0.63</small></div>
+<div class="result-card"><span>TOTAL ADDRESSES</span><strong id="totalAddresses">64</strong><small id="hostCapacity">62 traditionally usable hosts</small></div>
+<div class="result-card"><span>ADDRESS IN SUBNET</span><strong id="addressClass">192.168.1.75</strong><small id="prefixSummary">26 network bits · 6 host bits</small></div>
+</div>
+<div class="toolbar"><button class="btn btn-quiet" id="useExample">Load example</button><button class="btn btn-quiet" id="copySummary">Copy summary</button><span id="copyFeedback" class="feedback" role="status"></span></div>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">02 / BINARY VIEW</p><h2>Subnet mask in binary</h2></div><span class="chip">32 bits</span></div>
+<p class="muted">A prefix tells how many leading bits belong to the network portion. Green bits below are network bits; blue bits are host bits.</p>
+<div class="legend"><span><i class="swatch network-swatch"></i> Network bits (1s in mask)</span><span><i class="swatch host-swatch"></i> Host bits (0s in mask)</span></div>
+<div id="binaryRows" class="binary-rows"></div>
+<div class="binary-summary"><div><span>NETWORK BITS</span><strong id="networkBits">26</strong></div><div><span>HOST BITS</span><strong id="hostBits">6</strong></div><div><span>MASK BINARY</span><strong id="maskBinary">11111111.11111111.11111111.11000000</strong></div></div>
+<p id="binaryExplanation" class="explanation">A /26 prefix has 26 network bits and 6 host bits.</p>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">03 / SUBNET CHALLENGE</p><h2>Subnetting practice</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="challengeScore">0</span> pts</strong></div></div>
+<p class="muted">Answer each question using the calculator or your own working. Each correct answer earns 10 points once per question. Use hints if you get stuck.</p>
+<div class="challenge-card"><div class="challenge-meta"><span id="challengeCounter" class="eyebrow">CHALLENGE 01 / 04</span><span class="chip" id="challengeType">Network address</span></div><h3 id="challengeQuestion"></h3><div class="answer-row"><label class="sr-only" for="challengeAnswer">Your answer</label><input id="challengeAnswer" type="text" placeholder="Enter your answer" autocomplete="off" spellcheck="false"><button class="btn btn-primary" id="checkChallenge">Check answer</button></div><div class="toolbar challenge-tools"><button class="btn btn-quiet" id="showHint">Show hint</button><button class="btn btn-secondary" id="nextChallenge" disabled>Next challenge →</button><button class="btn btn-quiet" id="resetChallenge">Restart</button></div><p id="challengeHint" class="hint" hidden></p><p id="challengeFeedback" class="feedback" role="status">Type your answer and check it.</p></div>
+</section>
+
+<section class="panel">
+<p class="eyebrow">04 / QUICK QUIZ</p><h2>Check your understanding</h2><p class="muted">Five multiple-choice questions with explanations.</p>
+<div id="quizQuestions"></div><div class="toolbar"><button class="btn btn-primary" id="checkQuiz">Check quiz</button><button class="btn btn-quiet" id="resetQuiz">Reset quiz</button><span class="feedback" id="quizFeedback" role="status">Answer the questions, then check your work.</span></div>
+</section>
+<footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>NET-04 · IP Addressing &amp; Subnetting</span></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberVerse | Networking Devices Lab</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">CV</span><div><strong>CyberVerse</strong><small>Understand. Experiment. Defend.</small></div></div>
+  <span class="lab-label">SIMULATION LAB · NET-10</span>
+</header>
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">COMPUTER NETWORKING / LESSON 10</p>
+    <h1>Networking Devices</h1>
+    <p>Explore common network devices, place them in a small network, and test simulated connectivity.</p>
+    <div class="notice"><strong>Educational simulation:</strong> This lab does not connect to real devices or send network traffic.</div>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 01</p><h2>Device explorer</h2></div><span class="pill">Learn</span></div>
+    <p class="muted">Choose a device to learn what it does and where it is commonly used.</p>
+    <div class="device-grid" id="device-grid"></div>
+    <div class="details" id="device-details" aria-live="polite">Select a device to view its description.</div>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 02</p><h2>Network architecture workspace</h2></div><span class="pill blue">Build &amp; test</span></div>
+    <p class="muted">Add devices, connect two selected devices, then test whether the simulated path contains the required network equipment.</p>
+    <div class="workspace-controls">
+      <label for="device-type">Add a device</label>
+      <select id="device-type">
+        <option value="pc">Computer</option><option value="switch">Switch</option><option value="router">Router</option>
+        <option value="hub">Hub</option><option value="modem">Modem</option><option value="ap">Access point</option><option value="firewall">Firewall</option>
+      </select>
+      <button id="add-device" class="secondary">Add device</button>
+    </div>
+    <div class="workspace">
+      <div class="device-list">
+        <h3>Devices</h3>
+        <p class="tiny muted">Select a source and destination below.</p>
+        <div id="device-list"></div>
+      </div>
+      <div class="network-view">
+        <div class="network-caption">SIMULATED NETWORK MAP</div>
+        <svg id="network-svg" viewBox="0 0 600 300" role="img" aria-label="Network diagram showing the current simulated devices and connections">
+          <text x="300" y="150" text-anchor="middle" fill="#91a7bd">Add devices to begin</text>
+        </svg>
+      </div>
+    </div>
+    <div class="connect-controls">
+      <div><label for="source-device">Source</label><select id="source-device"></select></div>
+      <div><label for="target-device">Destination</label><select id="target-device"></select></div>
+      <button id="connect-devices" class="secondary">Connect selected</button>
+      <button id="test-path" class="primary">Test connectivity</button>
+      <button id="reset-workspace" class="ghost">Reset workspace</button>
+    </div>
+    <div class="feedback" id="workspace-feedback" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 03</p><h2>Quick knowledge check</h2></div><span class="pill">Quiz</span></div>
+    <div id="quiz"></div>
+    <div class="actions"><button id="submit-quiz" class="primary">Check answers</button><button id="retry-quiz" class="ghost">Try again</button></div>
+    <div class="feedback" id="quiz-feedback" role="status" aria-live="polite"></div>
+  </section>
+  <footer>CyberVerse · NET-10 · Educational simulation only</footer>
+</main>
+<script src="js/lab.js"></script>
+</body>
+</html>

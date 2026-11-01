@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | Latency & Packet Loss Lab</title>
+  <link rel="stylesheet" href="css/latency-packet-loss.css">
+  <script src="js/labs/latency-packet-loss.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">CV</span> CyberVerse</a>
+    <span class="lab-label">PRACTICAL LAB / NETWORKING</span>
+  </header>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">COMPUTER NETWORKING · EXTRA LESSON</p>
+      <h1>Latency & Packet Loss Lab</h1>
+      <p class="intro">Adjust a fictional network path, send simulated packets, and observe how delay, jitter, and packet loss affect application quality.</p>
+      <div class="notice"><strong>Simulation only:</strong> no real packets are sent, and your computer's network is not measured or changed.</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">01 / NETWORK PROFILE</p><h2>Configure the path</h2></div><button id="reset" class="button button-quiet" type="button">Reset defaults</button></div>
+      <div class="controls">
+        <label>Base latency <output id="latencyOut">60 ms</output><input id="latency" type="range" min="5" max="300" step="5" value="60"></label>
+        <label>Jitter <output id="jitterOut">10 ms</output><input id="jitter" type="range" min="0" max="100" step="5" value="10"></label>
+        <label>Packet loss <output id="lossOut">2%</output><input id="loss" type="range" min="0" max="40" step="1" value="2"></label>
+        <label>Bandwidth <output id="bandwidthOut">20 Mbps</output><input id="bandwidth" type="range" min="1" max="100" step="1" value="20"></label>
+      </div>
+      <div class="preset-row"><span>Quick profiles:</span><button class="preset" data-preset="good" type="button">Stable</button><button class="preset" data-preset="busy" type="button">Congested</button><button class="preset" data-preset="poor" type="button">Unstable</button></div>
+    </section>
+
+    <section class="metrics">
+      <article class="metric"><span>Average RTT</span><strong id="avgRtt">—</strong><small>round-trip time</small></article>
+      <article class="metric"><span>Jitter observed</span><strong id="observedJitter">—</strong><small>variation between RTTs</small></article>
+      <article class="metric"><span>Packets lost</span><strong id="lostCount">—</strong><small>out of 20 simulated packets</small></article>
+      <article class="metric"><span>Delivery rate</span><strong id="delivery">—</strong><small>successfully delivered</small></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">02 / PACKET RUN</p><h2>Send 20 simulated packets</h2></div><button id="run" class="button" type="button">▶ Run simulation</button></div>
+      <p class="muted">Each run generates a new sample of 20 packets using the selected settings. Results are illustrative, not measurements of a real network.</p>
+      <div id="status" class="status" aria-live="polite">Ready. Configure the path and run a simulation.</div>
+      <div id="packetGrid" class="packet-grid" aria-label="Simulated packet results"></div>
+      <div class="chart-wrap"><div class="chart-heading"><strong>Packet round-trip times</strong><span>milliseconds</span></div><div id="bars" class="bars"><p class="empty">Run a simulation to display packet results.</p></div></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">03 / INTERPRETATION</p><h2>What does it mean?</h2></div></div>
+      <div id="interpretation" class="interpretation"><p>After a run, this area explains how your selected conditions may affect interactive applications.</p></div>
+      <div class="concepts">
+        <div><strong>Latency</strong><p>How long data takes to travel and return. High latency makes interactions feel delayed.</p></div>
+        <div><strong>Jitter</strong><p>How much latency varies over time. High jitter can make voice or video choppy.</p></div>
+        <div><strong>Packet loss</strong><p>Packets that fail to arrive. Applications may need to recover, retransmit, or tolerate missing data.</p></div>
+        <div><strong>Bandwidth</strong><p>The available data-carrying capacity. High bandwidth does not automatically mean low latency.</p></div>
+      </div>
+    </section>
+    <footer>CyberVerse · Understand. Experiment. Defend. <span>Educational simulation — not a live network test.</span></footer>
+  </main>
+</body>
+</html>

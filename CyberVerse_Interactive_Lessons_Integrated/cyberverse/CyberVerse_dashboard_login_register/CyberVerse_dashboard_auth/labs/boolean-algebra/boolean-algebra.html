@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CyberVerse interactive Boolean algebra learning lab.">
+  <title>DE-05 | Boolean Algebra Lab — CyberVerse</title>
+  <link rel="stylesheet" href="boolean-algebra.css">
+  <script src="boolean-algebra.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html" aria-label="CyberVerse home"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+    <nav aria-label="Breadcrumb"><a href="../digital-electronics.html">Digital Electronics</a><span>/</span><span aria-current="page">DE-05: Boolean Algebra</span></nav>
+    <span class="status"><span class="status-dot"></span> INTERACTIVE SIMULATION</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">DIGITAL ELECTRONICS / LAB 05</p>
+      <h1>Boolean <span class="accent">Algebra</span></h1>
+      <p class="intro">Build a logic expression, generate its truth table, and compare expressions to discover when two circuits behave the same.</p>
+      <div class="hero-tags"><span>01 · Logic expressions</span><span>02 · Truth tables</span><span>03 · Equivalence challenge</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / EXPRESSION BUILDER</p><h2>Build a Boolean expression</h2></div>
+        <span class="chip">A, B, C → 0 or 1</span>
+      </div>
+      <p class="muted">Use variables A, B and C with AND, OR, NOT and parentheses. Operators can be written as <code>AND</code>, <code>OR</code>, <code>NOT</code> or symbols <code>&amp;&amp;</code>, <code>||</code>, <code>!</code>. Use explicit operators, for example <code>(A AND B) OR NOT C</code>.</p>
+      <label class="field-label" for="expressionInput">Your expression</label>
+      <div class="expression-row">
+        <input id="expressionInput" type="text" value="(A AND B) OR NOT C" autocomplete="off" spellcheck="false" aria-describedby="expressionHelp">
+        <button class="btn btn-primary" id="generateBtn" type="button">Generate table</button>
+      </div>
+      <p id="expressionHelp" class="small muted">Allowed variables: A, B, C. Use parentheses to group operations.</p>
+      <div class="examples" aria-label="Expression examples">
+        <button type="button" class="example-btn" data-expression="A AND B">A AND B</button>
+        <button type="button" class="example-btn" data-expression="A OR B">A OR B</button>
+        <button type="button" class="example-btn" data-expression="NOT A">NOT A</button>
+        <button type="button" class="example-btn" data-expression="(A AND B) OR C">(A AND B) OR C</button>
+        <button type="button" class="example-btn" data-expression="NOT (A OR B)">NOT (A OR B)</button>
+      </div>
+      <p id="expressionFeedback" class="feedback" role="status">Expression ready. Generate a truth table to evaluate it.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 / RESULTS</p><h2>Truth table</h2></div>
+        <div class="result-pill"><span>ROWS</span><strong id="rowCount">8</strong></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">Output</th></tr></thead>
+          <tbody id="truthTableBody"></tbody>
+        </table>
+      </div>
+      <p class="muted small">Rows show every possible input combination for three variables. The output is calculated in your browser using Boolean logic.</p>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <p class="eyebrow">03 / LAW GUIDE</p>
+        <h2>Common Boolean laws</h2>
+        <div class="law-list">
+          <div class="law"><strong>Identity</strong><code>A AND 1 = A</code><code>A OR 0 = A</code></div>
+          <div class="law"><strong>Domination</strong><code>A AND 0 = 0</code><code>A OR 1 = 1</code></div>
+          <div class="law"><strong>Idempotent</strong><code>A AND A = A</code><code>A OR A = A</code></div>
+          <div class="law"><strong>Complement</strong><code>A AND NOT A = 0</code><code>A OR NOT A = 1</code></div>
+          <div class="law"><strong>De Morgan</strong><code>NOT (A AND B) = NOT A OR NOT B</code><code>NOT (A OR B) = NOT A AND NOT B</code></div>
+        </div>
+        <div class="notice"><strong>Notation</strong><p>In Boolean algebra, 1 means TRUE and 0 means FALSE. AND is true only when both inputs are true; OR is true when at least one input is true.</p></div>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">04 / COMPARE</p>
+        <h2>Are these expressions equivalent?</h2>
+        <p class="muted">Two expressions are equivalent when they produce the same output for every input combination.</p>
+        <label class="field-label" for="exprOne">Expression 1</label>
+        <input class="full-input" id="exprOne" value="NOT (A AND B)" spellcheck="false" autocomplete="off">
+        <label class="field-label" for="exprTwo">Expression 2</label>
+        <input class="full-input" id="exprTwo" value="NOT A OR NOT B" spellcheck="false" autocomplete="off">
+        <button class="btn btn-primary compare-btn" id="compareBtn" type="button">Compare expressions</button>
+        <p id="compareFeedback" class="feedback" role="status">Compare both expressions to test De Morgan's law.</p>
+        <div id="compareTable" class="table-wrap compare-table" hidden></div>
+      </article>
+    </section>
+
+    <section class="panel challenge-panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">05 / TEST YOURSELF</p><h2>Equivalence challenge</h2></div>
+        <div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div>
+      </div>
+      <p class="muted">Check whether the two expressions in this challenge are equivalent for all input combinations.</p>
+      <div class="challenge-card">
+        <div class="challenge-expressions"><span class="value-label">EXPRESSION A</span><code id="challengeA">A AND (B OR C)</code><span class="value-label second-label">EXPRESSION B</span><code id="challengeB">(A AND B) OR (A AND C)</code></div>
+        <div class="challenge-actions">
+          <button class="btn btn-secondary" id="challengeYes" type="button">Equivalent</button>
+          <button class="btn btn-secondary" id="challengeNo" type="button">Not equivalent</button>
+          <button class="btn btn-primary" id="newChallengeBtn" type="button">New challenge</button>
+        </div>
+      </div>
+      <p id="challengeFeedback" class="feedback" role="status">Choose whether both expressions always match.</p>
+    </section>
+
+    <section class="panel quiz-panel">
+      <p class="eyebrow">06 / QUICK QUIZ</p>
+      <h2>Check your understanding</h2>
+      <div id="quizQuestions"></div>
+      <div class="toolbar"><button class="btn btn-primary" id="quizSubmitBtn" type="button">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer all five questions, then check.</span></div>
+    </section>
+
+    <footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>DE-05 · Boolean Algebra Lab</span></footer>
+  </main>
+</body>
+</html>

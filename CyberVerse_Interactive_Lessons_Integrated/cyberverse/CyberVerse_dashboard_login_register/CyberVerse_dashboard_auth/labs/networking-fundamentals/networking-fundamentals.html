@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CyberVerse NET-01 interactive networking fundamentals simulation lab.">
+<title>NET-01 | Networking Fundamentals — CyberVerse</title>
+<link rel="stylesheet" href="networking-fundamentals.css">
+<script src="networking-fundamentals.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../networking.html">Networking</a><span>/</span><span>NET-01: Fundamentals</span></nav>
+  <span class="status"><span class="status-dot"></span> SIMULATION MODE</span>
+</header>
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">COMPUTER NETWORKING / LAB 01</p>
+    <h1>Networking <span class="accent">Fundamentals</span></h1>
+    <p class="intro">Build a tiny network, connect devices, and test whether simulated computers can communicate. Learn what PCs, switches, routers, and network links do.</p>
+    <div class="hero-tags"><span>01 · Devices</span><span>02 · Topology builder</span><span>03 · Connectivity test</span><span>04 · Challenge</span></div>
+  </section>
+
+  <section class="notice"><span class="notice-icon">i</span><p><strong>Learning simulation:</strong> This lab models a small network entirely in your browser. It does not connect to your Wi-Fi, scan devices, send packets, or change real network settings.</p></section>
+
+  <section class="panel theory">
+    <div class="section-heading"><div><p class="eyebrow">LEARN FIRST</p><h2>Know your network devices</h2></div><span class="chip">Beginner level</span></div>
+    <div class="device-cards">
+      <article class="device-card"><span class="device-icon">▣</span><h3>PC / Host</h3><p>A device that sends and receives data, such as a laptop or desktop.</p></article>
+      <article class="device-card"><span class="device-icon">⇄</span><h3>Switch</h3><p>Connects devices in a local network and forwards frames toward the destination device.</p></article>
+      <article class="device-card"><span class="device-icon">⌘</span><h3>Router</h3><p>Connects different IP networks and forwards packets between them.</p></article>
+      <article class="device-card"><span class="device-icon">⟷</span><h3>Link</h3><p>A connection between two interfaces. This lab assumes each drawn link is working.</p></article>
+    </div>
+    <p class="muted small">Tip: A switch alone usually connects devices within the same LAN. A router is used when traffic must travel between different networks.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">01 / BUILD</p><h2>Topology builder</h2></div><span class="chip">Browser-only</span></div>
+    <p class="muted">Choose a device to add, then select two devices to connect them. Select a device and press Remove to delete it. You can also load a sample topology.</p>
+    <div class="builder-toolbar">
+      <label class="select-label" for="deviceType">Add device</label>
+      <select id="deviceType"><option value="pc">PC / Host</option><option value="switch">Switch</option><option value="router">Router</option></select>
+      <button class="btn btn-primary" id="addDeviceBtn" type="button">+ Add device</button>
+      <button class="btn btn-secondary" id="sampleBtn" type="button">Load sample network</button>
+      <button class="btn btn-quiet" id="clearBtn" type="button">Clear all</button>
+    </div>
+    <div class="workspace-head"><span><span class="live-dot"></span> NETWORK WORKSPACE</span><span id="deviceCount">0 devices · 0 links</span></div>
+    <div id="workspace" class="workspace" role="group" aria-label="Simulated network topology">
+      <div class="empty-state"><span>⌁</span><strong>Your topology starts here</strong><p>Add a device or load the sample network.</p></div>
+    </div>
+    <div class="builder-bottom">
+      <div class="selection-info" id="selectionInfo" role="status">Select a device to inspect it. Select two devices to create a link.</div>
+      <div class="button-row"><button class="btn btn-secondary" id="connectBtn" type="button" disabled>Connect selected</button><button class="btn btn-quiet" id="removeBtn" type="button" disabled>Remove selected</button></div>
+    </div>
+    <p class="muted small">Keyboard support: use Tab to focus a device and Enter/Space to select it. Connection lines represent simulated links only.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">02 / TEST</p><h2>Connectivity tester</h2></div><span class="chip">Simulated path check</span></div>
+    <p class="muted">Choose two hosts and test whether a path exists between them. The lab checks the links you built; it does not perform a real ping.</p>
+    <div class="test-controls">
+      <label>Source host<select id="sourceHost"></select></label>
+      <label>Destination host<select id="destinationHost"></select></label>
+      <button class="btn btn-primary" id="testBtn" type="button">Test connectivity</button>
+    </div>
+    <div class="test-result" id="testResult" role="status"><span class="result-symbol">?</span><div><strong>Ready to test</strong><p>Add at least two PCs to test a simulated path.</p></div></div>
+    <div class="path-display" id="pathDisplay" hidden></div>
+  </section>
+
+  <section class="panel challenge-panel">
+    <div class="section-heading"><div><p class="eyebrow">03 / CHALLENGE</p><h2>Build a working LAN</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div></div>
+    <p class="muted">Goal: create a topology with at least two PCs and one switch, connect both PCs to the switch, then verify connectivity.</p>
+    <div class="goal-list"><div id="goalDevices" class="goal-item">○ Add at least 2 PCs and 1 switch</div><div id="goalLinks" class="goal-item">○ Connect both PCs to the switch</div><div id="goalTest" class="goal-item">○ Successfully test PC-to-PC connectivity</div></div>
+    <div class="toolbar"><button class="btn btn-primary" id="checkChallengeBtn" type="button">Check challenge</button><button class="btn btn-quiet" id="resetChallengeBtn" type="button">Reset challenge score</button></div>
+    <p class="feedback" id="challengeFeedback" role="status">Complete the three goals to earn 30 points.</p>
+  </section>
+
+  <section class="panel quiz-panel">
+    <p class="eyebrow">04 / QUICK QUIZ</p><h2>Check your understanding</h2>
+    <div id="quizQuestions"></div>
+    <div class="toolbar"><button class="btn btn-primary" id="quizSubmitBtn" type="button">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer all five questions, then check.</span></div>
+  </section>
+  <footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>NET-01 · Networking Fundamentals</span></footer>
+</main>
+</body>
+</html>

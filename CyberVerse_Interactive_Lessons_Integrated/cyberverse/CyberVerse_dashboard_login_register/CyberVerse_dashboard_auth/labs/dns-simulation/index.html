@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | DNS Simulation Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home"><span class="brand-mark">C</span><span>Cyber<span>Verse</span><small>NETWORKING LAB / NET-06</small></span></a>
+    <div class="status"><span class="dot"></span> SIMULATION MODE</div>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">MODULE 02 · COMPUTER NETWORKING</p>
+      <h1>DNS <span>Simulation Lab</span></h1>
+      <p class="lead">Follow a domain-name lookup from your device to a recursive resolver and authoritative DNS server.</p>
+      <div class="notice"><strong>Learning environment:</strong> This lab uses fictional, predefined DNS records. It does not send live DNS requests.</div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel query-panel">
+        <div class="panel-heading"><div><span class="step">01</span><h2>Start a lookup</h2></div><span class="tag">INPUT</span></div>
+        <label for="domain">Domain name</label>
+        <div class="query-row">
+          <input id="domain" list="domain-options" value="cyberverse.test" autocomplete="off" spellcheck="false" placeholder="example.test">
+          <datalist id="domain-options">
+            <option value="cyberverse.test"></option><option value="learn.test"></option><option value="mail.test"></option><option value="alias.test"></option>
+          </datalist>
+          <select id="recordType" aria-label="DNS record type">
+            <option value="A">A</option><option value="AAAA">AAAA</option><option value="CNAME">CNAME</option><option value="MX">MX</option>
+          </select>
+        </div>
+        <p class="hint">Try: cyberverse.test, learn.test, mail.test, or alias.test</p>
+        <div class="actions"><button id="runBtn" class="primary">▶ Run simulation</button><button id="resetBtn" class="secondary">Reset</button></div>
+      </div>
+
+      <div class="panel path-panel">
+        <div class="panel-heading"><div><span class="step">02</span><h2>Resolution path</h2></div><span id="pathStatus" class="tag">READY</span></div>
+        <div class="path" id="path">
+          <div class="node active"><span class="node-icon">▣</span><strong>Your device</strong><small>DNS query</small></div>
+          <span class="connector">······</span>
+          <div class="node"><span class="node-icon">↗</span><strong>Recursive resolver</strong><small>Finds the answer</small></div>
+          <span class="connector">······</span>
+          <div class="node"><span class="node-icon">⌘</span><strong>Authoritative DNS</strong><small>Source of record</small></div>
+        </div>
+        <div id="timeline" class="timeline" aria-live="polite"><p class="empty">Run a simulation to see each step.</p></div>
+      </div>
+
+      <div class="panel result-panel">
+        <div class="panel-heading"><div><span class="step">03</span><h2>DNS response</h2></div><span class="tag">RESULT</span></div>
+        <div id="result" class="result empty-result">Your simulated DNS answer will appear here.</div>
+        <div class="record-explainer"><strong id="recordTitle">Record type: A</strong><p id="recordDescription">An A record maps a domain name to an IPv4 address.</p></div>
+      </div>
+
+      <div class="panel records-panel">
+        <div class="panel-heading"><div><span class="step">04</span><h2>Dataset records</h2></div><span class="tag">REFERENCE</span></div>
+        <div class="table-wrap">
+          <table><thead><tr><th>Domain</th><th>Type</th><th>Value</th><th>TTL</th></tr></thead><tbody id="recordsBody"></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning">
+      <div><p class="eyebrow">QUICK CONCEPT</p><h2>What happens during DNS resolution?</h2></div>
+      <ol>
+        <li><strong>Client query</strong><span>Your device asks for a record associated with a domain.</span></li>
+        <li><strong>Recursive resolver</strong><span>The resolver finds a suitable answer, using cache or DNS servers.</span></li>
+        <li><strong>Authoritative answer</strong><span>The authoritative server provides the configured record.</span></li>
+      </ol>
+    </section>
+    <footer>CyberVerse · Educational simulation only · NET-06 DNS</footer>
+  </main>
+  <script src="js/dns-simulator.js"></script>
+</body>
+</html>

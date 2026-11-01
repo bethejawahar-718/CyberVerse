@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CyberVerse interactive sequential circuits lab.">
+  <title>DE-07 | Sequential Circuits — CyberVerse</title>
+  <link rel="stylesheet" href="sequential-circuits.css">
+  <script src="sequential-circuits.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html" aria-label="CyberVerse home"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../digital-electronics.html">Digital Electronics</a><span>/</span><span aria-current="page">DE-07: Sequential Circuits</span></nav>
+  <span class="status"><span class="status-dot"></span> INTERACTIVE SIMULATION</span>
+</header>
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">DIGITAL ELECTRONICS / LAB 07</p>
+    <h1>Sequential <span class="accent">Circuits</span></h1>
+    <p class="intro">Unlike combinational circuits, sequential circuits use stored state. Explore a basic SR latch, a clock-triggered D flip-flop, and a 4-bit binary counter.</p>
+    <div class="hero-tags"><span>01 · SR latch</span><span>02 · D flip-flop</span><span>03 · Clock pulses</span><span>04 · Binary counter</span></div>
+  </section>
+
+  <section class="notice"><span class="notice-icon">i</span><p><strong>Simulation note:</strong> These are simplified educational software models, not real electronic hardware. The SR latch uses active-high NOR-style behavior; S = 1 and R = 1 is an invalid input combination. The D flip-flop samples D only on a simulated rising clock edge.</p></section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">01 / SR LATCH</p><h2>Store one bit</h2></div><span class="chip">Set · Reset · Hold</span></div>
+    <p class="muted">An SR latch can remember one bit. S sets Q to 1, R resets Q to 0, and S = R = 0 holds the previous state.</p>
+    <div class="circuit-layout">
+      <div class="input-bank">
+        <label class="toggle-row">Set (S) <input id="srS" type="checkbox"><span class="switch"></span><b id="srSLabel">0</b></label>
+        <label class="toggle-row">Reset (R) <input id="srR" type="checkbox"><span class="switch"></span><b id="srRLabel">0</b></label>
+        <button class="btn btn-quiet" id="srReset" type="button">Reset stored state</button>
+      </div>
+      <div class="gate-visual"><div class="gate-symbol">SR</div><span>SR LATCH</span><div class="gate-lines">S / R → stored state Q</div></div>
+      <div class="output-bank"><div class="output"><span>Q</span><strong id="srQ">0</strong></div><div class="output"><span>Q̅</span><strong id="srQbar">1</strong></div></div>
+    </div>
+    <p class="feedback" id="srFeedback" role="status">No set or reset input: the latch holds its current state.</p>
+    <div class="truth-wrap"><table><thead><tr><th>S</th><th>R</th><th>Action</th><th>Next Q</th></tr></thead><tbody>
+      <tr id="srRow00"><td>0</td><td>0</td><td>Hold</td><td>Previous Q</td></tr>
+      <tr id="srRow10"><td>1</td><td>0</td><td>Set</td><td>1</td></tr>
+      <tr id="srRow01"><td>0</td><td>1</td><td>Reset</td><td>0</td></tr>
+      <tr id="srRow11"><td>1</td><td>1</td><td>Invalid</td><td>Undefined</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">02 / D FLIP-FLOP</p><h2>Sample data on a clock edge</h2></div><span class="chip">Rising-edge triggered</span></div>
+    <p class="muted">The D flip-flop captures the value of D when the clock changes from 0 to 1. Changes to D between rising edges do not change the stored Q value.</p>
+    <div class="circuit-layout">
+      <div class="input-bank">
+        <label class="toggle-row">Data (D) <input id="dInput" type="checkbox"><span class="switch"></span><b id="dInputLabel">0</b></label>
+        <div class="clock-readout"><span>Clock (CLK)</span><strong id="clockValue">0</strong><small id="clockEdge">Waiting for rising edge</small></div>
+        <button class="btn btn-primary" id="clockPulseBtn" type="button">Send clock pulse ↑</button>
+        <button class="btn btn-quiet" id="dResetBtn" type="button">Clear Q to 0</button>
+      </div>
+      <div class="gate-visual"><div class="gate-symbol">D</div><span>D FLIP-FLOP</span><div class="gate-lines">D is sampled on ↑ CLK</div></div>
+      <div class="output-bank"><div class="output"><span>STORED Q</span><strong id="dQ">0</strong></div><div class="output"><span>LAST SAMPLED D</span><strong id="lastD">—</strong></div></div>
+    </div>
+    <div class="event-log"><div class="log-heading"><strong>Event log</strong><button class="text-button" id="clearLogBtn" type="button">Clear log</button></div><ol id="eventLog"><li>Ready. Set D, then send a clock pulse.</li></ol></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">03 / 4-BIT BINARY COUNTER</p><h2>Count clock pulses</h2></div><span class="chip">0–15 · Modulo 16</span></div>
+    <p class="muted">Each rising clock pulse increments the counter by one. A 4-bit counter has 16 states, from 0000 to 1111, then wraps back to 0000.</p>
+    <div class="counter-display">
+      <div class="counter-bits" id="counterBits" aria-label="Counter bits"></div>
+      <div class="counter-values"><div><span>DECIMAL</span><strong id="counterDecimal">0</strong></div><div><span>HEX</span><strong id="counterHex">0x0</strong></div><div><span>PULSES</span><strong id="counterPulses">0</strong></div></div>
+    </div>
+    <div class="toolbar">
+      <button class="btn btn-primary" id="countPulseBtn" type="button">+1 clock pulse</button>
+      <button class="btn btn-secondary" id="countFiveBtn" type="button">Send 5 pulses</button>
+      <button class="btn btn-quiet" id="countResetBtn" type="button">Reset counter</button>
+    </div>
+    <div class="counter-track"><div id="counterProgress"></div></div>
+    <p class="muted small" id="counterMessage" role="status">Ready to count. The counter is a software simulation.</p>
+  </section>
+
+  <section class="panel challenge-panel">
+    <div class="section-heading"><div><p class="eyebrow">04 / TEST YOURSELF</p><h2>Sequential logic challenge</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div></div>
+    <p class="muted">Predict the circuit's next state. Choose an answer to receive feedback.</p>
+    <div class="challenge-card"><div><span class="value-label" id="challengeType">D FLIP-FLOP</span><strong id="challengePrompt">D = 1 at rising edge</strong><p class="muted small" id="challengeSubprompt">What will Q become?</p></div><div class="answer-options" id="challengeOptions"></div></div>
+    <p id="challengeFeedback" class="feedback" role="status">Choose an answer to check your understanding.</p>
+    <button class="btn btn-primary" id="newChallengeBtn" type="button">New challenge</button>
+  </section>
+
+  <section class="panel quiz-panel">
+    <p class="eyebrow">05 / QUICK QUIZ</p><h2>Check your understanding</h2>
+    <div id="quizQuestions"></div>
+    <div class="toolbar"><button class="btn btn-primary" id="quizSubmitBtn" type="button">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer the five questions, then check.</span></div>
+  </section>
+  <footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>DE-07 · Sequential Circuits</span></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CyberVerse educational phishing URL detection simulator. Analyze sample URLs locally and learn common warning signs.">
+  <title>Phishing URL Detection Simulator | CyberVerse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/simulator.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home">
+      <span class="brand-mark">CV<span>_</span></span>
+      <span><strong>CyberVerse</strong><small>Understand. Experiment. Defend.</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#practice">Practice</a>
+      <a href="#safety">Safety tips</a>
+    </nav>
+    <span class="mode-pill"><span class="pulse"></span> EDUCATION LAB</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> CYBERSECURITY FUNDAMENTALS / LAB 06</div>
+      <h1>Phishing URL <span>Detection</span><br>Simulator</h1>
+      <p class="hero-copy">Learn to spot suspicious links by checking their structure, domain, and common warning signs. Analysis happens locally in your browser.</p>
+      <div class="hero-tags"><span>01 / Inspect</span><span>02 / Understand</span><span>03 / Defend</span></div>
+    </section>
+
+    <section class="workspace" aria-labelledby="analyzer-title">
+      <div class="section-heading">
+        <div><div class="section-kicker">INTERACTIVE LAB</div><h2 id="analyzer-title">Analyze a URL</h2></div>
+        <span class="local-badge"><span>●</span> LOCAL ANALYSIS</span>
+      </div>
+      <p class="muted">Enter a URL you want to learn about, or select a harmless training example. Do not open suspicious links to test them.</p>
+      <form id="analyzer-form">
+        <label for="url-input">URL to inspect</label>
+        <div class="input-row">
+          <div class="url-prefix" aria-hidden="true">↗</div>
+          <input id="url-input" name="url" type="text" autocomplete="off" spellcheck="false"
+                 placeholder="https://example.com/account" maxlength="2048" required
+                 aria-describedby="input-help">
+          <button class="primary-btn" type="submit">Analyze URL <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="input-footer"><span id="input-help">Accepts a URL with or without https://</span><span id="char-count">0 / 2048</span></div>
+        <div id="form-error" class="form-error" role="alert" hidden></div>
+      </form>
+
+      <div class="examples">
+        <span class="examples-label">TRY A TRAINING EXAMPLE</span>
+        <button type="button" class="example-chip" data-example="https://www.wikipedia.org/">Trusted-style example</button>
+        <button type="button" class="example-chip" data-example="http://secure-login.example.invalid/account/verify">Suspicious pattern</button>
+        <button type="button" class="example-chip" data-example="https://example.com@malicious.example.invalid/login">Misleading @ symbol</button>
+        <button type="button" class="example-chip" data-example="https://xn--pple-43d.example.invalid/">Punycode example</button>
+      </div>
+    </section>
+
+    <section id="results" class="results" aria-live="polite" hidden>
+      <div class="result-top">
+        <div><div class="section-kicker">ANALYSIS REPORT</div><h2>Your URL assessment</h2></div>
+        <span id="verdict-badge" class="verdict-badge">Needs review</span>
+      </div>
+      <div class="score-layout">
+        <div class="score-card">
+          <div class="score-ring" id="score-ring"><div><strong id="risk-score">0</strong><span>RISK SCORE</span></div></div>
+          <p id="score-summary">Review the findings below.</p>
+          <div class="score-scale"><span>LOW</span><span>MODERATE</span><span>HIGH</span></div>
+        </div>
+        <div class="details-card">
+          <h3>URL details</h3>
+          <dl class="details-grid">
+            <div><dt>Protocol</dt><dd id="detail-protocol">—</dd></div>
+            <div><dt>Hostname</dt><dd id="detail-host">—</dd></div>
+            <div><dt>Domain label</dt><dd id="detail-domain">—</dd></div>
+            <div><dt>Port</dt><dd id="detail-port">Default</dd></div>
+          </dl>
+          <div class="url-preview"><span>INSPECTED ADDRESS</span><code id="normalized-url"></code></div>
+        </div>
+      </div>
+      <div class="findings-card">
+        <div class="findings-heading"><h3>Signals found</h3><span id="finding-count">0 checks</span></div>
+        <div id="findings-list" class="findings-list"></div>
+      </div>
+      <div class="disclaimer"><strong>Important:</strong> This score is a learning aid, not a verdict. A suspicious-looking URL is not proof of phishing, and a clean-looking URL can still be dangerous. This simulator does not contact the website, check live reputation, or guarantee safety.</div>
+    </section>
+
+    <section id="how-it-works" class="learn-section">
+      <div class="section-heading"><div><div class="section-kicker">LEARN THE SIGNALS</div><h2>What should you look for?</h2></div></div>
+      <div class="signal-grid">
+        <article class="signal-card"><span class="signal-icon">↗</span><h3>Hostname tricks</h3><p>Check the actual hostname, not just the brand name written somewhere in the URL. Text before an <code>@</code> may mislead you.</p><span class="signal-number">SIGNAL / 01</span></article>
+        <article class="signal-card"><span class="signal-icon">!</span><h3>Urgency &amp; login paths</h3><p>Words like “verify”, “account”, or “secure-login” can be used in phishing links. They are clues, not proof by themselves.</p><span class="signal-number">SIGNAL / 02</span></article>
+        <article class="signal-card"><span class="signal-icon">⌁</span><h3>Look-alike characters</h3><p>Punycode hostnames beginning with <code>xn--</code> can represent internationalized domain names. Inspect unfamiliar domains carefully.</p><span class="signal-number">SIGNAL / 03</span></article>
+        <article class="signal-card"><span class="signal-icon">◇</span><h3>HTTPS is not a guarantee</h3><p>HTTPS encrypts the connection, but phishing sites can use HTTPS too. Always verify the domain and the reason for the link.</p><span class="signal-number">SIGNAL / 04</span></article>
+      </div>
+    </section>
+
+    <section id="practice" class="practice-section">
+      <div class="practice-copy"><div class="section-kicker">KNOWLEDGE CHECK</div><h2>Can you spot the red flags?</h2><p>Choose the safest response when you receive an unexpected account-verification link.</p></div>
+      <div class="quiz-card" id="quiz-card">
+        <div class="quiz-progress"><span>QUESTION 01 / 01</span><span id="quiz-state">NOT ANSWERED</span></div>
+        <h3>An unexpected message says your account will be locked unless you sign in through a link. What should you do?</h3>
+        <div class="quiz-options">
+          <button type="button" class="quiz-option" data-correct="false"><span>A</span> Click quickly so the account is not locked.</button>
+          <button type="button" class="quiz-option" data-correct="true"><span>B</span> Avoid the link and visit the official site using a known address or app.</button>
+          <button type="button" class="quiz-option" data-correct="false"><span>C</span> Trust it if the link starts with HTTPS.</button>
+        </div>
+        <p id="quiz-feedback" class="quiz-feedback" role="status" hidden></p>
+        <button type="button" id="quiz-reset" class="text-btn" hidden>Try again ↻</button>
+      </div>
+    </section>
+
+    <section id="safety" class="safety-banner">
+      <div class="safety-symbol">✓</div>
+      <div><div class="section-kicker">DEFENDER CHECKLIST</div><h2>Pause. Inspect. Verify.</h2><p>Never enter passwords, one-time codes, or payment details on a page reached from an unexpected message. When unsure, contact the organization through an independently verified channel.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="footer-brand" href="#">CYBERVERSE<span>_</span></a><span>Educational simulation • No live URL requests • No data uploaded</span><span>LAB SEC-06</span></footer>
+</body>
+</html>

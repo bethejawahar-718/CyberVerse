@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse SEC-08 Security Hygiene Simulator">
+  <title>SEC-08 | Security Hygiene Simulator — CyberVerse</title>
+  <link rel="stylesheet" href="css/security-hygiene.css">
+</head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C<span>V</span></span><span><b>CYBERVERSE</b><small>INTERACTIVE SECURITY ACADEMY</small></span></a>
+    <div class="top-status"><i></i> SAFE PRACTICE LAB <span>SEC-08</span></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">CYBERSECURITY FUNDAMENTALS <b>/</b> MODULE 08</div>
+      <h1>Security <em>Hygiene</em></h1>
+      <p>Build everyday habits that protect your devices, accounts, and information. Complete the checklist, make safe decisions, and test what you have learned.</p>
+      <div class="tags"><span>Device protection</span><span>Account safety</span><span>Updates & backups</span><span>Safe browsing</span></div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><small>CHECKS COMPLETED</small><strong id="checksDone">0 <sup>/ 8</sup></strong></div>
+      <div class="stat"><small>SAFE HABITS CONFIRMED</small><strong id="habitsDone">0</strong></div>
+      <div class="stat progress-stat"><small>HYGIENE SCORE <b id="progressValue">0%</b></small><div class="progress"><span id="progressFill"></span></div></div>
+    </section>
+
+    <section class="main-grid">
+      <section class="panel checklist-panel">
+        <div class="panel-head"><div><small class="kicker">DAILY SECURITY ROUTINE</small><h2>Hygiene checklist</h2></div><span class="pill">8 HABITS</span></div>
+        <p class="muted">Review each practice and mark it when you understand how to apply it.</p>
+        <div id="habitList" class="habit-list"></div>
+        <div class="checklist-actions"><button id="resetChecks" class="text-btn">↻ Reset checklist</button><span id="checklistHint">Your progress is kept during this session.</span></div>
+      </section>
+
+      <aside class="panel tips-panel">
+        <small class="kicker">QUICK SECURITY GUIDE</small>
+        <h2>Small habits. Stronger protection.</h2>
+        <div class="tip"><span class="tip-icon cyan">⌑</span><div><b>Lock your devices</b><p>Use a screen lock and lock your device when you step away.</p></div></div>
+        <div class="tip"><span class="tip-icon green">↻</span><div><b>Update regularly</b><p>Install updates from trusted, official sources.</p></div></div>
+        <div class="tip"><span class="tip-icon amber">▣</span><div><b>Back up important data</b><p>Keep a backup and check that it can be restored.</p></div></div>
+        <div class="tip"><span class="tip-icon purple">◇</span><div><b>Think before you click</b><p>Check links, downloads, and unexpected requests.</p></div></div>
+        <div class="guide-note">A security routine works best when it is repeated consistently.</div>
+      </aside>
+    </section>
+
+    <section class="panel decision-panel">
+      <div class="panel-head"><div><small class="kicker">INTERACTIVE PRACTICE</small><h2>What would you do?</h2></div><span class="pill">4 SITUATIONS</span></div>
+      <p class="muted">Choose the safest action for each everyday situation. Feedback explains why it matters.</p>
+      <div class="quiz-layout">
+        <div class="question-side">
+          <div class="question-count" id="questionCount">SITUATION 01 / 04</div>
+          <h3 id="questionTitle">A device update is available</h3>
+          <p id="questionText"></p>
+          <div id="answerOptions" class="answer-options"></div>
+          <button id="checkAnswer" class="primary-btn" disabled>CHECK MY ANSWER <span>→</span></button>
+          <div id="answerFeedback" class="feedback hidden" aria-live="polite"></div>
+          <div class="quiz-controls"><button id="previousQuestion" class="nav-btn" disabled>← Previous</button><button id="nextQuestion" class="nav-btn" disabled>Next situation →</button></div>
+        </div>
+        <div class="side-visual">
+          <div class="visual-ring"><div class="visual-shield">✓</div></div>
+          <small>CYBERVERSE FIELD NOTE</small>
+          <b id="fieldNoteTitle">Keep software current</b>
+          <p id="fieldNote">Updates often include fixes for security weaknesses. Use the device's official update settings.</p>
+          <div class="mini-progress"><span id="quizProgress"></span></div>
+          <small id="quizProgressText">0 OF 4 ANSWERED</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <article class="panel principle"><div class="shield">◇</div><div><small class="kicker">THE CYBERVERSE RULE</small><h3>Make security a habit</h3><p>Use strong unique passwords, enable multi-factor authentication, install trusted updates, lock devices, back up important data, and stay alert to unexpected messages.</p></div></article>
+      <article class="panel result"><small class="kicker">YOUR MODULE RESULT</small><strong id="finalScore">0 <sup>/ 4</sup></strong><p id="resultText">Answer the four situations to see your result.</p><button id="restartModule" class="restart">↻ &nbsp; RESTART MODULE</button></article>
+    </section>
+    <footer><span>CYBERVERSE <b>•</b> BUILD SAFE HABITS. STAY SECURE.</span><span>SEC-08 / SECURITY HYGIENE</span></footer>
+  </main>
+  <script src="js/security-hygiene.js"></script>
+</body>
+</html>

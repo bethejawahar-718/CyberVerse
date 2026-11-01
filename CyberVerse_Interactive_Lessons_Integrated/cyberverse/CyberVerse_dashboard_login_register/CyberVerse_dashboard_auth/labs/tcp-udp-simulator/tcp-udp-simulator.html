@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive educational simulation comparing TCP and UDP behavior.">
+  <title>CyberVerse | TCP vs UDP Simulator</title>
+  <link rel="stylesheet" href="css/tcp-udp-simulator.css">
+  <script src="js/labs/tcp-udp-simulator.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home"><span class="brand-mark">CV</span><span>CYBER<span class="accent">VERSE</span><small>NETWORK LABS</small></span></a>
+    <span class="lab-tag"><span class="status-dot"></span> INTERACTIVE LAB</span>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">TRANSPORT LAYER · LAB 10</div>
+      <h1>TCP <span class="muted">vs</span> UDP</h1>
+      <p>Compare reliable, connection-oriented delivery with lightweight datagrams. Adjust the network conditions and watch the simulated packets move.</p>
+    </section>
+
+    <section class="protocol-grid">
+      <article class="protocol-card tcp-card">
+        <div class="protocol-head"><span class="protocol-icon">↔</span><div><h2>TCP</h2><p>Transmission Control Protocol</p></div><span class="pill reliable">RELIABLE</span></div>
+        <ul><li>Connection setup with a three-way handshake</li><li>Sequence numbers and acknowledgements</li><li>Lost segments can be retransmitted</li><li>Good for web pages, email and file transfers</li></ul>
+      </article>
+      <article class="protocol-card udp-card">
+        <div class="protocol-head"><span class="protocol-icon">➤</span><div><h2>UDP</h2><p>User Datagram Protocol</p></div><span class="pill fast">LOW OVERHEAD</span></div>
+        <ul><li>No connection handshake</li><li>Datagrams are sent independently</li><li>No built-in delivery acknowledgement or retry</li><li>Useful for live media, games and DNS queries</li></ul>
+      </article>
+    </section>
+
+    <section class="workspace panel">
+      <div class="section-title"><div><span class="eyebrow">SIMULATION CONTROLS</span><h2>Configure a transfer</h2></div><span class="simulation-badge">SIMULATION ONLY</span></div>
+      <div class="controls-grid">
+        <label class="field">Protocol
+          <select id="protocol"><option value="tcp">TCP — reliable stream</option><option value="udp">UDP — datagrams</option></select>
+        </label>
+        <label class="field">Packets to send <output id="packetCountOut">8</output>
+          <input id="packetCount" type="range" min="3" max="15" value="8">
+        </label>
+        <label class="field">Simulated packet loss <output id="lossOut">25%</output>
+          <input id="lossRate" type="range" min="0" max="60" step="5" value="25">
+        </label>
+        <label class="field">Application scenario
+          <select id="scenario"><option value="file">File transfer</option><option value="video">Live video stream</option><option value="game">Online game update</option><option value="dns">DNS lookup</option></select>
+        </label>
+      </div>
+      <div class="action-row"><button id="runBtn" class="primary-btn">▶ Run simulation</button><button id="resetBtn" class="secondary-btn">↺ Reset</button><span id="runStatus" class="run-status" aria-live="polite">Ready to simulate</span></div>
+    </section>
+
+    <section class="panel journey-panel">
+      <div class="section-title"><div><span class="eyebrow">PACKET JOURNEY</span><h2 id="journeyTitle">Ready for transmission</h2></div><span id="protocolChip" class="pill reliable">TCP</span></div>
+      <div class="network-lane">
+        <div class="endpoint"><span class="endpoint-icon">▣</span><strong>CLIENT</strong><small>Sender</small></div>
+        <div class="lane-center"><div class="lane-line"></div><div id="packetTrack" class="packet-track" aria-label="Packet animation area"></div><div class="lane-labels"><span>Send</span><span id="laneMiddle">Network</span><span>Receive</span></div></div>
+        <div class="endpoint"><span class="endpoint-icon">▤</span><strong>SERVER</strong><small>Receiver</small></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat"><span>Sent attempts</span><strong id="sentStat">—</strong></div>
+        <div class="stat"><span>Delivered</span><strong id="deliveredStat">—</strong></div>
+        <div class="stat"><span>Lost / dropped</span><strong id="lostStat">—</strong></div>
+        <div class="stat"><span>Retransmissions</span><strong id="retryStat">—</strong></div>
+      </div>
+      <div class="progress-wrap"><div class="progress-label"><span>Delivery completion</span><strong id="deliveryPct">0%</strong></div><div class="progress"><div id="progressBar"></div></div></div>
+    </section>
+
+    <section class="panel log-panel">
+      <div class="section-title"><div><span class="eyebrow">EVENT LOG</span><h2>What happened?</h2></div><span id="logCount" class="log-count">0 events</span></div>
+      <div id="eventLog" class="event-log" aria-live="polite"><div class="empty-state">Run the simulation to inspect the packet events.</div></div>
+    </section>
+
+    <section class="panel compare-panel">
+      <div class="section-title"><div><span class="eyebrow">KNOWLEDGE CHECK</span><h2>Quick quiz</h2></div><span class="eyebrow">3 QUESTIONS</span></div>
+      <div id="quiz" class="quiz"></div>
+      <div class="quiz-footer"><span id="quizResult" aria-live="polite">Choose an answer for each question.</span><button id="checkQuiz" class="secondary-btn">Check answers</button></div>
+    </section>
+    <footer>CyberVerse Network Labs · Educational simulation · No real packets are transmitted.</footer>
+  </main>
+</body>
+</html>
