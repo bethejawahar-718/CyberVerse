@@ -1,4 +1,3 @@
-
 {
   "name": "cyberverse",
   "version": "1.0.0",
@@ -7,5 +6,8 @@
   "scripts": {
     "backend": "npm --prefix backend start",
     "backend:dev": "npm --prefix backend run dev"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9"
   }
 }
