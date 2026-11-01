@@ -379,7 +379,7 @@ async function loadRoadmapLessons() {
     roadmap.innerHTML = "<p>Loading lessons...</p>";
 
     try {
-        const response = await fetch("http://localhost:5000/api/lessons");
+        const response = await fetch("https://cyberverse-bqt0.onrender.com/api/lessons");
 
         if (!response.ok) {
             throw new Error("Failed to fetch lessons");

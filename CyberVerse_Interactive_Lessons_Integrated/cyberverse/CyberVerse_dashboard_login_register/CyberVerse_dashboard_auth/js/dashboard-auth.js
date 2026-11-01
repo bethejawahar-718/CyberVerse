@@ -1,5 +1,5 @@
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://cyberverse-bqt0.onrender.com/api";
 
 // CHECK LOGIN SESSION
 async function checkDashboardAuth() {

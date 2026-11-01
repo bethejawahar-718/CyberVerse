@@ -1,5 +1,5 @@
 (() => {
-const API='http://localhost:5000/api', token=sessionStorage.getItem('cyberverseToken');
+const API='https://cyberverse-bqt0.onrender.com/api', token=sessionStorage.getItem('cyberverseToken');
 const $=id=>document.getElementById(id); let original={}, currentProfile={};
 const headers=()=>({Authorization:'Bearer '+token});
 function status(id,msg,error=false){const n=$(id);if(n){n.textContent=msg;n.classList.toggle('error',error)}}
