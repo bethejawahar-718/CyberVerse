@@ -17,10 +17,16 @@ const modules = [
 ];
 
 
+// ==========================================
 // INTERACTIVE LABS
+// ==========================================
+
 const labs = [
     {title:"Logic Gates Lab",desc:"Explore AND, OR, NOT and other logic gates.",category:"Digital Electronics",icon:"⌁",href:"../../cyberverse-logic-gates-lab/cyberverse-logic-gates-lab/logic-gates.html"},
-    {title:"Binary Arithmetic Lab",desc:"Practice binary addition and subtraction.",category:"Digital Electronics",icon:"01",href:"../../cyberverse-binary-arithmetic-lab/cyberverse-binary-arithmetic-lab/binary-arithmetic.html"},
+
+    // UPDATED: Binary Arithmetic Lab now uses the deployed frontend path.
+    {title:"Binary Arithmetic Lab",desc:"Practice binary addition and subtraction.",category:"Digital Electronics",icon:"01",href:"labs/binary-arithmetic/binary-arithmetic.html"},
+
     {title:"Bit Playground",desc:"Explore bit values and binary operations.",category:"Digital Electronics",icon:"01",href:"../../cyberverse-bit-playground/bit-playground.html"},
     {title:"Boolean Algebra Lab",desc:"Practice Boolean expressions and simplification.",category:"Digital Electronics",icon:"∧",href:"../../cyberverse-boolean-algebra-lab/boolean-algebra.html"},
     {title:"Combinational Circuits Lab",desc:"Explore combinational digital circuits.",category:"Digital Electronics",icon:"▦",href:"../../cyberverse-combinational-circuits-lab/combinational-circuits.html"},
@@ -57,7 +63,10 @@ const labs = [
 ];
 
 
+// ==========================================
 // LOCAL STORAGE
+// ==========================================
+
 const storeKeys = {
     saved: "cyberverse_saved_modules_v2",
     recent: "cyberverse_recent_items_v2"
@@ -97,7 +106,10 @@ const escapeHTML = value =>
     }[char]));
 
 
+// ==========================================
 // RECENTLY OPENED
+// ==========================================
+
 function remember(item) {
     recent = [
         item,
@@ -110,7 +122,10 @@ function remember(item) {
 }
 
 
+// ==========================================
 // LESSON MODULE CARDS
+// ==========================================
+
 function renderModuleCards() {
     const query = (el("moduleSearch")?.value || "").trim().toLowerCase();
     const sort = el("moduleSort")?.value || "order";
@@ -183,7 +198,10 @@ function renderModuleCards() {
 }
 
 
+// ==========================================
 // SAVE / UNSAVE
+// ==========================================
+
 function toggleSaved(id) {
     saved = saved.includes(id)
         ? saved.filter(x => x !== id)
@@ -197,7 +215,10 @@ function toggleSaved(id) {
 }
 
 
+// ==========================================
 // INTERACTIVE LABS
+// ==========================================
+
 function renderLabs() {
     const list = labs.filter(lab =>
         labFilter === "all" || lab.category === labFilter
@@ -239,7 +260,10 @@ function renderLabs() {
 }
 
 
+// ==========================================
 // SAVED MODULES
+// ==========================================
+
 function renderSaved() {
     const list = modules.filter(module => saved.includes(module.id));
 
@@ -272,7 +296,10 @@ function renderSaved() {
 }
 
 
+// ==========================================
 // CONTINUE EXPLORING
+// ==========================================
+
 function renderContinue() {
     const last = recent[0];
 
@@ -288,14 +315,20 @@ function renderContinue() {
 }
 
 
+// ==========================================
 // DASHBOARD STATISTICS
+// ==========================================
+
 function updateStats() {
     el("savedTotal").textContent = saved.length;
     el("recentTotal").textContent = recent.length;
 }
 
 
+// ==========================================
 // EVENT SETUP
+// ==========================================
+
 function setup() {
 
     el("moduleSearch").addEventListener("input", renderModuleCards);
@@ -339,7 +372,10 @@ function setup() {
 }
 
 
+// ==========================================
 // DASHBOARD INITIALIZATION
+// ==========================================
+
 if (el("dashboardModules")) {
     setup();
     renderModuleCards();
@@ -350,7 +386,10 @@ if (el("dashboardModules")) {
 }
 
 
+// ==========================================
 // HOME PAGE MODULES
+// ==========================================
+
 const home = el("homeModules");
 
 if (home) {
@@ -368,9 +407,10 @@ if (home) {
 }
 
 
-
-
+// ==========================================
 // ROADMAP MODULES - FETCH FROM MYSQL API
+// ==========================================
+
 const roadmap = el("roadmapList");
 
 async function loadRoadmapLessons() {
@@ -379,7 +419,9 @@ async function loadRoadmapLessons() {
     roadmap.innerHTML = "<p>Loading lessons...</p>";
 
     try {
-        const response = await fetch("https://cyberverse-bqt0.onrender.com/api/lessons");
+        const response = await fetch(
+            "https://cyberverse-bqt0.onrender.com/api/lessons"
+        );
 
         if (!response.ok) {
             throw new Error("Failed to fetch lessons");

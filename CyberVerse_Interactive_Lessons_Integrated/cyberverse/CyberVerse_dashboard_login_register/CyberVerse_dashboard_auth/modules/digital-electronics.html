@@ -1,6 +1,13 @@
+
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Digital Electronics | CyberVerse</title><link rel="stylesheet" href="../css/style.css"><style>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Electronics | CyberVerse</title>
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
 :root{--bg:#07111f;--panel:#101f32;--panel2:#142840;--line:#263d56;--text:#e8f2ff;--muted:#9db0c7;--cyan:#36d9ff;--green:#6dffb2;--blue:#6d9dff}
 .module-hero{background:radial-gradient(circle at 85% 15%,#123c56 0,transparent 35%),linear-gradient(135deg,#10243b,#091523);border:1px solid var(--line);border-radius:22px;padding:28px;margin:22px 0 18px}
 .module-hero h1{font-size:clamp(2rem,5vw,3.3rem);margin:8px 0}.module-hero p{max-width:760px;color:var(--muted);line-height:1.7}
@@ -14,92 +21,356 @@
 .lab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:15px 0 28px}.lab-link{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:var(--text);background:#102238;border:1px solid var(--line);padding:15px;border-radius:13px}.lab-link:hover{border-color:var(--cyan);transform:translateY(-2px)}
 .quiz-box{background:linear-gradient(145deg,#122940,#0b1a2b);border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0 35px}.quiz-question{font-size:1.15rem;font-weight:700;margin:8px 0 15px}.quiz-options{display:grid;gap:9px}.quiz-option{display:flex;gap:10px;align-items:center;text-align:left;background:#0a1828;border:1px solid #2b4058;border-radius:11px;padding:12px;color:var(--text);cursor:pointer}.quiz-option.selected{border-color:var(--cyan);background:#12334a}.quiz-feedback{min-height:25px;color:var(--green);margin:12px 0}.muted{color:var(--muted)}.module-footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding:22px 0;margin-top:25px}
 @media(max-width:600px){.module-hero{padding:20px}.lesson-card{min-height:0}.module-toolbar{align-items:stretch}}
-</style></head>
-<body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">C</span> CyberVerse</a><nav><a href="../index.html">Home</a><a href="../dashboard.html">Dashboard</a><a href="../roadmap.html">Roadmap</a></nav></header>
-<main class="wrap dashboard"><a class="back-link" href="../dashboard.html">← Back to Dashboard</a>
-<section class="module-hero"><div class="eyebrow">MODULE 01 · FOUNDATIONS · CYBERVERSE LEARNING PATH</div><h1>Digital Electronics</h1><p>Build the digital logic foundation behind computers, processors, and secure systems.</p>
-<div class="module-meta"><span class="pill">7 interactive lessons</span><span class="pill">7 practical labs</span><span class="pill">Knowledge check included</span></div></section>
-<div class="progress-wrap"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><strong>YOUR LEARNING PROGRESS</strong><span id="progressText" class="muted">0 of 7 lessons completed</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
-<div class="section-heading"><div><div class="eyebrow">LEARN STEP BY STEP</div><h2>Lessons</h2><p>Open a lesson to read the explanation, try the activity, and mark it complete.</p></div><button class="cv-btn" id="resetProgress">Reset progress</button></div>
-<div class="module-toolbar"><input id="lessonSearch" type="search" placeholder="Search lessons…"></div><div class="lesson-grid" id="lessonGrid"></div><section class="lesson-detail" id="lessonDetail"></section>
-<div class="section-heading"><div><div class="eyebrow">LEARN BY DOING</div><h2>Interactive labs</h2><p>Launch the existing CyberVerse simulations in a new tab.</p></div></div><div class="lab-grid" id="labGrid"><a class="lab-link" href="../../../cyberverse-binary-arithmetic-lab/cyberverse-binary-arithmetic-lab/binary-arithmetic.html" target="_blank" rel="noopener"><span>🧪 Binary Arithmetic Lab</span><span>↗</span></a>
-<a class="lab-link" href="../../../cyberverse-boolean-algebra-lab/boolean-algebra.html" target="_blank" rel="noopener"><span>🧪 Boolean Algebra Lab</span><span>↗</span></a>
-<a class="lab-link" href="../../../cyberverse-combinational-circuits-lab/combinational-circuits.html" target="_blank" rel="noopener"><span>🧪 Combinational Circuits Lab</span><span>↗</span></a>
-<a class="lab-link" href="../../../cyberverse-sequential-circuits-lab/sequential-circuits.html" target="_blank" rel="noopener"><span>🧪 Sequential Circuits Lab</span><span>↗</span></a>
-<a class="lab-link" href="../../../cyberverse-bit-playground/bit-playground.html" target="_blank" rel="noopener"><span>🧪 Bit Playground</span><span>↗</span></a>
-<a class="lab-link" href="../../../cyberverse-converter-lab/index.html" target="_blank" rel="noopener"><span>🧪 Number Converter</span><span>↗</span></a></div>
-<div class="section-heading"><div><div class="eyebrow">CHECK YOUR UNDERSTANDING</div><h2>Module quiz</h2><p>Answer each question and get immediate feedback.</p></div></div>
-<section class="quiz-box"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><strong id="quizTitle">Knowledge check</strong><span class="muted" id="quizCount"></span></div><div class="quiz-question" id="quizQuestion"></div><div class="quiz-options" id="quizOptions"></div><div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div><button class="cv-btn primary" id="quizNext">Check answer</button></section>
-<div class="module-footer"><a class="cv-btn" href="../dashboard.html">← Return to dashboard</a><a class="cv-btn" href="../roadmap.html">View learning roadmap →</a></div></main>
-<footer class="footer"><a href="../index.html">Home</a><span>CyberVerse · Understand. Experiment. Defend.</span><a href="../dashboard.html">Dashboard</a></footer>
-<script>window.CYBERV_ELESSONS = {"lessons": [["Number Systems & Data Representation", "Computers represent information using binary digits (0 and 1). Decimal is base 10, binary is base 2, octal is base 8, and hexadecimal is base 16. A positional digit's value depends on its position and the base.", "Try converting a decimal number into binary, then group binary digits in sets of four to read hexadecimal. Remember that each hexadecimal digit represents four binary bits.", "Number systems are useful when reading memory addresses, machine data, and network identifiers."], ["Binary Arithmetic", "Binary addition follows the same place-value idea as decimal addition, but each column contains only 0 and 1. The key rules are 0+0=0, 0+1=1, 1+0=1, and 1+1=10 (write 0 and carry 1).", "Work through 1011₂ + 0110₂ from the rightmost bit. Add each column and carry when the result is 2 or 3.", "Binary arithmetic is the basic arithmetic performed by digital circuits."], ["Bits, Bytes & Data Units", "A bit is one binary digit. A group of 8 bits is one byte. Larger units include KB, MB, GB, and TB. Storage capacity and data-transfer rate are related but are not the same measurement.", "A file of 2,048 bytes contains 2,048 × 8 bits. Compare bytes (B) with bits per second (bps) when reading network speeds.", "Digital information is stored and transmitted as patterns of bits."], ["Logic Gates", "Logic gates perform operations on binary inputs and produce a binary output. AND is 1 only when both inputs are 1; OR is 1 when at least one input is 1; NOT reverses the input. NAND, NOR, XOR, and XNOR are also common gates.", "Open the logic-gates lab. Change the A and B inputs and observe the output for each gate. Build a small truth table for AND and XOR.", "Logic gates are the building blocks of digital circuits and processor logic."], ["Boolean Algebra", "Boolean algebra describes logic using variables that can have only two values: 0 and 1. Common operations are AND (·), OR (+), and NOT (bar). Laws such as identity, complement, and De Morgan's laws help simplify logic expressions.", "Use the Boolean algebra lab to simplify an expression. Check that the original and simplified expressions produce the same outputs for all input combinations.", "Simpler expressions can lead to circuits with fewer gates and lower complexity."], ["Combinational Circuits", "A combinational circuit's output depends only on its current inputs. Examples include adders, subtractors, multiplexers, demultiplexers, encoders, and decoders.", "Explore the combinational-circuits lab. Identify the inputs and outputs of a half adder: Sum = A XOR B; Carry = A AND B.", "Combinational blocks are used in arithmetic units, data selection, and decoding."], ["Sequential Circuits", "A sequential circuit's output depends on current inputs and stored previous state. Flip-flops store one bit. Registers store groups of bits, while counters move through a sequence of states, often controlled by a clock.", "Open the sequential-circuits lab and observe how a clock or input changes stored state. Compare a latch/flip-flop with a purely combinational gate.", "Sequential circuits provide memory and timing behaviour inside digital systems."]], "labs": [["Binary Arithmetic Lab", "../../../cyberverse-binary-arithmetic-lab/cyberverse-binary-arithmetic-lab/binary-arithmetic.html"], ["Boolean Algebra Lab", "../../../cyberverse-boolean-algebra-lab/boolean-algebra.html"], ["Combinational Circuits Lab", "../../../cyberverse-combinational-circuits-lab/combinational-circuits.html"], ["Sequential Circuits Lab", "../../../cyberverse-sequential-circuits-lab/sequential-circuits.html"], ["Bit Playground", "../../../cyberverse-bit-playground/bit-playground.html"], ["Number Converter", "../../../cyberverse-converter-lab/index.html"]], "quiz": [["Which number system uses only 0 and 1?", ["Decimal", "Binary", "Octal", "Hexadecimal"], 1, "Binary is base 2 and uses only the digits 0 and 1."], ["How many bits are in one byte?", ["4", "8", "16", "32"], 1, "One byte contains 8 bits."], ["What is the output of AND when A=1 and B=0?", ["0", "1", "10", "Undefined"], 0, "AND produces 1 only when both inputs are 1."], ["Which circuit stores a bit of information?", ["Decoder", "Multiplexer", "Flip-flop", "Half adder"], 2, "A flip-flop is a one-bit storage element."], ["A combinational circuit output depends on:", ["Past state only", "Current inputs only", "Clock history only", "Stored program"], 1, "Combinational logic has no memory; its output is determined by current inputs."]]};</script><script>
+</style>
+</head>
+
+<body>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark">C</span> CyberVerse</a>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../dashboard.html">Dashboard</a>
+<a href="../roadmap.html">Roadmap</a>
+</nav>
+</header>
+
+<main class="wrap dashboard">
+<a class="back-link" href="../dashboard.html">← Back to Dashboard</a>
+
+<section class="module-hero">
+<div class="eyebrow">MODULE 01 · FOUNDATIONS · CYBERVERSE LEARNING PATH</div>
+<h1>Digital Electronics</h1>
+<p>Build the digital logic foundation behind computers, processors, and secure systems.</p>
+<div class="module-meta">
+<span class="pill">7 interactive lessons</span>
+<span class="pill">7 practical labs</span>
+<span class="pill">Knowledge check included</span>
+</div>
+</section>
+
+<div class="progress-wrap">
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<strong>YOUR LEARNING PROGRESS</strong>
+<span id="progressText" class="muted">0 of 7 lessons completed</span>
+</div>
+<div class="progress-track">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+</div>
+
+<div class="section-heading">
+<div>
+<div class="eyebrow">LEARN STEP BY STEP</div>
+<h2>Lessons</h2>
+<p>Open a lesson to read the explanation, try the activity, and mark it complete.</p>
+</div>
+<button class="cv-btn" id="resetProgress">Reset progress</button>
+</div>
+
+<div class="module-toolbar">
+<input id="lessonSearch" type="search" placeholder="Search lessons…">
+</div>
+
+<div class="lesson-grid" id="lessonGrid"></div>
+<section class="lesson-detail" id="lessonDetail"></section>
+
+<div class="section-heading">
+<div>
+<div class="eyebrow">LEARN BY DOING</div>
+<h2>Interactive labs</h2>
+<p>Launch the existing CyberVerse simulations in a new tab.</p>
+</div>
+</div>
+
+<div class="lab-grid" id="labGrid">
+<a class="lab-link" href="../labs/binary-arithmetic/binary-arithmetic.html" target="_blank" rel="noopener">
+<span>🧪 Binary Arithmetic Lab</span><span>↗</span>
+</a>
+<a class="lab-link" href="../../../cyberverse-boolean-algebra-lab/boolean-algebra.html" target="_blank" rel="noopener">
+<span>🧪 Boolean Algebra Lab</span><span>↗</span>
+</a>
+<a class="lab-link" href="../../../cyberverse-combinational-circuits-lab/combinational-circuits.html" target="_blank" rel="noopener">
+<span>🧪 Combinational Circuits Lab</span><span>↗</span>
+</a>
+<a class="lab-link" href="../../../cyberverse-sequential-circuits-lab/sequential-circuits.html" target="_blank" rel="noopener">
+<span>🧪 Sequential Circuits Lab</span><span>↗</span>
+</a>
+<a class="lab-link" href="../../../cyberverse-bit-playground/bit-playground.html" target="_blank" rel="noopener">
+<span>🧪 Bit Playground</span><span>↗</span>
+</a>
+<a class="lab-link" href="../../../cyberverse-converter-lab/index.html" target="_blank" rel="noopener">
+<span>🧪 Number Converter</span><span>↗</span>
+</a>
+</div>
+
+<div class="section-heading">
+<div>
+<div class="eyebrow">CHECK YOUR UNDERSTANDING</div>
+<h2>Module quiz</h2>
+<p>Answer each question and get immediate feedback.</p>
+</div>
+</div>
+
+<section class="quiz-box">
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<strong id="quizTitle">Knowledge check</strong>
+<span class="muted" id="quizCount"></span>
+</div>
+<div class="quiz-question" id="quizQuestion"></div>
+<div class="quiz-options" id="quizOptions"></div>
+<div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div>
+<button class="cv-btn primary" id="quizNext">Check answer</button>
+</section>
+
+<div class="module-footer">
+<a class="cv-btn" href="../dashboard.html">← Return to dashboard</a>
+<a class="cv-btn" href="../roadmap.html">View learning roadmap →</a>
+</div>
+</main>
+
+<footer class="footer">
+<a href="../index.html">Home</a>
+<span>CyberVerse · Understand. Experiment. Defend.</span>
+<a href="../dashboard.html">Dashboard</a>
+</footer>
+
+<script>
+window.CYBERV_ELESSONS = {
+"lessons": [
+["Number Systems & Data Representation", "Computers represent information using binary digits (0 and 1). Decimal is base 10, binary is base 2, octal is base 8, and hexadecimal is base 16. A positional digit's value depends on its position and the base.", "Try converting a decimal number into binary, then group binary digits in sets of four to read hexadecimal. Remember that each hexadecimal digit represents four binary bits.", "Number systems are useful when reading memory addresses, machine data, and network identifiers."],
+["Binary Arithmetic", "Binary addition follows the same place-value idea as decimal addition, but each column contains only 0 and 1. The key rules are 0+0=0, 0+1=1, 1+0=1, and 1+1=10 (write 0 and carry 1).", "Work through 1011₂ + 0110₂ from the rightmost bit. Add each column and carry when the result is 2 or 3.", "Binary arithmetic is the basic arithmetic performed by digital circuits."],
+["Bits, Bytes & Data Units", "A bit is one binary digit. A group of 8 bits is one byte. Larger units include KB, MB, GB, and TB. Storage capacity and data-transfer rate are related but are not the same measurement.", "A file of 2,048 bytes contains 2,048 × 8 bits. Compare bytes (B) with bits per second (bps) when reading network speeds.", "Digital information is stored and transmitted as patterns of bits."],
+["Logic Gates", "Logic gates perform operations on binary inputs and produce a binary output. AND is 1 only when both inputs are 1; OR is 1 when at least one input is 1; NOT reverses the input. NAND, NOR, XOR, and XNOR are also common gates.", "Open the logic-gates lab. Change the A and B inputs and observe the output for each gate. Build a small truth table for AND and XOR.", "Logic gates are the building blocks of digital circuits and processor logic."],
+["Boolean Algebra", "Boolean algebra describes logic using variables that can have only two values: 0 and 1. Common operations are AND (·), OR (+), and NOT (bar). Laws such as identity, complement, and De Morgan's laws help simplify logic expressions.", "Use the Boolean algebra lab to simplify an expression. Check that the original and simplified expressions produce the same outputs for all input combinations.", "Simpler expressions can lead to circuits with fewer gates and lower complexity."],
+["Combinational Circuits", "A combinational circuit's output depends only on its current inputs. Examples include adders, subtractors, multiplexers, demultiplexers, encoders, and decoders.", "Explore the combinational-circuits lab. Identify the inputs and outputs of a half adder: Sum = A XOR B; Carry = A AND B.", "Combinational blocks are used in arithmetic units, data selection, and decoding."],
+["Sequential Circuits", "A sequential circuit's output depends on current inputs and stored previous state. Flip-flops store one bit. Registers store groups of bits, while counters move through a sequence of states, often controlled by a clock.", "Open the sequential-circuits lab and observe how a clock or input changes stored state. Compare a latch/flip-flop with a purely combinational gate.", "Sequential circuits provide memory and timing behaviour inside digital systems."]
+],
+
+"labs": [
+["Binary Arithmetic Lab", "../labs/binary-arithmetic/binary-arithmetic.html"],
+["Boolean Algebra Lab", "../../../cyberverse-boolean-algebra-lab/boolean-algebra.html"],
+["Combinational Circuits Lab", "../../../cyberverse-combinational-circuits-lab/combinational-circuits.html"],
+["Sequential Circuits Lab", "../../../cyberverse-sequential-circuits-lab/sequential-circuits.html"],
+["Bit Playground", "../../../cyberverse-bit-playground/bit-playground.html"],
+["Number Converter", "../../../cyberverse-converter-lab/index.html"]
+],
+
+"quiz": [
+["Which number system uses only 0 and 1?", ["Decimal", "Binary", "Octal", "Hexadecimal"], 1, "Binary is base 2 and uses only the digits 0 and 1."],
+["How many bits are in one byte?", ["4", "8", "16", "32"], 1, "One byte contains 8 bits."],
+["What is the output of AND when A=1 and B=0?", ["0", "1", "10", "Undefined"], 0, "AND produces 1 only when both inputs are 1."],
+["Which circuit stores a bit of information?", ["Decoder", "Multiplexer", "Flip-flop", "Half adder"], 2, "A flip-flop is a one-bit storage element."],
+["A combinational circuit output depends on:", ["Past state only", "Current inputs only", "Clock history only", "Stored program"], 1, "Combinational logic has no memory; its output is determined by current inputs."]
+]
+};
+</script>
+
+<script>
 (() => {
  const data = window.CYBERV_ELESSONS;
  if (!data) return;
+
  const grid = document.getElementById('lessonGrid');
  const detail = document.getElementById('lessonDetail');
  const search = document.getElementById('lessonSearch');
  const progressFill = document.getElementById('progressFill');
  const progressText = document.getElementById('progressText');
  const storageKey = 'cyberverse-progress-' + location.pathname.split('/').pop();
+
  let completed = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
  let activeLesson = -1, quizIndex = 0, quizScore = 0, quizAnswered = false, selected = -1;
- const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+ const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({
+   '&':'&amp;',
+   '<':'&lt;',
+   '>':'&gt;',
+   '"':'&quot;',
+   "'":'&#39;'
+ }[c]));
+
  function updateProgress(){
    progressFill.style.width = (completed.size / data.lessons.length * 100) + '%';
    progressText.textContent = `${completed.size} of ${data.lessons.length} lessons completed`;
    localStorage.setItem(storageKey, JSON.stringify([...completed]));
  }
+
  function renderLessons(){
    const q = (search.value || '').toLowerCase();
-   grid.innerHTML = data.lessons.map((l,i)=>({l,i})).filter(x => (x.l[0]+' '+x.l[1]).toLowerCase().includes(q)).map(({l,i})=>`
-    <article class="lesson-card">
-      <span class="lesson-num">LESSON ${String(i+1).padStart(2,'0')} ${completed.has(i)?'· COMPLETED':''}</span>
-      <h3>${escapeHtml(l[0])}</h3><p>${escapeHtml(l[1].slice(0,145))}…</p>
-      <div class="lesson-actions"><button class="cv-btn primary" data-open="${i}">Open lesson →</button>
-      <button class="cv-btn ${completed.has(i)?'done':''}" data-done="${i}">${completed.has(i)?'✓ Completed':'Mark complete'}</button></div>
-    </article>`).join('') || '<p class="muted">No lessons match your search.</p>';
+
+   grid.innerHTML = data.lessons
+     .map((l,i)=>({l,i}))
+     .filter(x => (x.l[0]+' '+x.l[1]).toLowerCase().includes(q))
+     .map(({l,i})=>`
+       <article class="lesson-card">
+         <span class="lesson-num">LESSON ${String(i+1).padStart(2,'0')} ${completed.has(i)?'· COMPLETED':''}</span>
+         <h3>${escapeHtml(l[0])}</h3>
+         <p>${escapeHtml(l[1].slice(0,145))}…</p>
+         <div class="lesson-actions">
+           <button class="cv-btn primary" data-open="${i}">Open lesson →</button>
+           <button class="cv-btn ${completed.has(i)?'done':''}" data-done="${i}">${completed.has(i)?'✓ Completed':'Mark complete'}</button>
+         </div>
+       </article>
+     `).join('') || '<p class="muted">No lessons match your search.</p>';
  }
+
  function openLesson(i){
-   activeLesson=i; const l=data.lessons[i];
-   detail.innerHTML=`<div class="lesson-num">LESSON ${String(i+1).padStart(2,'0')}</div><h2>${escapeHtml(l[0])}</h2>
-    <h3>Learn</h3><p>${escapeHtml(l[1])}</p><h3>Try it</h3><p>${escapeHtml(l[2])}</p>
-    <div class="takeaway"><strong>Why it matters:</strong> ${escapeHtml(l[3])}</div>
-    <div class="lesson-actions" style="margin-top:18px"><button class="cv-btn primary" id="detailDone">${completed.has(i)?'Completed ✓':'Mark lesson complete'}</button><button class="cv-btn" id="closeDetail">Close lesson</button></div>`;
-   detail.classList.add('open'); detail.scrollIntoView({behavior:'smooth',block:'start'});
-   document.getElementById('detailDone').onclick=()=>{completed.add(i);updateProgress();renderLessons();openLesson(i)};
-   document.getElementById('closeDetail').onclick=()=>detail.classList.remove('open');
+   activeLesson=i;
+   const l=data.lessons[i];
+
+   detail.innerHTML=`
+     <div class="lesson-num">LESSON ${String(i+1).padStart(2,'0')}</div>
+     <h2>${escapeHtml(l[0])}</h2>
+     <h3>Learn</h3>
+     <p>${escapeHtml(l[1])}</p>
+     <h3>Try it</h3>
+     <p>${escapeHtml(l[2])}</p>
+     <div class="takeaway"><strong>Why it matters:</strong> ${escapeHtml(l[3])}</div>
+     <div class="lesson-actions" style="margin-top:18px">
+       <button class="cv-btn primary" id="detailDone">${completed.has(i)?'Completed ✓':'Mark lesson complete'}</button>
+       <button class="cv-btn" id="closeDetail">Close lesson</button>
+     </div>`;
+
+   detail.classList.add('open');
+   detail.scrollIntoView({behavior:'smooth',block:'start'});
+
+   document.getElementById('detailDone').onclick=()=>{
+     completed.add(i);
+     updateProgress();
+     renderLessons();
+     openLesson(i);
+   };
+
+   document.getElementById('closeDetail').onclick=()=>{
+     detail.classList.remove('open');
+   };
  }
+
  grid.addEventListener('click',e=>{
-   const open=e.target.closest('[data-open]'), done=e.target.closest('[data-done]');
+   const open=e.target.closest('[data-open]');
+   const done=e.target.closest('[data-done]');
+
    if(open) openLesson(Number(open.dataset.open));
-   if(done){const i=Number(done.dataset.done);completed.has(i)?completed.delete(i):completed.add(i);updateProgress();renderLessons();}
+
+   if(done){
+     const i=Number(done.dataset.done);
+     completed.has(i)?completed.delete(i):completed.add(i);
+     updateProgress();
+     renderLessons();
+   }
  });
+
  search.addEventListener('input',renderLessons);
- document.getElementById('resetProgress').onclick=()=>{if(confirm('Reset lesson progress for this module?')){completed.clear();updateProgress();renderLessons();detail.classList.remove('open')}};
- document.getElementById('labGrid').innerHTML=data.labs.map(l=>`<a class="lab-link" href="${l[1]}" target="_blank" rel="noopener"><span>🧪 ${escapeHtml(l[0])}</span><span>↗</span></a>`).join('');
- const qTitle=document.getElementById('quizTitle'), qText=document.getElementById('quizQuestion'), qOpts=document.getElementById('quizOptions'), qFeedback=document.getElementById('quizFeedback'), qNext=document.getElementById('quizNext'), qCount=document.getElementById('quizCount');
- function showQuestion(){
-   quizAnswered=false;selected=-1; const q=data.quiz[quizIndex];
-   qCount.textContent=`Question ${quizIndex+1} of ${data.quiz.length}`;qText.textContent=q[0];
-   qOpts.innerHTML=q[1].map((o,i)=>`<button class="quiz-option" data-option="${i}"><span>${String.fromCharCode(65+i)}.</span>${escapeHtml(o)}</button>`).join('');
-   qFeedback.textContent='';qNext.textContent='Check answer';qTitle.textContent='Knowledge check';
- }
- qOpts.addEventListener('click',e=>{const b=e.target.closest('[data-option]');if(!b||quizAnswered)return;selected=Number(b.dataset.option);qOpts.querySelectorAll('.quiz-option').forEach(x=>x.classList.toggle('selected',Number(x.dataset.option)===selected));});
- qNext.onclick=()=>{
-   if(quizIndex>=data.quiz.length){quizIndex=0;quizScore=0;showQuestion();return;}
-   if(!quizAnswered){
-     if(selected<0){qFeedback.textContent='Choose an answer first.';return;}
-     quizAnswered=true;const q=data.quiz[quizIndex],correct=selected===q[2];if(correct)quizScore++;
-     qFeedback.textContent=(correct?'Correct! ':'Not quite. ')+q[3];
-     qOpts.querySelectorAll('.quiz-option').forEach((b,i)=>{b.disabled=true;if(i===q[2])b.classList.add('done')});
-     qNext.textContent=quizIndex===data.quiz.length-1?'View result':'Next question';
-   }else{
-     quizIndex++;
-     if(quizIndex>=data.quiz.length){qCount.textContent='Quiz complete';qText.textContent=`You scored ${quizScore} out of ${data.quiz.length}.`;qOpts.innerHTML='';qFeedback.textContent=quizScore===data.quiz.length?'Excellent work!': 'Review the lessons and try again to improve your score.';qNext.textContent='Try again';}
-     else showQuestion();
+
+ document.getElementById('resetProgress').onclick=()=>{
+   if(confirm('Reset lesson progress for this module?')){
+     completed.clear();
+     updateProgress();
+     renderLessons();
+     detail.classList.remove('open');
    }
  };
- renderLessons();updateProgress();showQuestion();
+
+ // INTERACTIVE LAB LINKS
+ // Binary Arithmetic Lab path updated for Vercel deployment.
+ document.getElementById('labGrid').innerHTML=data.labs.map(l=>`
+   <a class="lab-link" href="${l[1]}" target="_blank" rel="noopener">
+     <span>🧪 ${escapeHtml(l[0])}</span>
+     <span>↗</span>
+   </a>
+ `).join('');
+
+ const qTitle=document.getElementById('quizTitle');
+ const qText=document.getElementById('quizQuestion');
+ const qOpts=document.getElementById('quizOptions');
+ const qFeedback=document.getElementById('quizFeedback');
+ const qNext=document.getElementById('quizNext');
+ const qCount=document.getElementById('quizCount');
+
+ function showQuestion(){
+   quizAnswered=false;
+   selected=-1;
+
+   const q=data.quiz[quizIndex];
+
+   qCount.textContent=`Question ${quizIndex+1} of ${data.quiz.length}`;
+   qText.textContent=q[0];
+
+   qOpts.innerHTML=q[1].map((o,i)=>`
+     <button class="quiz-option" data-option="${i}">
+       <span>${String.fromCharCode(65+i)}.</span>
+       ${escapeHtml(o)}
+     </button>
+   `).join('');
+
+   qFeedback.textContent='';
+   qNext.textContent='Check answer';
+   qTitle.textContent='Knowledge check';
+ }
+
+ qOpts.addEventListener('click',e=>{
+   const b=e.target.closest('[data-option]');
+
+   if(!b||quizAnswered)return;
+
+   selected=Number(b.dataset.option);
+
+   qOpts.querySelectorAll('.quiz-option').forEach(x=>{
+     x.classList.toggle('selected',Number(x.dataset.option)===selected);
+   });
+ });
+
+ qNext.onclick=()=>{
+   if(quizIndex>=data.quiz.length){
+     quizIndex=0;
+     quizScore=0;
+     showQuestion();
+     return;
+   }
+
+   if(!quizAnswered){
+     if(selected<0){
+       qFeedback.textContent='Choose an answer first.';
+       return;
+     }
+
+     quizAnswered=true;
+
+     const q=data.quiz[quizIndex];
+     const correct=selected===q[2];
+
+     if(correct)quizScore++;
+
+     qFeedback.textContent=(correct?'Correct! ':'Not quite. ')+q[3];
+
+     qOpts.querySelectorAll('.quiz-option').forEach((b,i)=>{
+       b.disabled=true;
+       if(i===q[2])b.classList.add('done');
+     });
+
+     qNext.textContent=quizIndex===data.quiz.length-1?'View result':'Next question';
+
+   }else{
+     quizIndex++;
+
+     if(quizIndex>=data.quiz.length){
+       qCount.textContent='Quiz complete';
+       qText.textContent=`You scored ${quizScore} out of ${data.quiz.length}.`;
+       qOpts.innerHTML='';
+       qFeedback.textContent=quizScore===data.quiz.length
+         ?'Excellent work!'
+         :'Review the lessons and try again to improve your score.';
+       qNext.textContent='Try again';
+     }else{
+       showQuestion();
+     }
+   }
+ };
+
+ renderLessons();
+ updateProgress();
+ showQuestion();
 })();
-</script></body></html>
+</script>
+
+</body>
+</html>
