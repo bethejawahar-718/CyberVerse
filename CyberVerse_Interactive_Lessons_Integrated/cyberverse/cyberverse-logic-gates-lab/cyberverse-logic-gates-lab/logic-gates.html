@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse interactive digital logic gates lab.">
+  <title>Logic Gates Lab | CyberVerse</title>
+  <link rel="stylesheet" href="logic-gates.css">
+  <script src="logic-gates.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">C</span> CYBER<span>VERSE</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#learn">Learn</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#challenge">Challenge</a>
+    </nav>
+    <span class="lab-status"><i></i> LEARNING LAB</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">DIGITAL ELECTRONICS / LAB 03</p>
+      <h1>Logic Gates <span>Simulator</span></h1>
+      <p class="hero-copy">Change the input bits and watch each logic gate produce its output. Explore truth tables, compare gates, and test your understanding.</p>
+      <div class="hero-tags"><span>01 · Inputs</span><span>02 · Gate output</span><span>03 · Truth table</span></div>
+    </section>
+
+    <section class="panel" id="learn">
+      <div class="section-heading">
+        <div><p class="eyebrow">QUICK LESSON</p><h2>What do logic gates do?</h2></div>
+      </div>
+      <p class="intro">A logic gate is a digital circuit that receives one or two binary inputs (0 or 1) and produces a binary output. Select a gate below to learn its rule.</p>
+      <div class="gate-guide" id="gateGuide">
+        <button class="gate-chip selected" data-gate="AND">AND</button>
+        <button class="gate-chip" data-gate="OR">OR</button>
+        <button class="gate-chip" data-gate="NOT">NOT</button>
+        <button class="gate-chip" data-gate="NAND">NAND</button>
+        <button class="gate-chip" data-gate="NOR">NOR</button>
+        <button class="gate-chip" data-gate="XOR">XOR</button>
+        <button class="gate-chip" data-gate="XNOR">XNOR</button>
+      </div>
+      <div class="rule-explainer" aria-live="polite">
+        <div class="gate-symbol" id="guideSymbol">AND</div>
+        <div><h3 id="guideTitle">AND gate</h3><p id="guideText">Output is 1 only when both inputs are 1.</p><code id="guideFormula">Y = A · B</code></div>
+      </div>
+    </section>
+
+    <section class="panel" id="simulator">
+      <div class="section-heading">
+        <div><p class="eyebrow">INTERACTIVE TOOL</p><h2>Gate simulator</h2><p class="muted">Choose a gate and toggle its input bits.</p></div>
+        <span class="live-label"><i></i> SIMULATION</span>
+      </div>
+      <div class="simulator-grid">
+        <div class="control-panel">
+          <label for="gateSelect">Logic gate</label>
+          <select id="gateSelect">
+            <option value="AND">AND</option><option value="OR">OR</option>
+            <option value="NOT">NOT</option><option value="NAND">NAND</option>
+            <option value="NOR">NOR</option><option value="XOR">XOR</option><option value="XNOR">XNOR</option>
+          </select>
+          <div class="input-controls">
+            <div class="input-control">
+              <div><label for="inputA">Input A</label><span class="bit-value" id="inputAValue">0</span></div>
+              <div class="toggle-row"><button class="bit-btn" id="aZero" aria-pressed="true">0</button><button class="bit-btn" id="aOne" aria-pressed="false">1</button></div>
+            </div>
+            <div class="input-control" id="inputBControl">
+              <div><label for="inputB">Input B</label><span class="bit-value" id="inputBValue">0</span></div>
+              <div class="toggle-row"><button class="bit-btn" id="bZero" aria-pressed="true">0</button><button class="bit-btn" id="bOne" aria-pressed="false">1</button></div>
+            </div>
+          </div>
+          <p class="muted small">Input toggles are simulated controls, not physical circuits.</p>
+        </div>
+        <div class="visual-panel" aria-live="polite">
+          <div class="circuit-label">CIRCUIT VIEW</div>
+          <div class="circuit">
+            <div class="wire-input"><span class="wire-label">A</span><span class="wire"></span><span class="input-node" id="nodeA">0</span></div>
+            <div class="wire-input wire-b" id="wireB"><span class="wire-label">B</span><span class="wire"></span><span class="input-node" id="nodeB">0</span></div>
+            <div class="gate-box"><span id="gateVisual">AND</span><small>LOGIC GATE</small></div>
+            <div class="wire-output"><span class="wire"></span><span class="output-node" id="outputNode">0</span></div>
+          </div>
+          <div class="output-summary"><span>OUTPUT Y</span><strong id="outputValue">0</strong><span id="outputMeaning">LOW · FALSE</span></div>
+          <p class="explanation" id="outputExplanation">AND returns 1 only when both A and B are 1.</p>
+        </div>
+      </div>
+      <div class="table-panel">
+        <div class="table-heading"><h3>Truth table</h3><span class="muted">All possible input combinations</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th id="bHeader">B</th><th>Output Y</th><th>Current row</th></tr></thead>
+            <tbody id="truthTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel challenge-panel" id="challenge">
+      <div class="section-heading">
+        <div><p class="eyebrow">KNOWLEDGE CHECK</p><h2>Guess the output</h2><p class="muted">Choose the output for the given gate and inputs.</p></div>
+        <div class="score-box"><span>SOLVED</span><strong id="score">0</strong></div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-meta"><span id="challengeNumber">CHALLENGE 01</span><span>BEGINNER</span></div>
+        <p class="question" id="challengeQuestion">What is the output of AND when A = 1 and B = 0?</p>
+        <div class="answer-options">
+          <button class="answer-option" data-answer="0">Output = 0</button>
+          <button class="answer-option" data-answer="1">Output = 1</button>
+        </div>
+        <p class="feedback" id="feedback" aria-live="polite"></p>
+        <div class="challenge-actions"><button class="text-btn" id="hintBtn">Show hint</button><button class="btn btn-secondary" id="nextBtn">Next challenge ↻</button></div>
+        <p class="hint" id="hint" hidden></p>
+      </div>
+    </section>
+
+    <section class="bottom-note"><span class="shield">✓</span><p><strong>Safe practice environment:</strong> this is a software simulation for learning digital logic. It does not control real hardware.</p></section>
+  </main>
+  <footer><span>© 2026 CyberVerse</span><span>UNDERSTAND. EXPERIMENT. DEFEND.</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

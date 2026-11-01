@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse SEC-07 Social Engineering Awareness Simulator">
+  <title>SEC-07 | Social Engineering Awareness — CyberVerse</title>
+  <link rel="stylesheet" href="css/social-engineering.css">
+</head>
+<body>
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="logo">C<span>V</span></span><span><b>CYBERVERSE</b><small>INTERACTIVE SECURITY ACADEMY</small></span></a>
+    <div class="top-status"><i></i> AWARENESS TRAINING <span>SEC-07</span></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">CYBERSECURITY FUNDAMENTALS <b>/</b> MODULE 07</div>
+      <h1>Social Engineering <em>Awareness</em></h1>
+      <p>Attackers may manipulate people instead of technology. Learn to recognize common pressure tactics, protect sensitive information, and choose a safe response.</p>
+      <div class="tags"><span>Human manipulation</span><span>Trust & urgency</span><span>Information protection</span><span>Safe response</span></div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><small>SCENARIOS COMPLETED</small><strong id="completedCount">0 <sup>/ 6</sup></strong></div>
+      <div class="stat"><small>SAFE DECISIONS</small><strong id="safeCount">0</strong></div>
+      <div class="stat progress-stat"><small>YOUR PROGRESS <b id="progressValue">0%</b></small><div class="progress"><span id="progressFill"></span></div></div>
+    </section>
+
+    <section class="layout">
+      <aside class="panel scenario-panel">
+        <div class="panel-title"><div><small class="kicker">CHOOSE A SITUATION</small><h2>Scenario board</h2></div><span class="counter" id="remaining">06 AVAILABLE</span></div>
+        <p class="subtext">Review each fictional situation and decide how to respond safely.</p>
+        <div id="scenarioList" class="scenario-list"></div>
+        <div class="privacy-note"><span>i</span> Simulated training scenarios only. No real people or accounts are involved.</div>
+      </aside>
+
+      <section class="panel activity-panel">
+        <div class="activity-head"><div><small class="kicker">DECISION LAB / INTERACTIVE</small><h2 id="scenarioTitle">Select a scenario</h2></div><span class="level" id="level">WAITING</span></div>
+        <div id="welcome" class="welcome"><div class="welcome-icon">◈</div><h3>Think before you trust</h3><p>Select a situation from the scenario board. Read what happens, identify the manipulation tactic, and choose the safest response.</p></div>
+        <div id="scenarioView" class="scenario-view hidden">
+          <div class="scene-banner"><span id="sceneType">SCENARIO</span><span id="sceneTime">SIMULATED EXERCISE</span></div>
+          <div class="scene-content">
+            <div class="person-icon" id="personIcon">?</div>
+            <div class="scene-copy"><small id="sceneRole"></small><h3 id="sceneHeadline"></h3><p id="sceneDescription"></p></div>
+          </div>
+          <div class="quote-card"><small>WHAT YOU HEAR / EXPERIENCE</small><p id="sceneQuote"></p></div>
+          <div class="clue-section"><small class="kicker">WARNING SIGNS TO CONSIDER</small><div id="clueList" class="clue-list"></div></div>
+          <div class="question"><small class="kicker">YOUR CHALLENGE</small><h3>What is the safest response?</h3><p>Choose the action that protects you and follows a trusted verification process.</p></div>
+          <div id="answerList" class="answer-list"></div>
+          <button id="submitAnswer" class="submit-btn" disabled>CHECK MY DECISION <span>→</span></button>
+          <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="bottom">
+      <article class="panel principle">
+        <div class="shield">◇</div><div><small class="kicker">THE CYBERVERSE RULE</small><h3>Stop. Verify. Report.</h3><p>Do not let urgency, fear, authority, curiosity, or friendliness rush your decision. Pause, verify through a trusted independent channel, and report unusual requests.</p></div>
+      </article>
+      <article class="panel result">
+        <small class="kicker">YOUR TRAINING RESULT</small><strong id="finalScore">0 <sup>/ 6</sup></strong><p id="resultText">Complete all six situations to review your result.</p><button id="restart" class="restart">↻ &nbsp; RESTART TRAINING</button>
+      </article>
+    </section>
+    <footer><span>CYBERVERSE <b>•</b> THINK CRITICALLY. STAY SECURE.</span><span>SEC-07 / SOCIAL ENGINEERING</span></footer>
+  </main>
+  <script src="js/social-engineering.js"></script>
+</body>
+</html>

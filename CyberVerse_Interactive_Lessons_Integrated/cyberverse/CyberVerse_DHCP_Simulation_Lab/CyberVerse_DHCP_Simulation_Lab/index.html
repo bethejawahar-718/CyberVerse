@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | DHCP Simulation Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span><span>Cyber<span class="green">Verse</span><small>NETWORKING LAB / NET-07</small></span></a>
+    <div class="status"><i></i> SIMULATION MODE</div>
+  </header>
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">MODULE 02 · COMPUTER NETWORKING</p>
+      <h1>DHCP <span>Simulation Lab</span></h1>
+      <p class="lead">Explore how a device automatically receives its network configuration through the four-step DHCP process.</p>
+      <div class="notice"><b>Educational simulation:</b> This lab models DHCP messages using fictional client and server data. It does not contact your network or change your device settings.</div>
+    </section>
+
+    <section class="grid">
+      <article class="panel config">
+        <div class="heading"><div><span class="step">01</span><h2>Network setup</h2></div><span class="tag">CONFIG</span></div>
+        <label for="clientName">Client device name</label>
+        <input id="clientName" value="STUDENT-PC" maxlength="24">
+        <label for="pool">Address pool</label>
+        <select id="pool">
+          <option value="192.168.1">Home network · 192.168.1.0/24</option>
+          <option value="10.0.0">Campus network · 10.0.0.0/24</option>
+          <option value="172.16.5">Lab network · 172.16.5.0/24</option>
+        </select>
+        <label for="lease">Lease duration</label>
+        <select id="lease"><option value="24">24 hours</option><option value="8">8 hours</option><option value="72">72 hours</option></select>
+        <div class="config-note"><span class="signal">⌁</span><span><b>DHCP server</b><small>Available pool · simulated</small></span><strong id="serverAddress">192.168.1.1</strong></div>
+        <div class="actions"><button id="startBtn" class="primary">▶ Start DHCP process</button><button id="resetBtn" class="secondary">Reset</button></div>
+      </article>
+
+      <article class="panel flow">
+        <div class="heading"><div><span class="step">02</span><h2>DORA message flow</h2></div><span id="flowStatus" class="tag">READY</span></div>
+        <div class="flow-list" id="flowList">
+          <div class="flow-step"><span class="bubble">1</span><div><b>Discover</b><small>Client searches for DHCP servers</small></div><span class="state">WAITING</span></div>
+          <div class="flow-step"><span class="bubble">2</span><div><b>Offer</b><small>Server offers an available IP</small></div><span class="state">WAITING</span></div>
+          <div class="flow-step"><span class="bubble">3</span><div><b>Request</b><small>Client requests the offered IP</small></div><span class="state">WAITING</span></div>
+          <div class="flow-step"><span class="bubble">4</span><div><b>Acknowledgment</b><small>Server confirms the lease</small></div><span class="state">WAITING</span></div>
+        </div>
+        <div id="message" class="message" aria-live="polite">Choose your network settings, then start the process.</div>
+      </article>
+
+      <article class="panel lease-panel">
+        <div class="heading"><div><span class="step">03</span><h2>Assigned configuration</h2></div><span class="tag">CLIENT STATE</span></div>
+        <div class="lease-card">
+          <div class="lease-top"><span>IPv4 ADDRESS</span><span id="leaseBadge" class="lease-badge">NOT ASSIGNED</span></div>
+          <strong id="assignedIp">— — — —</strong>
+          <div class="lease-grid">
+            <div><small>Subnet mask</small><b id="subnet">—</b></div>
+            <div><small>Default gateway</small><b id="gateway">—</b></div>
+            <div><small>DNS server</small><b id="dns">—</b></div>
+            <div><small>Lease duration</small><b id="duration">—</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel log-panel">
+        <div class="heading"><div><span class="step">04</span><h2>DHCP event log</h2></div><span class="tag">TRACE</span></div>
+        <div id="eventLog" class="event-log"><p class="muted">No events yet. Run the simulation to inspect messages.</p></div>
+      </article>
+    </section>
+
+    <section class="learn panel">
+      <div><p class="eyebrow">REMEMBER DORA</p><h2>Four steps to an IP lease</h2><p class="learn-copy">DHCP helps a client obtain network settings without manually entering each value.</p></div>
+      <div class="dora">
+        <div><b>D</b><strong>Discover</strong><span>Find a server</span></div><div><b>O</b><strong>Offer</strong><span>Suggest an address</span></div><div><b>R</b><strong>Request</strong><span>Ask to use it</span></div><div><b>A</b><strong>Acknowledge</strong><span>Confirm the lease</span></div>
+      </div>
+    </section>
+    <footer>CyberVerse · NET-07 DHCP · Simulated network only</footer>
+  </main>
+  <script src="js/dhcp-simulator.js"></script>
+</body>
+</html>

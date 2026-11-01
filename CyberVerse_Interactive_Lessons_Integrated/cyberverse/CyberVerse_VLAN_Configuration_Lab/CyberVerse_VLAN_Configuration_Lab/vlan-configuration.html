@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | VLAN Configuration Lab</title>
+  <link rel="stylesheet" href="css/vlan-configuration.css">
+  <script src="js/labs/vlan-configuration.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">CV</span><span>CYBER<span class="accent">VERSE</span><small>NETWORKING LABS</small></span></a>
+  <span class="status"><i></i> OFFLINE SIMULATION</span>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">NETWORKING FUNDAMENTALS / LAB 08</p>
+    <h1>VLAN <span class="accent">Configuration</span></h1>
+    <p class="subtitle">Create virtual LANs, assign switch ports, and explore how VLANs separate devices into logical networks.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><span class="step">01</span><div><h2>Switch configuration</h2><p>Choose a VLAN and assign a port to it in this learning simulation.</p></div></div>
+    <div class="config-grid">
+      <label>Switch port<select id="port-select"><option value="1">Fa0/1</option><option value="2">Fa0/2</option><option value="3">Fa0/3</option><option value="4">Fa0/4</option><option value="5">Fa0/5</option><option value="6">Fa0/6</option><option value="7">Fa0/7</option><option value="8">Fa0/8</option></select></label>
+      <label>Assign VLAN<select id="vlan-select"><option value="10">10 — ADMIN</option><option value="20">20 — STUDENTS</option><option value="30">30 — GUESTS</option><option value="1">1 — DEFAULT</option></select></label>
+      <button id="assign-btn" class="primary-btn">Assign port <span>→</span></button>
+    </div>
+    <div class="command-preview"><span class="terminal-dot"></span><code id="command-text">Switch(config-if)# switchport access vlan 10</code><span class="preview-tag">SIMULATED COMMAND</span></div>
+    <p id="config-feedback" class="feedback" aria-live="polite">Ready. Select a port and VLAN, then assign it.</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading"><span class="step">02</span><div><h2>Network topology</h2><p>Each device connects to a switch access port. Colors represent VLAN membership.</p></div></div>
+    <div class="topology panel">
+      <div class="device-row">
+        <div class="device" data-port="1"><span class="device-icon">PC</span><strong>PC-01</strong><small>Fa0/1</small><span class="vlan-pill vlan-10">VLAN 10</span></div>
+        <div class="device" data-port="2"><span class="device-icon">PC</span><strong>PC-02</strong><small>Fa0/2</small><span class="vlan-pill vlan-10">VLAN 10</span></div>
+        <div class="device" data-port="3"><span class="device-icon">PC</span><strong>PC-03</strong><small>Fa0/3</small><span class="vlan-pill vlan-20">VLAN 20</span></div>
+        <div class="device" data-port="4"><span class="device-icon">PC</span><strong>PC-04</strong><small>Fa0/4</small><span class="vlan-pill vlan-20">VLAN 20</span></div>
+        <div class="device" data-port="5"><span class="device-icon">PC</span><strong>PC-05</strong><small>Fa0/5</small><span class="vlan-pill vlan-30">VLAN 30</span></div>
+        <div class="device" data-port="6"><span class="device-icon">PC</span><strong>PC-06</strong><small>Fa0/6</small><span class="vlan-pill vlan-30">VLAN 30</span></div>
+        <div class="device" data-port="7"><span class="device-icon">PC</span><strong>PC-07</strong><small>Fa0/7</small><span class="vlan-pill vlan-1">VLAN 1</span></div>
+        <div class="device" data-port="8"><span class="device-icon">PC</span><strong>PC-08</strong><small>Fa0/8</small><span class="vlan-pill vlan-1">VLAN 1</span></div>
+      </div>
+      <div class="cables" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="switch-device"><span class="switch-icon">▰</span><div><strong>ACCESS SWITCH</strong><small>8 access ports · simulated</small></div><span class="switch-leds"><i></i><i></i><i></i><i></i></span></div>
+      <div class="legend"><span><i class="key k10"></i> VLAN 10 · Admin</span><span><i class="key k20"></i> VLAN 20 · Students</span><span><i class="key k30"></i> VLAN 30 · Guests</span><span><i class="key k1"></i> VLAN 1 · Default</span></div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading"><span class="step">03</span><div><h2>VLAN table</h2><p>Current port assignments in the simulated switch.</p></div></div>
+    <div class="panel table-panel">
+      <div class="table-scroll"><table><thead><tr><th>PORT</th><th>DEVICE</th><th>VLAN ID</th><th>VLAN NAME</th><th>STATUS</th></tr></thead><tbody id="port-table"></tbody></table></div>
+      <div class="table-footer"><span id="assignment-count">8 ports configured</span><button id="reset-btn" class="secondary-btn">Reset lab</button></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><span class="step">04</span><div><h2>Connectivity test</h2><p>Test whether two endpoints can communicate at Layer 2 in this simplified model.</p></div></div>
+    <div class="test-grid">
+      <label>Source device<select id="source-device"><option value="1">PC-01 (Fa0/1)</option><option value="2">PC-02 (Fa0/2)</option><option value="3">PC-03 (Fa0/3)</option><option value="4">PC-04 (Fa0/4)</option><option value="5">PC-05 (Fa0/5)</option><option value="6">PC-06 (Fa0/6)</option><option value="7">PC-07 (Fa0/7)</option><option value="8">PC-08 (Fa0/8)</option></select></label>
+      <label>Destination device<select id="destination-device"><option value="2">PC-02 (Fa0/2)</option><option value="1">PC-01 (Fa0/1)</option><option value="3">PC-03 (Fa0/3)</option><option value="4">PC-04 (Fa0/4)</option><option value="5">PC-05 (Fa0/5)</option><option value="6">PC-06 (Fa0/6)</option><option value="7">PC-07 (Fa0/7)</option><option value="8">PC-08 (Fa0/8)</option></select></label>
+      <button id="test-btn" class="primary-btn">Test connectivity <span>→</span></button>
+    </div>
+    <div id="test-result" class="test-result" aria-live="polite"><span class="result-icon">?</span><div><strong>Ready to test</strong><p>Select two devices and run a simulated connectivity check.</p></div></div>
+  </section>
+
+  <section class="panel concept-panel">
+    <div class="section-heading"><span class="step">05</span><div><h2>Knowledge check</h2><p>Test your VLAN fundamentals.</p></div></div>
+    <p class="quiz-question">Can two devices in different VLANs communicate directly at Layer 2 through an ordinary access switch?</p>
+    <div id="quiz-options" class="quiz-options"><button type="button" data-answer="yes">Yes, always</button><button type="button" data-answer="no">No, inter-VLAN routing is needed</button><button type="button" data-answer="maybe">Only if they use the same cable</button></div>
+    <p id="quiz-feedback" class="feedback" aria-live="polite"></p>
+  </section>
+  <footer><span>CYBERVERSE NETWORKING LABS</span><span>Educational simulation · No real switch is configured</span></footer>
+</main>
+</body>
+</html>

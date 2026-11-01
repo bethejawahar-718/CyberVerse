@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CyberVerse interactive cybersecurity learning dashboard">
+  <title>CyberVerse | Learning Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">C</span> CyberVerse</a>
+  <a class="profile-nav" href="profile.html" aria-label="Open your profile"><img id="headerProfileImage" alt="" hidden><span id="headerProfileFallback" aria-hidden="true">♙</span><span>Profile</span></a><nav class="dashboard-nav"><a href="roadmap.html">Roadmap</a><button class="nav-button" id="logoutButton" onclick="logout()" type="button">Logout</button></nav>
+</header>
+<main class="wrap dashboard cv-dashboard">
+  <section class="profile-progress-card" aria-labelledby="profileProgressTitle">
+    <div class="profile-progress-copy"><div class="eyebrow">YOUR ACCOUNT</div><h2 id="profileProgressTitle">Profile completion</h2><p id="profileProgressText">Checking your saved profile details…</p><div class="progress-track" role="progressbar" aria-label="Profile completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="profileProgressBar"></span></div><small id="profileProgressMissing" class="muted"></small></div>
+    <div class="profile-progress-side"><strong id="profileProgressPercent">—%</strong><a class="btn primary" href="profile.html">Complete your profile →</a></div>
+  </section>
+
+  <section class="dash-hero">
+    <div class="dash-copy">
+      <div class="eyebrow"><span class="pulse"></span> YOUR CYBER LEARNING COMMAND CENTER</div>
+      <h1>Welcome to your<br><span class="cv-accent">CyberVerse.</span></h1>
+      <p>Choose a learning path, open a lesson module, or launch a hands-on simulator. Build your cybersecurity skills one mission at a time.</p>
+      <div class="hero-actions"><a class="btn primary" href="#lessonModules">Explore lesson modules ↘</a><a class="btn secondary" href="roadmap.html">View roadmap</a></div>
+    </div>
+    <div class="dash-art" aria-hidden="true"><div class="art-ring ring-a"></div><div class="art-ring ring-b"></div><div class="art-shield"><span>⌑</span><small>CYBER<br>READY</small></div><i class="art-node node-a">LEARN</i><i class="art-node node-b">PRACTICE</i><i class="art-node node-c">DEFEND</i></div>
+    <div class="hero-foot"><span><b class="live-dot"></b> LEARNING ENVIRONMENT READY</span><span>UNDERSTAND · EXPERIMENT · DEFEND</span></div>
+  </section>
+
+  <section class="quick-stats">
+    <article><span class="stat-symbol">▦</span><div><strong>09</strong><small>Lesson modules</small></div></article>
+    <article><span class="stat-symbol">⌘</span><div><strong id="labTotal">—</strong><small>Interactive labs</small></div></article>
+    <article><span class="stat-symbol">☆</span><div><strong id="savedTotal">0</strong><small>Saved modules</small></div></article>
+    <article><span class="stat-symbol">↗</span><div><strong id="recentTotal">0</strong><small>Recently opened</small></div></article>
+  </section>
+
+  <section class="continue-card">
+    <span class="continue-symbol">▶</span><div class="continue-copy"><div class="eyebrow">CONTINUE EXPLORING</div><h2 id="continueTitle">Ready for your first mission?</h2><p id="continueText">Open a lesson module or lab. Your most recently opened item will appear here.</p></div><a id="continueButton" class="btn secondary" href="#lessonModules">Choose a module →</a>
+  </section>
+
+  <section id="lessonModules" class="dashboard-section">
+    <div class="section-heading"><div><div class="eyebrow">COURSE LIBRARY</div><h2>Lesson modules</h2><p class="muted">These nine lesson pages are included in your CyberVerse ZIP.</p></div>
+      <label class="cv-search"><span>⌕</span><input id="moduleSearch" type="search" placeholder="Search lesson modules…" aria-label="Search lesson modules"><kbd>/</kbd></label>
+    </div>
+    <div class="module-filters">
+      <button class="filter-btn active" data-filter="all">All modules <span>9</span></button>
+      <button class="filter-btn" data-filter="foundation">Foundations</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+      <button class="filter-btn" data-filter="practice">Practice</button>
+      <label class="sort-label">SORT <select id="moduleSort"><option value="order">Recommended order</option><option value="az">Name A–Z</option></select></label>
+    </div>
+    <div class="module-grid cv-module-grid" id="dashboardModules"></div>
+    <p id="moduleNoResults" class="no-results hidden">No lesson modules found. Try another search.</p>
+  </section>
+
+  <section id="interactiveLabs" class="dashboard-section">
+    <div class="section-heading"><div><div class="eyebrow">HANDS-ON ZONE</div><h2>Interactive labs & simulators</h2><p class="muted">Direct links to the lab HTML files included in your uploaded CyberVerse ZIP.</p></div><span class="lab-status"><b class="live-dot"></b> BROWSER-BASED PRACTICE</span></div>
+    <div class="lab-filters">
+      <button class="lab-filter active" data-lab-filter="all">All labs</button>
+      <button class="lab-filter" data-lab-filter="Digital Electronics">Digital Electronics</button>
+      <button class="lab-filter" data-lab-filter="Networking">Networking</button>
+      <button class="lab-filter" data-lab-filter="Cybersecurity">Cybersecurity</button>
+      <button class="lab-filter" data-lab-filter="Defensive Security">Defensive Security</button>
+    </div>
+    <div class="lab-grid" id="dashboardLabs"></div>
+    <p id="labNoResults" class="no-results hidden">No labs in this category.</p>
+  </section>
+
+  <section class="dashboard-section saved-section"><div class="section-heading"><div><div class="eyebrow">YOUR SHORTLIST</div><h2>Saved lesson modules</h2><p class="muted">Use the star on a lesson card to save it here.</p></div></div><div id="savedModules" class="saved-grid"><p class="muted">No saved modules yet.</p></div></section>
+
+  <section class="dashboard-callout"><span class="callout-mark">⌬</span><div><div class="eyebrow">YOUR NEXT LEVEL STARTS HERE</div><h2>Learn the basics. Practice safely. Think like a defender.</h2><p>Follow the roadmap to move from foundations to defensive security.</p></div><a class="btn primary" href="roadmap.html">Open roadmap →</a></section>
+  <p class="dashboard-note">Your CyberVerse learning activity and profile details are managed separately. Keep your profile updated as you progress.</p>
+</main>
+<footer class="footer"><a href="index.html">← Home</a><span>CyberVerse · Understand. Experiment. Defend.</span><a href="roadmap.html">Learning roadmap</a></footer>
+<script src="js/dashboard-auth.js"></script>
+<script src="js/profile-progress.js"></script>
+<script src="js/app.js"></script>
+
+</body></html>

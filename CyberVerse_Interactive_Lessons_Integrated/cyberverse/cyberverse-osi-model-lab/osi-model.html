@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CyberVerse NET-02 interactive OSI model learning simulation.">
+<title>NET-02 | OSI Model Lab — CyberVerse</title>
+<link rel="stylesheet" href="osi-model.css">
+<script src="osi-model.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../networking.html">Networking</a><span>/</span><span>NET-02: OSI Model</span></nav>
+  <span class="status"><span class="status-dot"></span> SIMULATION MODE</span>
+</header>
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">COMPUTER NETWORKING / LAB 02</p>
+    <h1>The <span class="accent">OSI Model</span></h1>
+    <p class="intro">Follow a sample message through all seven OSI layers. Explore each layer, learn its role, and practise matching common protocols and technologies to the right layer.</p>
+    <div class="hero-tags"><span>7 layers</span><span>Packet journey</span><span>Protocol matching</span><span>Challenge + quiz</span></div>
+  </section>
+
+  <section class="notice"><span class="notice-icon">i</span><p><strong>Educational simulation:</strong> The packet journey is a visual model running in your browser. It does not capture, transmit, or inspect real network traffic. Real-world protocols can span or interact with multiple layers; the mappings here are simplified for learning.</p></section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">01 / EXPLORE</p><h2>Seven layers at a glance</h2></div><span class="chip">Top to bottom</span></div>
+    <p class="muted">Select a layer to read what it does. Sending data is often described from Layer 7 down to Layer 1; receiving data is described in the reverse direction.</p>
+    <div class="layer-layout">
+      <div class="layer-list" id="layerList" aria-label="OSI layers"></div>
+      <article class="layer-detail" id="layerDetail" aria-live="polite">
+        <p class="eyebrow" id="detailNumber">LAYER 7</p><h3 id="detailTitle">Application</h3>
+        <p id="detailDescription"></p>
+        <div class="detail-label">EXAMPLE PROTOCOLS / TECHNOLOGIES</div><div class="tag-list" id="detailExamples"></div>
+        <div class="detail-label">DATA UNIT (SIMPLIFIED)</div><p class="data-unit" id="detailPdu"></p>
+        <div class="detail-label">MEMORY TIP</div><p id="detailTip" class="tip"></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">02 / PACKET JOURNEY</p><h2>Simulate sending a message</h2></div><span class="chip">Browser-only</span></div>
+    <p class="muted">Move the sample message down the sending stack to see encapsulation: each layer adds or represents information needed for communication.</p>
+    <div class="journey-controls">
+      <label for="messageInput">Sample message</label>
+      <input id="messageInput" maxlength="80" value="Hello, CyberVerse!" placeholder="Enter a sample message">
+      <button class="btn btn-primary" id="startJourneyBtn" type="button">Start journey</button>
+      <button class="btn btn-secondary" id="nextLayerBtn" type="button" disabled>Next layer →</button>
+      <button class="btn btn-quiet" id="resetJourneyBtn" type="button">Reset</button>
+    </div>
+    <div class="journey-progress"><div id="progressBar"></div></div>
+    <p class="progress-caption" id="progressCaption" aria-live="polite">Ready — start to begin the simulated journey.</p>
+    <div class="journey-stack" id="journeyStack" aria-label="Simulated OSI packet journey"></div>
+    <div class="encapsulation-card" id="encapsulationCard" aria-live="polite"><span class="packet-icon">◇</span><div><strong>Waiting for the first layer</strong><p>Start the journey to see the sample message move through the OSI stack.</p></div></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><p class="eyebrow">03 / PRACTISE</p><h2>Protocol matching</h2></div><span class="chip">5 items</span></div>
+    <p class="muted">Choose the best-fit OSI layer for each item. These are introductory mappings; real implementations may involve several layers.</p>
+    <div id="matchingList" class="matching-list"></div>
+    <div class="toolbar"><button class="btn btn-primary" id="checkMatchingBtn" type="button">Check matches</button><button class="btn btn-quiet" id="resetMatchingBtn" type="button">Reset answers</button><span class="feedback" id="matchingFeedback" role="status">Match all five items to see your score.</span></div>
+  </section>
+
+  <section class="panel challenge-panel">
+    <div class="section-heading"><div><p class="eyebrow">04 / CHALLENGE</p><h2>Layer detective</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div></div>
+    <p class="muted">Read the scenario and select the OSI layer most closely associated with the task. Get all three correct to complete the challenge.</p>
+    <div class="scenario-card"><span class="scenario-number" id="scenarioNumber">SCENARIO 01 / 03</span><h3 id="scenarioQuestion"></h3><div id="scenarioOptions" class="scenario-options"></div></div>
+    <div class="toolbar"><button class="btn btn-primary" id="checkScenarioBtn" type="button">Check answer</button><button class="btn btn-secondary" id="nextScenarioBtn" type="button" disabled>Next scenario →</button><button class="btn btn-quiet" id="resetScenarioBtn" type="button">Restart challenge</button></div>
+    <p class="feedback" id="scenarioFeedback" role="status">Choose an answer to begin.</p>
+  </section>
+
+  <section class="panel quiz-panel">
+    <p class="eyebrow">05 / QUICK QUIZ</p><h2>Check your understanding</h2>
+    <p class="muted">Five multiple-choice questions with feedback and explanations.</p>
+    <div id="quizQuestions"></div>
+    <div class="toolbar"><button class="btn btn-primary" id="quizSubmitBtn" type="button">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer the questions, then check your work.</span></div>
+  </section>
+  <footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>NET-02 · OSI Model</span></footer>
+</main>
+</body>
+</html>

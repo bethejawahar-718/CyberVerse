@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | Firewall Simulation Lab</title>
+  <link rel="stylesheet" href="css/firewall-simulator.css">
+  <script src="js/labs/firewall-simulator.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home"><span class="brand-mark">CV</span> CyberVerse</a>
+    <span class="lab-label">PRACTICAL LAB / NET-12</span>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">COMPUTER NETWORKING</p>
+      <h1>Firewall Simulation Lab</h1>
+      <p class="intro">Build simple firewall rules, send fictional packets through them, and inspect why each packet is allowed or denied.</p>
+      <div class="notice"><strong>Simulation only:</strong> this lab does not inspect or change your computer's real network traffic.</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / POLICY</p><h2>Firewall rules</h2></div>
+        <button id="resetRules" class="button button-quiet" type="button">Load example rules</button>
+      </div>
+      <p class="muted">Rules are evaluated from top to bottom. The first matching rule decides the result.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Priority</th><th>Direction</th><th>Protocol</th><th>Port</th><th>Action</th><th>Purpose</th><th></th></tr></thead>
+          <tbody id="rulesBody"></tbody>
+        </table>
+      </div>
+      <form id="ruleForm" class="rule-form">
+        <label>Direction
+          <select id="ruleDirection"><option value="inbound">Inbound</option><option value="outbound">Outbound</option><option value="both">Both</option></select>
+        </label>
+        <label>Protocol
+          <select id="ruleProtocol"><option value="TCP">TCP</option><option value="UDP">UDP</option><option value="ICMP">ICMP</option><option value="ANY">Any</option></select>
+        </label>
+        <label>Destination port
+          <input id="rulePort" type="number" min="1" max="65535" placeholder="Any" />
+        </label>
+        <label>Action
+          <select id="ruleAction"><option value="ALLOW">Allow</option><option value="DENY">Deny</option></select>
+        </label>
+        <label class="purpose-field">Purpose
+          <input id="rulePurpose" maxlength="70" placeholder="e.g. Allow secure web traffic" required />
+        </label>
+        <button class="button" type="submit">+ Add rule</button>
+      </form>
+      <p class="hint">Leave the port blank to match any port. Use the arrows to change rule priority.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 / TRAFFIC</p><h2>Test a fictional packet</h2></div>
+      </div>
+      <form id="packetForm" class="packet-form">
+        <label>Direction
+          <select id="packetDirection"><option value="inbound">Inbound</option><option value="outbound">Outbound</option></select>
+        </label>
+        <label>Protocol
+          <select id="packetProtocol"><option value="TCP">TCP</option><option value="UDP">UDP</option><option value="ICMP">ICMP</option></select>
+        </label>
+        <label>Destination port
+          <input id="packetPort" type="number" min="1" max="65535" value="443" />
+        </label>
+        <label>Source label
+          <input id="packetSource" maxlength="40" value="Demo client" />
+        </label>
+        <button class="button" type="submit">Test packet</button>
+      </form>
+      <div id="result" class="result" aria-live="polite">
+        <span class="result-icon">↳</span><div><strong>Ready to test</strong><p>Configure a packet and select “Test packet”.</p></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">03 / HISTORY</p><h2>Packet test history</h2></div><button id="clearHistory" class="button button-quiet" type="button">Clear history</button></div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Packet</th><th>Direction</th><th>Protocol</th><th>Port</th><th>Decision</th><th>Reason</th></tr></thead><tbody id="historyBody"><tr><td colspan="6" class="empty">No packets tested yet.</td></tr></tbody></table>
+      </div>
+    </section>
+    <footer>CyberVerse · Understand. Experiment. Defend. <span>Educational simulation — not a real firewall.</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse binary addition and subtraction practice lab.">
+  <title>Binary Arithmetic Lab | CyberVerse</title>
+  <link rel="stylesheet" href="binary-arithmetic.css">
+  <script src="binary-arithmetic.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">C</span> CYBER<span>VERSE</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#learn">Learn</a>
+      <a href="#lab">Practice lab</a>
+      <a href="#challenge">Challenge</a>
+    </nav>
+    <span class="lab-status"><i></i> LEARNING LAB</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">DIGITAL ELECTRONICS / LAB 02</p>
+      <h1>Binary <span>Arithmetic</span></h1>
+      <p class="hero-copy">Learn how computers add and subtract using only 0 and 1. Explore carry and borrow, then solve a challenge.</p>
+      <div class="hero-tags"><span>01 · Learn</span><span>02 · Calculate</span><span>03 · Practise</span></div>
+    </section>
+
+    <section class="panel" id="learn">
+      <div class="section-heading">
+        <div><p class="eyebrow">QUICK LESSON</p><h2>Binary rules</h2></div>
+      </div>
+      <div class="rules-grid">
+        <article class="rule-card">
+          <span class="rule-number">A</span><h3>Addition</h3>
+          <div class="rule-lines"><p><code>0 + 0 = 0</code></p><p><code>0 + 1 = 1</code></p><p><code>1 + 0 = 1</code></p><p><code>1 + 1 = 10</code> <span class="muted">(write 0, carry 1)</span></p></div>
+        </article>
+        <article class="rule-card">
+          <span class="rule-number blue">S</span><h3>Subtraction</h3>
+          <div class="rule-lines"><p><code>0 − 0 = 0</code></p><p><code>1 − 0 = 1</code></p><p><code>1 − 1 = 0</code></p><p><code>10 − 1 = 1</code> <span class="muted">(borrow from next bit)</span></p></div>
+        </article>
+      </div>
+      <p class="lesson-note"><strong>Remember:</strong> Binary is base 2. Each digit is a bit, and each position represents a power of 2.</p>
+    </section>
+
+    <section class="panel" id="lab">
+      <div class="section-heading">
+        <div><p class="eyebrow">INTERACTIVE TOOL</p><h2>Binary calculator</h2><p class="muted">Enter binary digits only (0 and 1). Inputs are limited to 16 bits each.</p></div>
+        <span class="live-label"><i></i> READY</span>
+      </div>
+      <div class="calculator-grid">
+        <div class="controls">
+          <label for="operation">Operation</label>
+          <select id="operation">
+            <option value="add">Addition (A + B)</option>
+            <option value="subtract">Subtraction (A − B)</option>
+          </select>
+          <label for="operandA">Operand A (binary)</label>
+          <input id="operandA" value="1011" maxlength="16" inputmode="numeric" autocomplete="off" spellcheck="false">
+          <label for="operandB">Operand B (binary)</label>
+          <input id="operandB" value="0110" maxlength="16" inputmode="numeric" autocomplete="off" spellcheck="false">
+          <p class="error" id="calcError" role="alert"></p>
+          <div class="button-row">
+            <button class="btn btn-primary" id="calculateBtn">Calculate →</button>
+            <button class="btn btn-secondary" id="resetBtn">Reset</button>
+          </div>
+        </div>
+        <div class="result-panel" aria-live="polite">
+          <div class="result-top"><span>RESULT</span><span id="resultDecimal">Decimal: 17</span></div>
+          <div class="equation">
+            <p><span id="displayA">1011</span></p>
+            <p><span id="operatorSymbol">+</span> <span id="displayB">0110</span></p>
+            <div class="equation-line"></div>
+            <strong id="binaryResult">10001</strong>
+          </div>
+          <div class="result-details">
+            <div><span>Decimal A</span><strong id="decimalA">11</strong></div>
+            <div><span>Decimal B</span><strong id="decimalB">6</strong></div>
+            <div><span>Decimal result</span><strong id="decimalResult">17</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="steps-panel">
+        <div class="steps-title"><h3>How it works</h3><span id="stepsCount">Steps</span></div>
+        <ol id="stepsList"><li>Convert both operands to decimal.</li><li>Perform the selected operation.</li><li>Convert the result back to binary.</li></ol>
+      </div>
+    </section>
+
+    <section class="panel challenge-panel" id="challenge">
+      <div class="section-heading">
+        <div><p class="eyebrow">CHECK YOUR SKILLS</p><h2>Practice challenge</h2><p class="muted">Solve the binary arithmetic problem without using the calculator first.</p></div>
+        <div class="score-box"><span>SOLVED</span><strong id="score">0</strong></div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-meta"><span id="challengeLabel">CHALLENGE 01</span><span id="difficulty">BEGINNER</span></div>
+        <p class="question" id="question">Calculate 101 + 11 in binary.</p>
+        <div class="answer-row">
+          <label class="sr-only" for="answerInput">Binary answer</label>
+          <input id="answerInput" placeholder="Enter binary answer…" maxlength="20" autocomplete="off" spellcheck="false">
+          <button class="btn btn-primary" id="checkBtn">Check answer</button>
+        </div>
+        <p class="feedback" id="feedback" aria-live="polite"></p>
+        <div class="challenge-actions"><button class="text-btn" id="hintBtn">Show hint</button><button class="btn btn-secondary" id="nextBtn">Next challenge ↻</button></div>
+        <p class="hint" id="hint" hidden></p>
+      </div>
+    </section>
+
+    <section class="bottom-note"><span class="shield">✓</span><p><strong>Local practice:</strong> calculations and challenge checking happen in your browser. No input is sent to a server.</p></section>
+  </main>
+  <footer><span>© 2026 CyberVerse</span><span>UNDERSTAND. EXPERIMENT. DEFEND.</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

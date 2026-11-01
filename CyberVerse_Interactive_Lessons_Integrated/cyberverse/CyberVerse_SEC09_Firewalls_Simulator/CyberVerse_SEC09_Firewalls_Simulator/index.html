@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse SEC-09 interactive firewall learning simulator">
+  <title>CyberVerse | SEC-09 Firewall Simulator</title>
+  <link rel="stylesheet" href="css/firewall-simulator.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span><small>SECURITY LEARNING LAB</small></span></a>
+    <div class="module-tag"><span class="pulse"></span> MODULE SEC-09</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">DEFENSIVE SECURITY • INTERACTIVE LAB</div>
+      <h1>Firewall <span class="accent">Simulator</span></h1>
+      <p>Learn how firewall rules inspect network traffic and decide what should be allowed or blocked — inside a fictional, safe network.</p>
+      <div class="hero-stats">
+        <div><strong>09</strong><span>SEC MODULE</span></div>
+        <div><strong>05</strong><span>LEARNING TOPICS</span></div>
+        <div><strong>06</strong><span>TRAFFIC TESTS</span></div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Module sections">
+      <button class="tab active" data-tab="learn">01 / Learn</button>
+      <button class="tab" data-tab="lab">02 / Rule Lab</button>
+      <button class="tab" data-tab="quiz">03 / Knowledge Check</button>
+    </nav>
+
+    <section id="learn" class="panel active">
+      <div class="section-heading"><div><div class="eyebrow">CORE CONCEPTS</div><h2>Firewall fundamentals</h2></div><span class="status">LEARNING MODE</span></div>
+      <div class="concept-grid">
+        <article class="concept"><span class="concept-icon">▣</span><h3>What is a firewall?</h3><p>A firewall is a security control that monitors network traffic and applies rules to allow or block connections.</p></article>
+        <article class="concept"><span class="concept-icon">⇄</span><h3>Inbound & outbound</h3><p><b>Inbound</b> traffic comes into a device or network. <b>Outbound</b> traffic leaves it.</p></article>
+        <article class="concept"><span class="concept-icon">⚙</span><h3>Rules & filtering</h3><p>Rules can consider direction, source, destination, protocol and port. A matching rule determines the action.</p></article>
+        <article class="concept"><span class="concept-icon">⌂</span><h3>Host vs network</h3><p>A host firewall protects an individual device. A network firewall helps control traffic between networks.</p></article>
+        <article class="concept"><span class="concept-icon">⊘</span><h3>Default deny</h3><p>With a default-deny approach, traffic is blocked unless a rule explicitly permits it.</p></article>
+        <article class="concept"><span class="concept-icon">≡</span><h3>Rule order & logs</h3><p>Some firewalls evaluate rules in order. Logs help administrators review allowed and blocked events.</p></article>
+      </div>
+      <div class="info-strip"><strong>Remember:</strong> A port identifies a service endpoint; TCP and UDP are transport protocols. For example, HTTPS commonly uses TCP port 443.</div>
+      <div class="section-heading subhead"><div><div class="eyebrow">QUICK REFERENCE</div><h2>Common network terms</h2></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Term</th><th>Simple meaning</th><th>Example in this lab</th></tr></thead><tbody>
+        <tr><td>IP address</td><td>Identifies a device on an IP network</td><td>192.0.2.10</td></tr>
+        <tr><td>Protocol</td><td>Rules for how data is exchanged</td><td>TCP or UDP</td></tr>
+        <tr><td>Port</td><td>Identifies an application/service endpoint</td><td>443 (HTTPS)</td></tr>
+        <tr><td>Action</td><td>What the firewall does with matching traffic</td><td>ALLOW or BLOCK</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section id="lab" class="panel">
+      <div class="section-heading"><div><div class="eyebrow">SIMULATED NETWORK • NO REAL TRAFFIC</div><h2>Build and test firewall rules</h2></div><span class="status safe">SANDBOX</span></div>
+      <p class="muted">You are protecting the fictional <b>Orion Office Network</b>. Choose a rule for each traffic request, then test the rule set against the sample traffic.</p>
+      <div class="rule-builder">
+        <div class="builder-title"><span>＋</span> Create a firewall rule</div>
+        <div class="form-grid">
+          <label>Direction<select id="direction"><option value="Any">Any</option><option value="Inbound">Inbound</option><option value="Outbound">Outbound</option></select></label>
+          <label>Protocol<select id="protocol"><option value="Any">Any</option><option value="TCP">TCP</option><option value="UDP">UDP</option></select></label>
+          <label>Destination port<select id="port"><option value="Any">Any</option><option value="22">22 — SSH</option><option value="53">53 — DNS</option><option value="80">80 — HTTP</option><option value="443">443 — HTTPS</option><option value="3389">3389 — Remote desktop</option><option value="8080">8080 — Web service</option></select></label>
+          <label>Action<select id="action"><option value="ALLOW">ALLOW</option><option value="BLOCK">BLOCK</option></select></label>
+        </div>
+        <button id="addRule" class="primary-btn">Add rule to policy</button>
+        <p class="hint">Rules are evaluated from top to bottom. The first matching rule is applied.</p>
+      </div>
+
+      <div class="lab-columns">
+        <div class="sub-card">
+          <div class="sub-card-head"><h3>Active rule list</h3><button id="resetRules" class="text-btn">Reset rules</button></div>
+          <div id="rulesList" class="rules-list"></div>
+          <div class="default-rule"><span>DEFAULT ACTION</span><b>BLOCK</b><small>Used when no rule matches</small></div>
+        </div>
+        <div class="sub-card">
+          <div class="sub-card-head"><h3>Traffic test queue</h3><span id="testCount" class="count">0 / 6 tested</span></div>
+          <div id="trafficList" class="traffic-list"></div>
+          <button id="testAll" class="primary-btn full">Test all traffic</button>
+        </div>
+      </div>
+      <div class="results-card">
+        <div class="sub-card-head"><h3>Simulation results</h3><button id="clearResults" class="text-btn">Clear results</button></div>
+        <div id="results" class="empty-state">Run the traffic tests to see which connections are allowed or blocked.</div>
+      </div>
+      <div class="info-strip"><strong>Safety note:</strong> This is a front-end educational simulation. It does not inspect your device, change firewall settings, scan networks or send packets.</div>
+    </section>
+
+    <section id="quiz" class="panel">
+      <div class="section-heading"><div><div class="eyebrow">CHECK YOUR UNDERSTANDING</div><h2>Firewall knowledge check</h2></div><span class="status">5 QUESTIONS</span></div>
+      <div class="quiz-progress"><div><span id="quizProgressText">Question 1 of 5</span><span id="quizScore">Score: 0</span></div><div class="progress-track"><span id="quizProgress"></span></div></div>
+      <div id="quizArea"></div>
+      <div class="quiz-controls"><button id="prevQuestion" class="secondary-btn" disabled>Previous</button><button id="nextQuestion" class="primary-btn">Next question</button></div>
+      <div id="quizFeedback" class="feedback" aria-live="polite"></div>
+      <button id="restartQuiz" class="secondary-btn hidden">Restart quiz</button>
+    </section>
+    <footer><span>CYBERVERSE <i>•</i> LEARN DEFENSIVELY</span><span>SEC-09 / FIREWALLS</span></footer>
+  </main>
+  <script src="js/firewall-simulator.js"></script>
+</body>
+</html>

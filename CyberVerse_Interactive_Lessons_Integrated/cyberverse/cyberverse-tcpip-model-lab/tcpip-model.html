@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CyberVerse NET-03 interactive TCP/IP model learning simulation.">
+<title>NET-03 | TCP/IP Model Lab — CyberVerse</title>
+<link rel="stylesheet" href="tcpip-model.css">
+<script src="tcpip-model.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../networking.html">Networking</a><span>/</span><span>NET-03: TCP/IP Model</span></nav>
+  <span class="status"><span class="status-dot"></span> SIMULATION MODE</span>
+</header>
+<main class="container">
+<section class="hero"><p class="eyebrow">COMPUTER NETWORKING / LAB 03</p><h1>The <span class="accent">TCP/IP Model</span></h1><p class="intro">Explore the four-layer TCP/IP model, connect it to the seven OSI layers, and follow a sample message through a browser-based packet journey.</p><div class="hero-tags"><span>4 TCP/IP layers</span><span>OSI mapping</span><span>Protocol matching</span><span>Challenge + quiz</span></div></section>
+<section class="notice"><span class="notice-icon">i</span><p><strong>Educational simulation:</strong> All activities on this page are browser-based learning models. They do not send packets, connect to real hosts, capture traffic, or perform live network diagnostics. Layer mappings are simplified for introductory learning because real protocol stacks do not always fit neatly into one model.</p></section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">01 / EXPLORE</p><h2>Four TCP/IP layers</h2></div><span class="chip">Select a layer</span></div>
+<p class="muted">The common four-layer TCP/IP teaching model is shown from application down to network access for sending data. Some textbooks use a five-layer Internet model that separates Data Link and Physical.</p>
+<div class="model-layout"><div id="tcpipLayers" class="layer-list" aria-label="TCP/IP layers"></div><article class="detail" aria-live="polite"><p class="eyebrow" id="layerNumber">LAYER 4</p><h3 id="layerTitle">Application</h3><p id="layerDescription"></p><div class="detail-label">EXAMPLES</div><div id="layerExamples" class="tag-list"></div><div class="detail-label">OSI RELATIONSHIP</div><p id="layerMapping" class="mapping-text"></p><div class="detail-label">MEMORY TIP</div><p id="layerTip" class="tip"></p></article></div>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">02 / MAP THE MODELS</p><h2>OSI → TCP/IP mapping activity</h2></div><span class="chip">7 mappings</span></div>
+<p class="muted">Choose the closest TCP/IP layer for each OSI layer. In the four-layer model, OSI Application, Presentation, and Session are grouped into TCP/IP Application; OSI Data Link and Physical are grouped into Network Access.</p>
+<div id="mappingRows" class="mapping-list"></div>
+<div class="toolbar"><button class="btn btn-primary" id="checkMapping">Check mappings</button><button class="btn btn-quiet" id="resetMapping">Reset</button><span id="mappingFeedback" class="feedback" role="status">Complete all seven mappings, then check your answers.</span></div>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">03 / PROTOCOL MATCHING</p><h2>Which layer fits best?</h2></div><span class="chip">5 items</span></div>
+<p class="muted">Match each protocol or technology to its typical TCP/IP layer. This is a simplified learning classification.</p>
+<div id="protocolRows" class="mapping-list"></div>
+<div class="toolbar"><button class="btn btn-primary" id="checkProtocols">Check protocols</button><button class="btn btn-quiet" id="resetProtocols">Reset</button><span id="protocolFeedback" class="feedback" role="status">Try all five items.</span></div>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">04 / PACKET JOURNEY</p><h2>Follow a sample message</h2></div><span class="chip">Browser-only simulation</span></div>
+<p class="muted">Advance through the TCP/IP layers from Application to Network Access. The explanation shows the role of each layer without constructing real network headers or sending traffic.</p>
+<div class="journey-controls"><label for="sampleMessage">Sample message</label><input id="sampleMessage" type="text" maxlength="80" value="Hello, CyberVerse!" placeholder="Enter a sample message"><button class="btn btn-primary" id="startJourney">Start journey</button><button class="btn btn-secondary" id="nextJourney" disabled>Next layer →</button><button class="btn btn-quiet" id="resetJourney">Reset</button></div>
+<div class="progress"><div id="progressBar"></div></div><p class="progress-caption" id="journeyStatus" aria-live="polite">Ready to begin the simulated journey.</p>
+<div id="journeyStack" class="journey-stack"></div>
+<div class="packet-card" aria-live="polite"><span class="packet-icon">◇</span><div><strong id="packetTitle">Waiting for the first layer</strong><p id="packetDescription">Start the journey to see how the TCP/IP model organizes communication.</p></div></div>
+</section>
+
+<section class="panel challenge-panel">
+<div class="section-heading"><div><p class="eyebrow">05 / CHALLENGE</p><h2>TCP/IP layer detective</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div></div>
+<p class="muted">Choose the layer that best matches each situation. Earn 10 points for each correct answer, once per scenario.</p>
+<div class="scenario-card"><span id="scenarioNumber" class="eyebrow">SCENARIO 01 / 03</span><h3 id="scenarioQuestion"></h3><div id="scenarioOptions" class="scenario-options"></div></div>
+<div class="toolbar"><button class="btn btn-primary" id="checkScenario">Check answer</button><button class="btn btn-secondary" id="nextScenario" disabled>Next scenario →</button><button class="btn btn-quiet" id="resetScenario">Restart challenge</button></div>
+<p class="feedback" id="scenarioFeedback" role="status">Choose an answer to begin.</p>
+</section>
+
+<section class="panel">
+<p class="eyebrow">06 / QUICK QUIZ</p><h2>Check your understanding</h2><p class="muted">Five multiple-choice questions with answer explanations.</p>
+<div id="quizQuestions"></div><div class="toolbar"><button class="btn btn-primary" id="checkQuiz">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer the questions, then check your work.</span></div>
+</section>
+<footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>NET-03 · TCP/IP Model</span></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberVerse interactive number system converter lab.">
+  <title>Number System Lab | CyberVerse</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home"><span class="brand-mark">C</span> CYBER<span>VERSE</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#converter">Converter</a>
+      <a href="#learn">How it works</a>
+      <a href="#challenge">Challenges</a>
+    </nav>
+    <div class="status"><span class="status-dot"></span> LAB ENVIRONMENT</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">DIGITAL ELECTRONICS / LAB 01</p>
+      <h1>Number System <span>Converter</span></h1>
+      <p class="hero-copy">Explore binary, decimal, octal, and hexadecimal. Convert values, inspect the working, and test your skills.</p>
+      <div class="hero-tags"><span>01 · Convert</span><span>02 · Understand</span><span>03 · Challenge</span></div>
+    </section>
+
+    <section class="panel converter-panel" id="converter">
+      <div class="section-heading">
+        <div><p class="eyebrow">INTERACTIVE TOOL</p><h2>Conversion console</h2></div>
+        <span class="live-label"><span class="status-dot"></span> LIVE</span>
+      </div>
+
+      <div class="converter-grid">
+        <div class="input-side">
+          <label for="numberInput">Enter a number</label>
+          <input id="numberInput" type="text" value="42" autocomplete="off" spellcheck="false" aria-describedby="inputHelp inputError">
+          <div class="field-row">
+            <label for="fromBase">Input base</label>
+            <select id="fromBase">
+              <option value="2">Binary (base 2)</option>
+              <option value="8">Octal (base 8)</option>
+              <option value="10" selected>Decimal (base 10)</option>
+              <option value="16">Hexadecimal (base 16)</option>
+            </select>
+          </div>
+          <p class="help" id="inputHelp">Allowed digits depend on the selected base. Negative integers are supported.</p>
+          <p class="error" id="inputError" role="alert"></p>
+          <div class="button-row">
+            <button id="convertBtn" class="btn btn-primary">Convert number <span aria-hidden="true">→</span></button>
+            <button id="resetBtn" class="btn btn-secondary" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="output-side" aria-live="polite">
+          <div class="output-heading"><h3>Equivalent values</h3><span id="decimalValue" class="decimal-chip">Decimal: 42</span></div>
+          <div class="result-card"><div><span class="base-label">BASE 2</span><h3>Binary</h3></div><output id="binaryOutput">101010</output><button class="copy-btn" data-copy="binaryOutput" aria-label="Copy binary result">Copy</button></div>
+          <div class="result-card"><div><span class="base-label">BASE 8</span><h3>Octal</h3></div><output id="octalOutput">52</output><button class="copy-btn" data-copy="octalOutput" aria-label="Copy octal result">Copy</button></div>
+          <div class="result-card"><div><span class="base-label">BASE 10</span><h3>Decimal</h3></div><output id="decimalOutput">42</output><button class="copy-btn" data-copy="decimalOutput" aria-label="Copy decimal result">Copy</button></div>
+          <div class="result-card"><div><span class="base-label">BASE 16</span><h3>Hexadecimal</h3></div><output id="hexOutput">2A</output><button class="copy-btn" data-copy="hexOutput" aria-label="Copy hexadecimal result">Copy</button></div>
+        </div>
+      </div>
+      <div class="steps-box">
+        <div class="steps-title"><h3>Conversion steps</h3><span class="step-count" id="stepCount">2 steps</span></div>
+        <ol id="stepsList"><li>Convert the decimal value 42 to binary by repeated division by 2.</li><li>Read the remainders from bottom to top: 101010.</li></ol>
+      </div>
+    </section>
+
+    <section class="learn-section" id="learn">
+      <div class="section-heading">
+        <div><p class="eyebrow">QUICK GUIDE</p><h2>Understand the bases</h2></div>
+      </div>
+      <div class="base-grid">
+        <article class="base-card"><span class="base-symbol">01</span><h3>Binary</h3><p>Base 2 uses only <code>0</code> and <code>1</code>. Computers use bits to represent data.</p><p class="example">Example: <code>101010₂ = 42₁₀</code></p></article>
+        <article class="base-card"><span class="base-symbol">08</span><h3>Octal</h3><p>Base 8 uses digits from <code>0</code> through <code>7</code>.</p><p class="example">Example: <code>52₈ = 42₁₀</code></p></article>
+        <article class="base-card"><span class="base-symbol">10</span><h3>Decimal</h3><p>Base 10 is the everyday number system, using digits from <code>0</code> through <code>9</code>.</p><p class="example">Example: <code>42₁₀</code></p></article>
+        <article class="base-card"><span class="base-symbol">16</span><h3>Hexadecimal</h3><p>Base 16 uses <code>0–9</code> and <code>A–F</code>, where A = 10 through F = 15.</p><p class="example">Example: <code>2A₁₆ = 42₁₀</code></p></article>
+      </div>
+    </section>
+
+    <section class="panel challenge-panel" id="challenge">
+      <div class="section-heading">
+        <div><p class="eyebrow">KNOWLEDGE CHECK</p><h2>Practice challenge</h2><p class="muted">Solve a random conversion. Your answer is checked in this browser.</p></div>
+        <div class="score-box"><span>COMPLETED</span><strong id="score">0</strong></div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-meta"><span id="challengeNumber">CHALLENGE 01</span><span id="challengeDifficulty">BEGINNER</span></div>
+        <p class="question" id="challengeQuestion">Convert decimal 25 to binary.</p>
+        <div class="answer-row">
+          <label class="sr-only" for="challengeAnswer">Your answer</label>
+          <input id="challengeAnswer" type="text" placeholder="Type your answer…" autocomplete="off" spellcheck="false">
+          <button id="checkAnswerBtn" class="btn btn-primary">Check answer</button>
+        </div>
+        <p id="challengeFeedback" class="feedback" aria-live="polite"></p>
+        <div class="challenge-actions"><button id="hintBtn" class="text-btn">Show hint</button><button id="nextChallengeBtn" class="btn btn-secondary">Next challenge ↻</button></div>
+        <p id="hintText" class="hint" hidden></p>
+      </div>
+    </section>
+
+    <section class="bottom-note">
+      <span class="shield">✓</span>
+      <p><strong>Safe practice environment.</strong> This lab performs number conversions locally in your browser. It does not connect to external systems or send your inputs to a server.</p>
+    </section>
+  </main>
+
+  <footer><span>© 2026 CyberVerse</span><span>UNDERSTAND. EXPERIMENT. DEFEND.</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

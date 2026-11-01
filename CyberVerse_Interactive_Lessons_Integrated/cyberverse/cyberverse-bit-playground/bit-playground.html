@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CyberVerse interactive 8-bit data representation playground.">
+  <title>DE-04 | 8-bit Playground — CyberVerse</title>
+  <link rel="stylesheet" href="bit-playground.css">
+  <script src="bit-playground.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html" aria-label="CyberVerse home"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+    <nav aria-label="Breadcrumb"><a href="../digital-electronics.html">Digital Electronics</a><span>/</span><span aria-current="page">DE-04: 8-bit Playground</span></nav>
+    <span class="status"><span class="status-dot"></span> INTERACTIVE SIMULATION</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">DIGITAL ELECTRONICS / LAB 04</p>
+      <h1>8-bit <span class="accent">Playground</span></h1>
+      <p class="intro">Flip individual bits and watch the same value appear in binary, decimal, and hexadecimal. Learn how computers represent small unsigned numbers.</p>
+      <div class="hero-tags"><span>01 · Bit positions</span><span>02 · Number bases</span><span>03 · Challenges</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="bits-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / INTERACT</p><h2 id="bits-heading">Toggle the bits</h2></div>
+        <div class="current-value"><span>DECIMAL VALUE</span><strong id="headlineDecimal">0</strong></div>
+      </div>
+      <p class="muted">Each switch represents one bit. A bit can be <code>0</code> (off) or <code>1</code> (on). Bit 7 has the highest place value (128); bit 0 has the lowest (1).</p>
+      <div class="bit-grid" id="bitGrid" aria-label="Eight bit switches">
+        <!-- Created by JavaScript -->
+      </div>
+      <div class="toolbar">
+        <button class="btn btn-secondary" id="clearBtn" type="button">Clear all</button>
+        <button class="btn btn-secondary" id="randomBtn" type="button">Random value</button>
+        <button class="btn btn-primary" id="invertBtn" type="button">Invert bits</button>
+      </div>
+      <div class="values-grid" aria-live="polite" aria-atomic="true">
+        <article class="value-card"><span class="value-label">BINARY · BASE 2</span><strong id="binaryValue">00000000</strong><button class="copy-btn" data-copy="binaryValue" type="button">Copy</button></article>
+        <article class="value-card"><span class="value-label">DECIMAL · BASE 10</span><strong id="decimalValue">0</strong><button class="copy-btn" data-copy="decimalValue" type="button">Copy</button></article>
+        <article class="value-card"><span class="value-label">HEXADECIMAL · BASE 16</span><strong id="hexValue">00</strong><button class="copy-btn" data-copy="hexValue" type="button">Copy</button></article>
+      </div>
+      <p class="feedback" id="liveFeedback" role="status">Ready. Toggle any bit to begin.</p>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <p class="eyebrow">02 / UNDERSTAND</p>
+        <h2>How place values work</h2>
+        <p class="muted">In an 8-bit unsigned number, each position is a power of two. The decimal value is the sum of the place values whose bits are set to 1.</p>
+        <div class="place-table" role="table" aria-label="Bit place values">
+          <div class="place-row place-head" role="row"><span>Bit</span><span>Power</span><span>Value</span><span>Selected?</span></div>
+          <div id="placeRows"></div>
+        </div>
+        <div class="formula-box"><span class="formula-label">VALUE =</span><span id="sumFormula">0</span></div>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">03 / KEY IDEAS</p>
+        <h2>Remember</h2>
+        <ul class="concept-list">
+          <li><strong>Bit:</strong> one binary digit, either 0 or 1.</li>
+          <li><strong>Byte:</strong> 8 bits.</li>
+          <li><strong>Range:</strong> an unsigned byte represents values from 0 to 255.</li>
+          <li><strong>Hex:</strong> two hexadecimal digits can represent one byte (00–FF).</li>
+        </ul>
+        <div class="notice"><strong>Simulation note</strong><p>This is a browser-based learning simulation. It does not change your device or real hardware.</p></div>
+      </article>
+    </section>
+
+    <section class="panel challenge-panel" aria-labelledby="challenge-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">04 / TEST YOURSELF</p><h2 id="challenge-heading">Challenge mode</h2></div>
+        <div class="score-box"><span>SESSION SCORE</span><strong><span id="score">0</span> pts</strong></div>
+      </div>
+      <p class="muted">Set the switches to match the target decimal value. Your answer is checked locally in this page.</p>
+      <div class="challenge-card">
+        <div><span class="value-label">TARGET DECIMAL</span><strong class="target" id="targetValue">173</strong><p class="muted small" id="targetHint">Convert the target into an 8-bit binary pattern.</p></div>
+        <div class="challenge-actions"><button class="btn btn-secondary" id="hintBtn" type="button">Show hint</button><button class="btn btn-primary" id="checkBtn" type="button">Check answer</button><button class="btn btn-secondary" id="newChallengeBtn" type="button">New challenge</button></div>
+      </div>
+      <p class="feedback" id="challengeFeedback" role="status">Set the bits, then check your answer.</p>
+    </section>
+
+    <section class="panel quiz-panel">
+      <p class="eyebrow">05 / QUICK QUIZ</p>
+      <h2>Check your understanding</h2>
+      <div id="quizQuestions"></div>
+      <div class="toolbar"><button class="btn btn-primary" id="quizSubmitBtn" type="button">Check quiz</button><span class="feedback" id="quizFeedback" role="status">Answer all five questions, then check.</span></div>
+    </section>
+
+    <footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>DE-04 · 8-bit Playground</span></footer>
+  </main>
+</body>
+</html>

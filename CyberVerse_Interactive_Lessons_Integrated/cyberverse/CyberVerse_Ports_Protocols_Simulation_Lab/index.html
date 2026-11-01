@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | Ports & Protocols Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">CV</span><div><strong>CyberVerse</strong><small>Understand. Experiment. Defend.</small></div></div>
+    <span class="lab-label">SIMULATION LAB · NET-09</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">COMPUTER NETWORKING / LESSON 09</p>
+      <h1>Ports &amp; Protocols</h1>
+      <p>Learn how services use port numbers, then test your knowledge with a matching challenge.</p>
+      <div class="notice"><strong>Simulation:</strong> This lab uses a local sample dataset. It does not scan devices or send network traffic.</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">ACTIVITY 01</p><h2>Port &amp; service matching</h2></div><span class="pill">Practice mode</span></div>
+      <p class="muted">Choose the service that normally uses each port. Submit to check your answers.</p>
+      <div id="matching-questions" class="question-list"></div>
+      <div class="actions">
+        <button id="check-answers" class="primary">Check answers</button>
+        <button id="new-challenge" class="secondary">New challenge</button>
+        <button id="reset" class="ghost">Reset</button>
+      </div>
+      <div id="quiz-feedback" class="feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">ACTIVITY 02</p><h2>Service table analyzer</h2></div><span class="pill blue">Lookup</span></div>
+      <p class="muted">Search by service name, port number, or protocol. Select a row to view its details.</p>
+      <label class="search-label" for="service-search">Search services</label>
+      <input id="service-search" type="search" placeholder="Try 443, HTTPS, DNS..." autocomplete="off">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Service</th><th>Port</th><th>Transport</th><th>Typical purpose</th></tr></thead>
+          <tbody id="service-table"></tbody>
+        </table>
+      </div>
+      <div id="service-details" class="details" aria-live="polite">Select a service row to see its details.</div>
+    </section>
+
+    <section class="panel mini-guide">
+      <p class="eyebrow">QUICK CONCEPTS</p>
+      <h2>Remember</h2>
+      <div class="concept-grid">
+        <article><h3>Port number</h3><p>A number used by transport protocols to direct data to the right application or service.</p></article>
+        <article><h3>TCP</h3><p>Provides a connection-oriented byte stream with reliability and ordered delivery.</p></article>
+        <article><h3>UDP</h3><p>Sends datagrams without establishing a connection; delivery and ordering are not guaranteed.</p></article>
+        <article><h3>Socket</h3><p>A communication endpoint commonly identified by an IP address, transport protocol, and port.</p></article>
+      </div>
+    </section>
+    <footer>CyberVerse · Educational simulation only</footer>
+  </main>
+  <script src="js/lab.js"></script>
+</body>
+</html>

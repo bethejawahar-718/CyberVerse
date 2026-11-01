@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberVerse | HTTP & HTTPS Lab</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">CV</span><div><strong>CyberVerse</strong><small>Understand. Experiment. Defend.</small></div></div>
+  <span class="lab-label">SIMULATION LAB · NET-11</span>
+</header>
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">COMPUTER NETWORKING / LESSON 11</p>
+    <h1>HTTP &amp; HTTPS</h1>
+    <p>Inspect sample web requests and responses, explore status codes, and compare plain demonstration data with a simulated protected view.</p>
+    <div class="notice"><strong>Educational simulation:</strong> Sample data only. This lab does not make live web requests or implement real TLS encryption.</div>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 01</p><h2>Request inspector</h2></div><span class="pill">Interactive</span></div>
+    <p class="muted">Choose a sample request to inspect its method, URL, headers, and example response.</p>
+    <label for="sample-request">Sample request</label>
+    <select id="sample-request">
+      <option value="get">GET /products</option>
+      <option value="post">POST /login</option>
+      <option value="notfound">GET /missing-page</option>
+      <option value="forbidden">GET /admin</option>
+    </select>
+    <div class="request-grid">
+      <div class="code-panel"><div class="code-title">REQUEST</div><pre id="request-view"></pre></div>
+      <div class="code-panel"><div class="code-title">SAMPLE RESPONSE</div><pre id="response-view"></pre></div>
+    </div>
+    <div class="details" id="request-explanation" aria-live="polite"></div>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 02</p><h2>HTTP status code explorer</h2></div><span class="pill blue">Lookup</span></div>
+    <p class="muted">Search a status code or phrase to learn what the response usually means.</p>
+    <label for="status-search">Search status codes</label>
+    <input id="status-search" type="search" placeholder="Try 200, 301, 403, not found..." autocomplete="off">
+    <div class="status-grid" id="status-grid"></div>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 03</p><h2>HTTP vs HTTPS comparison</h2></div><span class="pill">Compare</span></div>
+    <p class="muted">Switch views to see a conceptual example of data sent over HTTP versus HTTPS.</p>
+    <div class="toggle-row">
+      <button id="http-mode" class="secondary" aria-pressed="true">HTTP view</button>
+      <button id="https-mode" class="ghost" aria-pressed="false">HTTPS view</button>
+    </div>
+    <div class="comparison" id="comparison-view"></div>
+    <p class="tiny muted">The protected view is illustrative only. It is not encryption and should not be used to protect real information.</p>
+  </section>
+
+  <section class="panel">
+    <div class="heading"><div><p class="eyebrow">ACTIVITY 04</p><h2>Knowledge check</h2></div><span class="pill">Quiz</span></div>
+    <div id="quiz"></div>
+    <div class="actions"><button id="check-quiz" class="primary">Check answers</button><button id="retry-quiz" class="ghost">Try again</button></div>
+    <div class="feedback" id="quiz-feedback" role="status" aria-live="polite"></div>
+  </section>
+  <footer>CyberVerse · NET-11 · Educational simulation only</footer>
+</main>
+<script src="js/lab.js"></script>
+</body>
+</html>

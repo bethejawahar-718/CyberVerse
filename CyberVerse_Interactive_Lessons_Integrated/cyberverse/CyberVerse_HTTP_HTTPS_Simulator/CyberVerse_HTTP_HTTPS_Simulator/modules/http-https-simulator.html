@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP vs HTTPS Security Simulator | CyberVerse</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/http-https-simulator.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html"><span class="brand-mark">C</span> CyberVerse</a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../dashboard.html">Dashboard</a>
+    <a href="../roadmap.html">Roadmap</a>
+  </nav>
+</header>
+
+<main class="wrap simulator-page">
+  <a class="back-link" href="../dashboard.html">← Back to Dashboard</a>
+  <div class="eyebrow"><span class="pulse"></span> INTERACTIVE NETWORKING LAB</div>
+  <h1>HTTP vs HTTPS <span class="accent">Security Simulator</span> 🔐</h1>
+  <p class="lead small-lead">Send a fictional request through two educational simulations and compare what a network observer could see.</p>
+
+  <div class="sim-warning"><strong>Safe simulation:</strong> This page does not send network traffic, contact a website, or collect credentials. Everything happens locally in your browser using fictional sample data.</div>
+
+  <section class="control-panel">
+    <div class="panel-heading"><div><div class="eyebrow">REQUEST BUILDER</div><h2>Create a sample request</h2></div><span class="tag">LOCAL DEMO</span></div>
+    <div class="form-grid">
+      <div class="field"><label for="method">HTTP method</label><select id="method"><option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option></select></div>
+      <div class="field"><label for="host">Example host</label><select id="host"><option value="learn.example.test">learn.example.test</option><option value="shop.example.test">shop.example.test</option><option value="portal.example.test">portal.example.test</option></select></div>
+      <div class="field"><label for="path">Path</label><input id="path" value="/account/profile" maxlength="80" placeholder="/page"></div>
+      <div class="field"><label for="sampleData">Fictional sample data</label><input id="sampleData" value="user=student&theme=dark" maxlength="120" placeholder="example=value"></div>
+    </div>
+    <div class="actions"><button class="btn primary" id="runBoth">Compare HTTP and HTTPS →</button><button class="btn secondary" id="reset">Reset</button></div>
+    <p class="form-message" id="validationMessage" role="status"></p>
+  </section>
+
+  <section class="comparison-grid" aria-live="polite">
+    <article class="protocol-card http-card">
+      <div class="protocol-top"><div class="protocol-symbol">!</div><div><div class="eyebrow danger-text">UNENCRYPTED EXAMPLE</div><h2>HTTP</h2></div><span class="status-pill danger-pill">Readable</span></div>
+      <p class="muted">The request is represented as readable text in this simplified demonstration.</p>
+      <div class="packet-label">SIMULATED NETWORK VIEW</div>
+      <pre class="packet" id="httpPacket">Choose “Compare HTTP and HTTPS” to build the example packet.</pre>
+      <div class="observer-box"><strong><span class="observer-dot danger-dot"></span> What an observer may see</strong><ul id="httpObserver"><li>Request path and sample data are shown as readable text.</li></ul></div>
+    </article>
+
+    <article class="protocol-card https-card">
+      <div class="protocol-top"><div class="protocol-symbol lock">⌑</div><div><div class="eyebrow">ENCRYPTED TRANSPORT EXAMPLE</div><h2>HTTPS</h2></div><span class="status-pill safe-pill">Protected in transit*</span></div>
+      <p class="muted">HTTPS uses HTTP over TLS. This card shows a non-cryptographic placeholder, not actual encryption.</p>
+      <div class="packet-label">SIMULATED NETWORK VIEW</div>
+      <pre class="packet encrypted-packet" id="httpsPacket">Choose “Compare HTTP and HTTPS” to build the example packet.</pre>
+      <div class="observer-box"><strong><span class="observer-dot safe-dot"></span> What an observer may see</strong><ul id="httpsObserver"><li>In a typical TLS connection, payload contents are encrypted; some connection metadata may remain visible.</li></ul></div>
+    </article>
+  </section>
+
+  <section class="explain-grid">
+    <article class="info-panel"><div class="eyebrow">KEY DIFFERENCE</div><h2>What changes?</h2><ul class="check-list"><li><strong>HTTP:</strong> does not provide TLS encryption by itself.</li><li><strong>HTTPS:</strong> protects HTTP content in transit using TLS when configured correctly.</li><li><strong>Both:</strong> the destination server can process the request and see data sent to it.</li><li><strong>Important:</strong> HTTPS does not prove a site is honest or safe by itself.</li></ul></article>
+    <article class="info-panel"><div class="eyebrow">LEARNING CHECK</div><h2>Test your understanding</h2><p id="quizQuestion">Which protocol protects HTTP content in transit using TLS?</p><div class="quiz-options" id="quizOptions"><button class="quiz-option" data-answer="http">HTTP only</button><button class="quiz-option" data-answer="https">HTTPS</button><button class="quiz-option" data-answer="both">Neither</button></div><p id="quizFeedback" class="form-message" role="status"></p><button class="btn secondary" id="nextQuestion">Next question ↗</button></article>
+  </section>
+
+  <section class="callout simulator-footer-cta"><div><div class="eyebrow">CONTINUE LEARNING</div><h2>Explore the rest of CyberVerse</h2><p>Return to your dashboard to open networking, cryptography, and cybersecurity modules.</p></div><div class="actions"><a class="btn secondary" href="../index.html">← Home</a><a class="btn primary" href="../dashboard.html">Dashboard →</a></div></section>
+</main>
+<footer class="footer"><a href="../index.html">Home</a><span>CyberVerse · Understand. Experiment. Defend.</span><a href="../dashboard.html">Dashboard</a></footer>
+<script src="../js/http-https-simulator.js"></script>
+</body>
+</html>

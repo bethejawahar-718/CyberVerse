@@ -1,0 +1,8 @@
+
+**/node_modules/
+**/.env
+**/ca.pem
+**/.env.*
+!**/.env.example
+.vercel/
+.DS_Store

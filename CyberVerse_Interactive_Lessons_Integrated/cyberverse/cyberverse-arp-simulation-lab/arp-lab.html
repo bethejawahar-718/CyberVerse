@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CyberVerse NET-05 educational MAC address and ARP simulation lab.">
+<title>NET-05 | MAC Address &amp; ARP Lab — CyberVerse</title>
+<link rel="stylesheet" href="arp-lab.css">
+<script src="arp-lab.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+  <nav aria-label="Breadcrumb"><a href="../networking.html">Networking</a><span>/</span><span>NET-05: MAC &amp; ARP</span></nav>
+  <span class="status"><i></i> SIMULATION MODE</span>
+</header>
+<main class="container">
+<section class="hero"><p class="eyebrow">COMPUTER NETWORKING / LAB 05</p><h1>MAC Address <span class="accent">&amp; ARP</span></h1><p class="intro">Discover how a device learns another device’s MAC address on a local IPv4 network, how ARP requests and replies work, and how an ARP cache can speed up later communication.</p><div class="tags"><span>Local network</span><span>ARP request / reply</span><span>Cache hit / miss</span><span>Practice challenges</span></div></section>
+<section class="notice"><span class="notice-icon">i</span><p><strong>Educational simulation only.</strong> All devices, addresses, frames, and ARP table entries are fictional and run in this browser. This lab does not send real packets, inspect your network, or perform network discovery.</p></section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">01 / TOPOLOGY</p><h2>Simulated local network</h2></div><span class="chip">192.168.1.0/24</span></div>
+<p class="muted">Choose a source and destination, then send a simulated message. ARP resolves an IPv4 address to a link-layer MAC address when the destination is on the same local network.</p>
+<div class="network-canvas" role="group" aria-label="Simulated local network devices">
+  <div class="device" id="device-pc-a"><div class="device-icon">▣</div><strong>PC Alpha</strong><span class="ip">192.168.1.10</span><code>02:AA:00:00:00:10</code><small>Source host</small></div>
+  <div class="link"><span class="link-dot"></span><span>Ethernet (simulated)</span></div>
+  <div class="switch-device"><div class="switch-icon">▤</div><strong>Switch S1</strong><small>Layer 2 forwarding</small></div>
+  <div class="branch-links"><span></span><span></span><span></span></div>
+  <div class="device-row">
+    <div class="device" id="device-pc-b"><div class="device-icon">▣</div><strong>PC Bravo</strong><span class="ip">192.168.1.20</span><code>02:BB:00:00:00:20</code><small>Destination host</small></div>
+    <div class="device" id="device-printer"><div class="device-icon">▧</div><strong>Printer</strong><span class="ip">192.168.1.30</span><code>02:CC:00:00:00:30</code><small>Network device</small></div>
+    <div class="device" id="device-pc-c"><div class="device-icon">▣</div><strong>PC Charlie</strong><span class="ip">192.168.1.40</span><code>02:DD:00:00:00:40</code><small>Network device</small></div>
+  </div>
+</div>
+<div class="control-grid">
+<div class="field"><label for="sourceDevice">Source device</label><select id="sourceDevice"><option value="alpha">PC Alpha — 192.168.1.10</option><option value="bravo">PC Bravo — 192.168.1.20</option><option value="printer">Printer — 192.168.1.30</option><option value="charlie">PC Charlie — 192.168.1.40</option></select></div>
+<div class="field"><label for="destinationDevice">Destination device</label><select id="destinationDevice"><option value="bravo">PC Bravo — 192.168.1.20</option><option value="alpha">PC Alpha — 192.168.1.10</option><option value="printer">Printer — 192.168.1.30</option><option value="charlie">PC Charlie — 192.168.1.40</option></select></div>
+<div class="field"><label for="messageText">Sample message</label><input id="messageText" value="Hello, local network!" maxlength="80"></div>
+</div>
+<div class="toolbar"><button id="sendMessage" class="btn btn-primary">Send simulated message</button><button id="clearCache" class="btn btn-secondary">Clear source ARP cache</button><button id="resetLab" class="btn btn-quiet">Reset lab</button></div>
+<p id="topologyFeedback" class="feedback" role="status">Select devices and send a message to begin.</p>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">02 / ARP SEQUENCE</p><h2>Request and reply timeline</h2></div><span class="chip">Simulated frames</span></div>
+<p class="muted">When the source cache has no entry, the source broadcasts an ARP request: “Who has this IPv4 address?” The matching device sends a unicast ARP reply with its MAC address.</p>
+<div class="sequence-controls"><button class="btn btn-secondary" id="stepSequence" disabled>Next step →</button><button class="btn btn-quiet" id="playAgain" disabled>Replay sequence</button><span id="sequenceStatus" class="feedback">No sequence started.</span></div>
+<ol id="timeline" class="timeline"><li class="timeline-empty">Your simulated ARP exchange will appear here.</li></ol>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">03 / ARP CACHE</p><h2>Source device ARP table</h2></div><span class="chip" id="cacheCount">0 entries</span></div>
+<p class="muted">This is the selected source device’s fictional cache. A cache hit can skip the request/reply exchange. Clear the cache to observe a miss again.</p>
+<div class="table-wrap"><table><thead><tr><th>IPv4 address</th><th>MAC address</th><th>State</th><th>Learned by</th></tr></thead><tbody id="arpTableBody"><tr><td colspan="4" class="empty-cell">No entries yet. Send a simulated message to populate the cache.</td></tr></tbody></table></div>
+<div class="cache-stats"><div><span>CACHE HITS</span><strong id="cacheHits">0</strong></div><div><span>CACHE MISSES</span><strong id="cacheMisses">0</strong></div><div><span>MESSAGES SENT</span><strong id="messagesSent">0</strong></div></div>
+</section>
+
+<section class="panel">
+<div class="section-heading"><div><p class="eyebrow">04 / CHALLENGE MODE</p><h2>Can you resolve the address?</h2></div><div class="score-box"><span>SESSION SCORE</span><strong><span id="challengeScore">0</span> pts</strong></div></div>
+<p class="muted">Four short questions about ARP behavior, MAC addresses, and cache decisions. Each correct answer earns 10 points once per question.</p>
+<div class="challenge-card"><div class="challenge-meta"><span id="challengeCounter" class="eyebrow">CHALLENGE 01 / 04</span><span class="chip" id="challengeTopic">ARP cache</span></div><h3 id="challengeQuestion"></h3><div id="challengeOptions" class="challenge-options"></div><div class="toolbar"><button id="checkChallenge" class="btn btn-primary">Check answer</button><button id="nextChallenge" class="btn btn-secondary" disabled>Next challenge →</button><button id="resetChallenge" class="btn btn-quiet">Restart</button></div><p id="challengeFeedback" class="feedback" role="status">Choose an answer to begin.</p></div>
+</section>
+
+<section class="panel">
+<p class="eyebrow">05 / QUICK QUIZ</p><h2>Check your understanding</h2><p class="muted">Five multiple-choice questions with automatic grading and explanations.</p>
+<div id="quizQuestions"></div><div class="toolbar"><button id="checkQuiz" class="btn btn-primary">Check quiz</button><button id="resetQuiz" class="btn btn-quiet">Reset quiz</button><span id="quizFeedback" class="feedback" role="status">Answer the questions, then check your work.</span></div>
+</section>
+<footer class="footer"><span>CYBERVERSE · Understand. Experiment. Defend.</span><span>NET-05 · MAC Address &amp; ARP</span></footer>
+</main>
+</body>
+</html>

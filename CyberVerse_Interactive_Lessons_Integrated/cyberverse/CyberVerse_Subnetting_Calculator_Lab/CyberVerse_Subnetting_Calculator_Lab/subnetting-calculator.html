@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberVerse | Subnetting Calculator Lab</title>
+  <link rel="stylesheet" href="css/subnetting-calculator.css">
+  <script src="js/labs/subnetting-calculator.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">CV</span><span>CYBER<span class="accent">VERSE</span><small>NETWORKING LABS</small></span></a>
+    <span class="status"><i></i> OFFLINE SIMULATION</span>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">NETWORKING FUNDAMENTALS / LAB 07</p>
+      <h1>Subnetting <span class="accent">Calculator</span></h1>
+      <p class="subtitle">Explore IPv4 networks, CIDR prefixes, host ranges, and subnet masks with an interactive calculator.</p>
+    </section>
+
+    <section class="panel calculator">
+      <div class="section-heading"><span class="step">01</span><div><h2>Network input</h2><p>Enter an IPv4 address and a CIDR prefix.</p></div></div>
+      <form id="subnet-form" class="input-grid">
+        <label>IPv4 address<input id="ip-input" type="text" value="192.168.1.10" autocomplete="off" spellcheck="false" placeholder="192.168.1.10" required></label>
+        <label>CIDR prefix
+          <select id="prefix-input">
+            <option value="8">/8 — 255.0.0.0</option>
+            <option value="16">/16 — 255.255.0.0</option>
+            <option value="24" selected>/24 — 255.255.255.0</option>
+            <option value="25">/25 — 255.255.255.128</option>
+            <option value="26">/26 — 255.255.255.192</option>
+            <option value="27">/27 — 255.255.255.224</option>
+            <option value="28">/28 — 255.255.255.240</option>
+            <option value="29">/29 — 255.255.255.248</option>
+            <option value="30">/30 — 255.255.255.252</option>
+            <option value="31">/31 — 255.255.255.254</option>
+            <option value="32">/32 — 255.255.255.255</option>
+            <option value="0">/0 — 0.0.0.0</option>
+            <option value="1">/1</option><option value="2">/2</option><option value="3">/3</option>
+            <option value="4">/4</option><option value="5">/5</option><option value="6">/6</option><option value="7">/7</option>
+            <option value="9">/9</option><option value="10">/10</option><option value="11">/11</option><option value="12">/12</option>
+            <option value="13">/13</option><option value="14">/14</option><option value="15">/15</option>
+            <option value="17">/17</option><option value="18">/18</option><option value="19">/19</option><option value="20">/20</option>
+            <option value="21">/21</option><option value="22">/22</option><option value="23">/23</option>
+          </select>
+        </label>
+        <button type="submit" class="primary-btn">Calculate network <span>→</span></button>
+      </form>
+      <div id="error-message" class="error" role="alert" hidden></div>
+      <div class="quick-examples"><span>TRY AN EXAMPLE</span><button type="button" data-ip="10.0.5.22" data-prefix="16">Private /16</button><button type="button" data-ip="172.16.4.130" data-prefix="26">Small /26</button><button type="button" data-ip="192.168.1.10" data-prefix="30">Point-to-point /30</button></div>
+    </section>
+
+    <section class="results-section">
+      <div class="section-heading"><span class="step">02</span><div><h2>Calculation results</h2><p>Values update when you calculate a network.</p></div></div>
+      <div class="result-grid">
+        <article class="result-card featured"><span class="result-label">NETWORK ADDRESS</span><strong id="network-address">192.168.1.0</strong><span class="chip" id="cidr-chip">192.168.1.10/24</span></article>
+        <article class="result-card"><span class="result-label">BROADCAST ADDRESS</span><strong id="broadcast-address">192.168.1.255</strong><small>Last address in the subnet</small></article>
+        <article class="result-card"><span class="result-label">SUBNET MASK</span><strong id="subnet-mask">255.255.255.0</strong><small>Network bits set to 1</small></article>
+        <article class="result-card"><span class="result-label">WILDCARD MASK</span><strong id="wildcard-mask">0.0.0.255</strong><small>Inverse of the subnet mask</small></article>
+        <article class="result-card"><span class="result-label">FIRST USABLE HOST</span><strong id="first-host">192.168.1.1</strong><small id="first-note">First typical host address</small></article>
+        <article class="result-card"><span class="result-label">LAST USABLE HOST</span><strong id="last-host">192.168.1.254</strong><small id="last-note">Last typical host address</small></article>
+        <article class="result-card"><span class="result-label">TOTAL ADDRESSES</span><strong id="total-addresses">256</strong><small>Includes network and broadcast where applicable</small></article>
+        <article class="result-card"><span class="result-label">USABLE HOSTS</span><strong id="usable-hosts">254</strong><small id="usable-note">Traditional IPv4 subnet calculation</small></article>
+      </div>
+    </section>
+
+    <section class="panel binary-panel">
+      <div class="section-heading"><span class="step">03</span><div><h2>Binary view</h2><p>Network bits are shown in green; host bits are shown in blue.</p></div></div>
+      <div class="binary-legend"><span><i class="network-key"></i> Network bits</span><span><i class="host-key"></i> Host bits</span></div>
+      <div id="binary-view" class="binary-view" aria-label="Binary representation of IPv4 address"></div>
+      <div class="binary-foot"><span>32 bits total</span><span id="bit-split">24 network bits / 8 host bits</span></div>
+    </section>
+
+    <section class="panel concept-panel">
+      <div class="section-heading"><span class="step">04</span><div><h2>Quick concepts</h2><p>Use these reminders while exploring subnet sizes.</p></div></div>
+      <div class="concept-grid">
+        <div><h3>Network address</h3><p>Identifies the subnet itself. In traditional subnets, it is not assigned to a regular host.</p></div>
+        <div><h3>Broadcast address</h3><p>The final address in a traditional IPv4 subnet, used to reach all hosts on that subnet.</p></div>
+        <div><h3>CIDR prefix</h3><p>The number after the slash tells how many of the 32 IPv4 bits belong to the network portion.</p></div>
+        <div><h3>Host capacity</h3><p>For most traditional IPv4 subnets, usable hosts equal total addresses minus two. /31 and /32 are special cases.</p></div>
+      </div>
+    </section>
+
+    <section class="panel quiz-panel">
+      <div class="section-heading"><span class="step">05</span><div><h2>Knowledge check</h2><p>Check your subnetting basics.</p></div></div>
+      <p class="quiz-question">For a traditional <strong>/26</strong> subnet, how many total IPv4 addresses are in each subnet?</p>
+      <div id="quiz-options" class="quiz-options">
+        <button type="button" data-answer="32">32 addresses</button>
+        <button type="button" data-answer="64">64 addresses</button>
+        <button type="button" data-answer="128">128 addresses</button>
+        <button type="button" data-answer="256">256 addresses</button>
+      </div>
+      <p id="quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
+    </section>
+
+    <footer><span>CYBERVERSE NETWORKING LABS</span><span>Educational simulation · No network traffic is sent</span></footer>
+  </main>
+</body>
+</html>

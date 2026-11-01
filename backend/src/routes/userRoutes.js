@@ -1,0 +1,14 @@
+const express=require("express");
+const router=express.Router();
+const auth=require("../middleware/authMiddleware");
+const upload=require("../middleware/uploadMiddleware");
+const c=require("../controllers/userController");
+router.get("/profile",auth,c.getProfile);
+router.put("/profile",auth,c.updateProfile);
+router.put("/profile/resume-data",auth,c.saveResumeData);
+router.post("/profile/picture",auth,upload("picture"),c.uploadFile);
+router.delete("/profile/picture",auth,c.removePicture);
+router.get("/profile/picture/file",auth,(req,res)=>{req.params.kind="picture";c.serveFile(req,res);});
+router.post("/profile/resume",auth,upload("resume"),c.uploadFile);
+router.get("/profile/resume/file",auth,(req,res)=>{req.params.kind="resume";c.serveFile(req,res);});
+module.exports=router;

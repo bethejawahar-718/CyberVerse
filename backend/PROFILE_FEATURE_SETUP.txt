@@ -1,0 +1,9 @@
+CYBERVERSE PROFILE FEATURE SETUP
+1. Back up the existing database first.
+2. Run CyberVerse_Profile_Migration.sql once in the existing cyberverse database. It creates only user_profiles and does not delete/alter users.
+3. In the backend folder run: npm install (installs multer dependency).
+4. Ensure backend/uploads is writable by the Node.js process. Uploaded files are stored in per-user folders and are NOT exposed as a public static directory.
+5. Start backend with npm start. The frontend currently uses http://localhost:5000; update API_BASE in the JS files if your deployment uses another API host.
+6. Open dashboard.html through the same local web server/origin used for the rest of the site, then log in.
+
+Resume PDF generation uses the browser print dialog (choose Save as PDF); uploaded PDF/DOC/DOCX files are retrieved only through authenticated API routes.

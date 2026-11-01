@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberVerse | Routing Fundamentals Lab</title>
+  <link rel="stylesheet" href="css/routing-fundamentals.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CyberVerse home"><span class="brand-mark">C</span><span>CYBER<span class="accent">VERSE</span></span></a>
+    <div class="lab-tag"><span class="live-dot"></span> NETWORKING LAB / 04</div>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow">INTERACTIVE LEARNING MODULE</div>
+      <h1>Routing <span class="accent">Fundamentals</span></h1>
+      <p>Explore how routers move packets between networks. Choose a source and destination, inspect the route table, and trace the packet hop by hop.</p>
+    </section>
+
+    <section class="stats" aria-label="Lab overview">
+      <div class="stat"><span class="stat-label">NETWORKS</span><strong>4</strong><small>Connected segments</small></div>
+      <div class="stat"><span class="stat-label">ROUTERS</span><strong>3</strong><small>Routing devices</small></div>
+      <div class="stat"><span class="stat-label">MODE</span><strong class="accent">SIMULATED</strong><small>No real traffic sent</small></div>
+    </section>
+
+    <section class="workspace">
+      <article class="panel topology-panel">
+        <div class="panel-heading">
+          <div><span class="section-kicker">01 / TOPOLOGY</span><h2>Network map</h2></div>
+          <span class="pill">LIVE SIMULATION</span>
+        </div>
+        <div class="topology" id="topology" aria-label="Simulated network topology">
+          <svg class="connections" viewBox="0 0 700 360" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="100" y1="75" x2="265" y2="150" />
+            <line x1="265" y1="150" x2="435" y2="150" />
+            <line x1="435" y1="150" x2="600" y2="75" />
+            <line x1="265" y1="150" x2="265" y2="280" />
+            <line x1="435" y1="150" x2="435" y2="280" />
+          </svg>
+          <div class="node host host-a" data-node="hostA"><span class="node-icon">PC</span><strong>Client A</strong><small>192.168.1.10</small></div>
+          <div class="node router router-a" data-node="r1"><span class="node-icon">R1</span><strong>Router 1</strong><small>192.168.1.1</small></div>
+          <div class="node router router-b" data-node="r2"><span class="node-icon">R2</span><strong>Router 2</strong><small>10.0.0.1</small></div>
+          <div class="node host host-b" data-node="hostB"><span class="node-icon">PC</span><strong>Client B</strong><small>192.168.3.20</small></div>
+          <div class="node host host-c" data-node="hostC"><span class="node-icon">PC</span><strong>Server C</strong><small>192.168.2.50</small></div>
+          <div class="node router router-c" data-node="r3"><span class="node-icon">R3</span><strong>Router 3</strong><small>10.0.2.1</small></div>
+          <div class="network-label net-a">LAN A · 192.168.1.0/24</div>
+          <div class="network-label net-b">WAN · 10.0.0.0/30</div>
+          <div class="network-label net-c">LAN B · 192.168.2.0/24</div>
+          <div class="network-label net-d">LAN C · 192.168.3.0/24</div>
+        </div>
+        <div class="legend"><span><i class="legend-dot host-dot"></i> End device</span><span><i class="legend-dot router-dot"></i> Router</span><span><i class="legend-dot path-dot"></i> Selected route</span></div>
+      </article>
+
+      <aside class="panel controls-panel">
+        <div class="panel-heading"><div><span class="section-kicker">02 / PACKET TRACE</span><h2>Configure route</h2></div></div>
+        <label for="source">Source device</label>
+        <select id="source">
+          <option value="hostA">Client A · 192.168.1.10</option>
+          <option value="hostB">Client B · 192.168.3.20</option>
+          <option value="hostC">Server C · 192.168.2.50</option>
+        </select>
+        <label for="destination">Destination device</label>
+        <select id="destination">
+          <option value="hostB">Client B · 192.168.3.20</option>
+          <option value="hostC">Server C · 192.168.2.50</option>
+          <option value="hostA">Client A · 192.168.1.10</option>
+        </select>
+        <div class="button-row">
+          <button id="traceBtn" class="primary">▶ Trace packet</button>
+          <button id="resetBtn" class="secondary">Reset</button>
+        </div>
+        <div class="trace-status" id="traceStatus" role="status">Ready to trace. Select endpoints and start.</div>
+        <div class="route-summary">
+          <span class="section-kicker">SELECTED PATH</span>
+          <strong id="routeSummary">No route selected</strong>
+          <small id="hopSummary">Hops will appear here after tracing.</small>
+        </div>
+      </aside>
+    </section>
+
+    <section class="lower-grid">
+      <article class="panel">
+        <div class="panel-heading"><div><span class="section-kicker">03 / ROUTING TABLE</span><h2>Router 1</h2></div><span class="pill">EXAMPLE DATA</span></div>
+        <p class="muted">Routers compare the destination IP with their routing table and forward packets toward the best matching route.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Destination network</th><th>Next hop</th><th>Interface</th><th>Type</th></tr></thead>
+          <tbody>
+            <tr><td>192.168.1.0/24</td><td>Directly connected</td><td>G0/0</td><td><span class="type-chip connected">Connected</span></td></tr>
+            <tr><td>10.0.0.0/30</td><td>Directly connected</td><td>G0/1</td><td><span class="type-chip connected">Connected</span></td></tr>
+            <tr><td>192.168.2.0/24</td><td>10.0.0.2</td><td>G0/1</td><td><span class="type-chip static">Static</span></td></tr>
+            <tr><td>192.168.3.0/24</td><td>10.0.0.2</td><td>G0/1</td><td><span class="type-chip static">Static</span></td></tr>
+          </tbody>
+        </table></div>
+      </article>
+      <article class="panel concept-panel">
+        <div class="panel-heading"><div><span class="section-kicker">04 / KEY CONCEPTS</span><h2>What to notice</h2></div></div>
+        <div class="concept"><span class="concept-number">01</span><div><strong>Destination IP</strong><p>Routers use the destination IP address to decide where to forward a packet.</p></div></div>
+        <div class="concept"><span class="concept-number">02</span><div><strong>Next hop</strong><p>The next router or gateway that moves the packet closer to its destination.</p></div></div>
+        <div class="concept"><span class="concept-number">03</span><div><strong>Hop count</strong><p>Each router crossed is one hop. The source and destination hosts are not routers.</p></div></div>
+      </article>
+    </section>
+
+    <section class="panel quiz-panel">
+      <div><span class="section-kicker">05 / QUICK CHECK</span><h2>Test your understanding</h2><p class="muted">What does a router mainly examine when forwarding an IP packet?</p></div>
+      <div class="quiz-options" role="group" aria-label="Quick check answers">
+        <button class="quiz-option" data-answer="mac">The source device's screen resolution</button>
+        <button class="quiz-option" data-answer="ip">The destination IP address and routing table</button>
+        <button class="quiz-option" data-answer="cable">The colour of the network cable</button>
+      </div>
+      <p id="quizFeedback" class="quiz-feedback" aria-live="polite">Choose an answer to check your understanding.</p>
+    </section>
+
+    <footer><span>CYBERVERSE LEARNING ENVIRONMENT</span><span>Routing Fundamentals · Educational simulation</span></footer>
+  </main>
+  <script src="js/labs/routing-fundamentals.js"></script>
+</body>
+</html>

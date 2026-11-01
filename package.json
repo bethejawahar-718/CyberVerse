@@ -1,0 +1,11 @@
+
+{
+  "name": "cyberverse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CyberVerse cybersecurity learning platform",
+  "scripts": {
+    "backend": "npm --prefix backend start",
+    "backend:dev": "npm --prefix backend run dev"
+  }
+}
